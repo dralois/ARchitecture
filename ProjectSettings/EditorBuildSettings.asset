@@ -77,13 +77,13 @@ EditorBuildSettings:
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 3ae5707cf44aaa647bd690c38f9a1050,
       type: 2}
-    com.unity.xr.arcore.PlayerSettings: {fileID: 11400000, guid: 1b2bbdff0bb4b60428703ab594408a85,
+    com.unity.xr.arcore.PlayerSettings: {fileID: 11400000, guid: c39f897548a8f7f4fa542180935424a3,
       type: 2}
-    com.unity.xr.arkit.PlayerSettings: {fileID: 11400000, guid: 2e7cafecd676cb145a86bb6f6a9b3725,
+    com.unity.xr.arkit.PlayerSettings: {fileID: 11400000, guid: d41a79ec1402f194f8212dc18d5b0c15,
       type: 2}
-    com.unity.xr.management.arcore_loader: {fileID: 11400000, guid: 648fad4d69dd4634fbe48c36144b9839,
+    com.unity.xr.management.arcore_loader: {fileID: 11400000, guid: f3a5f97ac587efb4494345abd76aacfb,
       type: 2}
-    com.unity.xr.management.arkit_loader: {fileID: 11400000, guid: 687fc1357fc683b4181d38f68323b9a1,
+    com.unity.xr.management.arkit_loader: {fileID: 11400000, guid: 8b2c893d654a5664cbac59500b4a2e75,
       type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 2730cc816a70bb24489b52d8ca4bce06,
       type: 2}
