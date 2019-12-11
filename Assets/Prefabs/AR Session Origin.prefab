@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7578912244606691474}
   - component: {fileID: 7578912244606691475}
+  - component: {fileID: 4927470933859311114}
   - component: {fileID: 7578912244606691468}
   - component: {fileID: 7578912244606691470}
   - component: {fileID: 7578912244606691471}
-  - component: {fileID: 4927470933859311114}
   m_Layer: 0
   m_Name: AR Session Origin
   m_TagString: Untagged
@@ -49,6 +49,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Camera: {fileID: 7578912245298982224}
+--- !u!114 &4927470933859311114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7578912244606691472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f07ca66ce5514fb7a26ab1e51e9bfec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ReferenceLibrary: {fileID: 11400000, guid: 225cf2b7eaf758e46a9a0156e4bd92d0, type: 2}
+  m_TrackedObjectPrefab: {fileID: 8522349059033595760, guid: 70a0b0d6f04fdc044943f758db8e98bb,
+    type: 3}
 --- !u!114 &7578912244606691468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,21 +105,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PlacedPrefab: {fileID: 1934569588295450, guid: b34b6c8f1206a6844b983e23b9da0441,
     type: 3}
---- !u!114 &4927470933859311114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7578912244606691472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f07ca66ce5514fb7a26ab1e51e9bfec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ReferenceLibrary: {fileID: 11400000, guid: 225cf2b7eaf758e46a9a0156e4bd92d0, type: 2}
-  m_TrackedObjectPrefab: {fileID: 8522349059033595760, guid: 70a0b0d6f04fdc044943f758db8e98bb,
-    type: 3}
 --- !u!1 &7578912245298982231
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,9 +115,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7578912245298982227}
   - component: {fileID: 7578912245298982224}
-  - component: {fileID: 7578912245298982225}
   - component: {fileID: 7578912245298982221}
+  - component: {fileID: 8677077715747389788}
   - component: {fileID: 6881084381434289963}
+  - component: {fileID: 3272015326083536668}
   - component: {fileID: 7578912245298982230}
   m_Layer: 0
   m_Name: AR Camera
@@ -183,20 +184,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &7578912245298982225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7578912245298982231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 816b289ef451e094f9ae174fb4cf8db0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UseCustomMaterial: 0
-  m_CustomMaterial: {fileID: 0}
 --- !u!114 &7578912245298982221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,6 +198,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_FocusMode: 1
   m_LightEstimationMode: 1
+--- !u!114 &8677077715747389788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7578912245298982231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 816b289ef451e094f9ae174fb4cf8db0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UseCustomMaterial: 0
+  m_CustomMaterial: {fileID: 0}
 --- !u!114 &6881084381434289963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,6 +242,18 @@ MonoBehaviour:
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
+--- !u!114 &3272015326083536668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7578912245298982231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e3c44306fb1e439a9f18b2212b8ab70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!81 &7578912245298982230
 AudioListener:
   m_ObjectHideFlags: 0
