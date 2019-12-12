@@ -41,3 +41,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: AfterTransparent
+    uniqueID: 448948617
+    locked: 0

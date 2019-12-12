@@ -7,37 +7,55 @@ using UnityEngine.InputSystem.EnhancedTouch;
 [RequireComponent(typeof(ARRaycastManager))]
 public class PlaceOnPlane : MonoBehaviour
 {
-	[SerializeField] private GameObject m_PlacedPrefab;
+	[SerializeField] private GameObject _PlacedPrefab;
 
-	private ARRaycastManager m_RaycastManager;
-	private static List<ARRaycastHit> s_Hits = new List<ARRaycastHit>();
+	private bool _placingEnabled = true;
+	private GameObject _spawnedObject;
+	private ARRaycastManager _RaycastManager;
+	private List<ARRaycastHit> _Hits = new List<ARRaycastHit>();
 
-	public GameObject spawnedObject { get; private set; }
-
-	void Awake()
+	private void Awake()
 	{
-		m_RaycastManager = GetComponent<ARRaycastManager>();
+		_RaycastManager = GetComponent<ARRaycastManager>();
 #if !UNITY_EDITOR
 		EnhancedTouchSupport.Enable();
+#endif
+	}
+
+	private void OnEnable()
+	{
+#if !UNITY_EDITOR
 		UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerDown += TouchStarted;
 #endif
 	}
 
+	private void OnDisable()
+	{
+#if !UNITY_EDITOR
+		UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerDown -= TouchStarted;
+#endif
+	}
+
+	public void SwitchPlacingState()
+	{
+		_placingEnabled = !_placingEnabled;
+	}
+
 	private void TouchStarted(Finger finger)
 	{
-		if(finger.currentTouch.phase == UnityEngine.InputSystem.TouchPhase.Began)
+		if(finger.currentTouch.phase == UnityEngine.InputSystem.TouchPhase.Began &&
+			_placingEnabled)
 		{
-			if (m_RaycastManager.Raycast(finger.screenPosition, s_Hits, TrackableType.PlaneWithinPolygon))
+			if (_RaycastManager.Raycast(finger.screenPosition, _Hits, TrackableType.PlaneWithinPolygon))
 			{
-				var hitPose = s_Hits[0].pose;
-
-				if (spawnedObject == null)
+				var hitPose = _Hits[0].pose;
+				if (_spawnedObject == null)
 				{
-					spawnedObject = Instantiate(m_PlacedPrefab, hitPose.position, hitPose.rotation);
+					_spawnedObject = Instantiate(_PlacedPrefab, hitPose.position, hitPose.rotation);
 				}
 				else
 				{
-					spawnedObject.transform.position = hitPose.position;
+					_spawnedObject.transform.position = hitPose.position;
 				}
 			}
 		}

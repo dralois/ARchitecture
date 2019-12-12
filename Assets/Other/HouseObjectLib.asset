@@ -20,3 +20,13 @@ MonoBehaviour:
     m_Name: Dose
     m_Entries:
     - {fileID: -6831329414088302235, guid: ecb01678319536749b1b7a46117c6107, type: 3}
+  - m_GuidLow: 5559583373648391506
+    m_GuidHigh: 16625697017394012841
+    m_Name: Cylinder
+    m_Entries:
+    - {fileID: -6831329414088302235, guid: bdc043b5448e75f48b26cd7cc8a9af6c, type: 3}
+  - m_GuidLow: 5294505186619557267
+    m_GuidHigh: 4537450322973265597
+    m_Name: Cube
+    m_Entries:
+    - {fileID: -6831329414088302235, guid: e3fb7ed2c2bd094479631845d87c9dbe, type: 3}
