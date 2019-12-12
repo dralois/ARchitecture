@@ -6,7 +6,9 @@ public class TouchRaycaster : MonoBehaviour
 {
 
 	[SerializeField] private DescriptionSpawner _UIPrefab = null;
+	[SerializeField] private LayerMask _rayMask = 0;
 
+	private DescriptionSpawner _descSpawned = null;
 	private Camera _ARCam = null;
 
 	private void Awake()
@@ -21,10 +23,12 @@ public class TouchRaycaster : MonoBehaviour
 	private void X_FingerDown(Finger finger)
 	{
 		var screenRay = _ARCam.ScreenPointToRay(finger.screenPosition);
-		if(Physics.Raycast(screenRay, out RaycastHit hit))
+		if(Physics.Raycast(screenRay, out RaycastHit hit, Mathf.Infinity, _rayMask))
 		{
-			var desc = Instantiate(_UIPrefab.gameObject).GetComponent<DescriptionSpawner>();
-			desc.CreateReference(hit.point, hit.normal);
+			if (_descSpawned)
+				Destroy(_descSpawned.gameObject);
+			_descSpawned = Instantiate(_UIPrefab.gameObject).GetComponent<DescriptionSpawner>();
+			_descSpawned.CreateReference(hit.point, hit.normal);
 		}
 	}
 }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85f3b71a771f04aef8057fae3964fd78, type: 3}
-  m_Name: HouseObjectLib
+  m_Name: ObjectLib
   m_EditorClassIdentifier: 
   m_GuidLow: 5072883176487053222
   m_GuidHigh: 4681352881785413259

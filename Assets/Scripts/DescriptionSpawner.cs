@@ -16,6 +16,7 @@ public class DescriptionSpawner : MonoBehaviour
 	public void CreateReference(Vector3 refPos, Vector3 refNormal)
 	{
 		transform.position = refPos + refNormal * _offsetMultiplier;
+		transform.rotation = Quaternion.LookRotation(-1f * refNormal);
 		_pointerRender.positionCount = 2;
 		_pointerRender.SetPosition(0, refPos);
 		_pointerRender.SetPosition(1, transform.position);
