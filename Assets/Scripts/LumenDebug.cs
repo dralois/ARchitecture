@@ -5,8 +5,8 @@ using TMPro;
 public class LumenDebug : MonoBehaviour
 {
 
-	[SerializeField] private ARCameraManager _CameraManager;
-	[SerializeField] private TextMeshProUGUI _lumenText;
+	[SerializeField] private ARCameraManager _CameraManager = null;
+	[SerializeField] private TextMeshProUGUI _lumenText = null;
 
 	private void OnEnable()
 	{

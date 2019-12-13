@@ -1,4 +1,4 @@
-﻿Shader "Unlit/FeatheredPlaneShader"
+﻿Shader "Unlit/PlaneFinder"
 {
 	Properties
 	{

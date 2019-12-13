@@ -7,6 +7,7 @@ using UnityEngine.XR.ARFoundation;
 #endif
 public class PlaneMeshVisualizer : MonoBehaviour
 {
+
 #region Fields
 
 	[SerializeField] private float _featheringWidth = 0.2f;
