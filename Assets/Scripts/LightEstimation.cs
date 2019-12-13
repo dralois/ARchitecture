@@ -6,7 +6,9 @@ public class LightEstimation : MonoBehaviour
 {
 
 	[SerializeField] private ARCameraManager _CameraManager;
-	private Light _Light;
+
+	private float _maxIntensity = 1f;
+	private Light _Light = null;
 
 	public ARCameraManager CameraManager
 	{
@@ -17,16 +19,18 @@ public class LightEstimation : MonoBehaviour
 				return;
 
 			if (_CameraManager != null)
-				_CameraManager.frameReceived -= FrameChanged;
+				_CameraManager.frameReceived -= X_FrameChanged;
 
 			_CameraManager = value;
 
 			if (_CameraManager != null & enabled)
-				_CameraManager.frameReceived += FrameChanged;
+				_CameraManager.frameReceived += X_FrameChanged;
 		}
 	}
 
 	public float? Brightness { get; private set; }
+
+	public float? Lumen { get; private set; }
 
 	public float? ColorTemperature { get; private set; }
 
@@ -35,26 +39,36 @@ public class LightEstimation : MonoBehaviour
 	private void Awake()
 	{
 		_Light = GetComponent<Light>();
+		_maxIntensity = _Light.intensity;
 	}
 
 	private void OnEnable()
 	{
 		if (_CameraManager != null)
-			_CameraManager.frameReceived += FrameChanged;
+			_CameraManager.frameReceived += X_FrameChanged;
 	}
 
 	private void OnDisable()
 	{
 		if (_CameraManager != null)
-			_CameraManager.frameReceived -= FrameChanged;
+			_CameraManager.frameReceived -= X_FrameChanged;
 	}
 
-	private void FrameChanged(ARCameraFrameEventArgs args)
+	private void X_FrameChanged(ARCameraFrameEventArgs args)
 	{
+		if (GameManager.Instance.CurrentMode != GameManager.Mode.Interaction)
+			return;
+
+		if (args.lightEstimation.averageBrightness.HasValue)
+		{
+			Lumen = args.lightEstimation.averageIntensityInLumens.Value;
+			_Light.enabled = Lumen.Value < 100f;
+		}
+
 		if (args.lightEstimation.averageBrightness.HasValue)
 		{
 			Brightness = args.lightEstimation.averageBrightness.Value;
-			_Light.intensity = Brightness.Value;
+			_Light.intensity = Mathf.Lerp(0f, _maxIntensity, Brightness.Value);
 		}
 
 		if (args.lightEstimation.averageColorTemperature.HasValue)
@@ -69,4 +83,5 @@ public class LightEstimation : MonoBehaviour
 			_Light.color = ColorCorrection.Value;
 		}
 	}
+
 }

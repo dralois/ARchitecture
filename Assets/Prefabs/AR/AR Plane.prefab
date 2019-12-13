@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4266372707468888}
   - component: {fileID: 114973852414686920}
   - component: {fileID: 114999847245811208}
-  - component: {fileID: 114750936167521158}
+  - component: {fileID: 654139991085643958}
   - component: {fileID: 33790042174619686}
   - component: {fileID: 23747677035716922}
   - component: {fileID: 64925081986755876}
@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d180956a54db4646a1c6342921672ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114750936167521158
+--- !u!114 &654139991085643958
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,7 +74,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe544a55a03bab479ce73b5bf64215e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FeatheringWidth: 0.2
+  _featheringWidth: 0.2
+  _shadowMaterial: {fileID: 2100000, guid: e77fa6d152e22954fa4643135aff46a1, type: 2}
 --- !u!33 &33790042174619686
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -95,12 +96,11 @@ MeshRenderer:
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 23e2748d52724824fb92be95f957d7dc, type: 2}
   - {fileID: 2100000, guid: 23e2748d52724824fb92be95f957d7dc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0

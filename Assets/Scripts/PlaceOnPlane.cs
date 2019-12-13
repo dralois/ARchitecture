@@ -7,57 +7,54 @@ using UnityEngine.InputSystem.EnhancedTouch;
 [RequireComponent(typeof(ARRaycastManager))]
 public class PlaceOnPlane : MonoBehaviour
 {
-	[SerializeField] private GameObject _PlacedPrefab;
+	[SerializeField] private GameObject _placedPrefab = null;
+	[SerializeField] private LayerMask _hitMask = 0;
 
-	private bool _placingEnabled = true;
 	private GameObject _spawnedObject;
 	private ARRaycastManager _RaycastManager;
 	private List<ARRaycastHit> _Hits = new List<ARRaycastHit>();
 
+	private void X_TouchStarted(Finger finger)
+	{
+		if(finger.index == 0 && GameManager.Instance.CurrentMode == GameManager.Mode.Spawn)
+		{
+#if UNITY_EDITOR
+			var screenRay = Camera.main.ScreenPointToRay(finger.screenPosition);
+			if (Physics.Raycast(screenRay, out RaycastHit hit, Mathf.Infinity, _hitMask))
+#else
+			if (_RaycastManager.Raycast(finger.screenPosition, _Hits, TrackableType.PlaneWithinPolygon))
+#endif
+			{
+#if UNITY_EDITOR
+				Pose hitPose = new Pose(hit.point, Quaternion.identity);
+#else
+				Pose hitPose = _Hits[0].pose;
+#endif
+				// Haus spawnen und speichern
+				GameManager.Instance.House = Instantiate(_placedPrefab, hitPose.position, hitPose.rotation);
+				GameManager.Instance.SwitchMode(GameManager.Mode.Placement);
+			}
+		}
+	}
+
 	private void Awake()
 	{
 		_RaycastManager = GetComponent<ARRaycastManager>();
-#if !UNITY_EDITOR
-		EnhancedTouchSupport.Enable();
-#endif
+		// ggf. Touch aktivieren
+		if (!EnhancedTouchSupport.enabled)
+		{
+			EnhancedTouchSupport.Enable();
+		}
 	}
 
 	private void OnEnable()
 	{
-#if !UNITY_EDITOR
-		UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerDown += TouchStarted;
-#endif
+		UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerDown += X_TouchStarted;
 	}
 
 	private void OnDisable()
 	{
-#if !UNITY_EDITOR
-		UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerDown -= TouchStarted;
-#endif
+		UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerDown -= X_TouchStarted;
 	}
 
-	public void SwitchPlacingState()
-	{
-		_placingEnabled = !_placingEnabled;
-	}
-
-	private void TouchStarted(Finger finger)
-	{
-		if(finger.currentTouch.phase == UnityEngine.InputSystem.TouchPhase.Began &&
-			_placingEnabled)
-		{
-			if (_RaycastManager.Raycast(finger.screenPosition, _Hits, TrackableType.PlaneWithinPolygon))
-			{
-				var hitPose = _Hits[0].pose;
-				if (_spawnedObject == null)
-				{
-					_spawnedObject = Instantiate(_PlacedPrefab, hitPose.position, hitPose.rotation);
-				}
-				else
-				{
-					_spawnedObject.transform.position = hitPose.position;
-				}
-			}
-		}
-	}
 }

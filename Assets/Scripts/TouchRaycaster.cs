@@ -14,21 +14,31 @@ public class TouchRaycaster : MonoBehaviour
 	private void Awake()
 	{
 		_ARCam = Camera.main;
-#if !UNITY_EDITOR
-		EnhancedTouchSupport.Enable();
+		// ggf. Touch aktivieren
+		if (!EnhancedTouchSupport.enabled)
+		{
+			EnhancedTouchSupport.Enable();
+		}
+		// Touch Event abonnieren
 		Touch.onFingerDown += X_FingerDown;
-#endif
 	}
 
 	private void X_FingerDown(Finger finger)
 	{
+		// Early out
+		if (GameManager.Instance.CurrentMode != GameManager.Mode.Interaction)
+			return;
+		// Mit Screen Ray ersten Hit bestimmen
 		var screenRay = _ARCam.ScreenPointToRay(finger.screenPosition);
 		if(Physics.Raycast(screenRay, out RaycastHit hit, Mathf.Infinity, _rayMask))
 		{
+			// ggf. alte GUI loeschen
 			if (_descSpawned)
 				Destroy(_descSpawned.gameObject);
+			// Neue instantiieren und TODO: befuellen
 			_descSpawned = Instantiate(_UIPrefab.gameObject).GetComponent<DescriptionSpawner>();
 			_descSpawned.CreateReference(hit.point, hit.normal);
+			//_descSpawned.FillDescription();
 		}
 	}
 }
