@@ -10,9 +10,9 @@ public class PlaceOnPlane : MonoBehaviour
 	[SerializeField] private GameObject _placedPrefab = null;
 	[SerializeField] private LayerMask _hitMask = 0;
 
-	private GameObject _spawnedObject;
-	private ARRaycastManager _RaycastManager;
 	private List<ARRaycastHit> _Hits = new List<ARRaycastHit>();
+	private ARRaycastManager _RaycastManager;
+	private GameObject _spawnedObject;
 
 	private void X_TouchStarted(Finger finger)
 	{
@@ -33,6 +33,9 @@ public class PlaceOnPlane : MonoBehaviour
 				// Haus spawnen und speichern
 				GameManager.Instance.House = Instantiate(_placedPrefab, hitPose.position, hitPose.rotation);
 				GameManager.Instance.SwitchMode(GameManager.Mode.Placement);
+				// Detection deaktivieren
+				GetComponent<ARPlaneManager>().detectionMode = PlaneDetectionMode.None;
+				GetComponent<ARTrackedObjectManager>().referenceLibrary = null;
 			}
 		}
 	}

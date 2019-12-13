@@ -5,9 +5,9 @@ using UnityEngine.XR.ARFoundation;
 public class LightEstimation : MonoBehaviour
 {
 
-	[SerializeField] private ARCameraManager _CameraManager;
+	[SerializeField] private ARCameraManager _CameraManager = null;
+	[SerializeField] private bool _isHouseLight = true;
 
-	private float _maxIntensity = 1f;
 	private Light _Light = null;
 
 	public ARCameraManager CameraManager
@@ -28,8 +28,6 @@ public class LightEstimation : MonoBehaviour
 		}
 	}
 
-	public float? Brightness { get; private set; }
-
 	public float? Lumen { get; private set; }
 
 	public float? ColorTemperature { get; private set; }
@@ -39,7 +37,6 @@ public class LightEstimation : MonoBehaviour
 	private void Awake()
 	{
 		_Light = GetComponent<Light>();
-		_maxIntensity = _Light.intensity;
 	}
 
 	private void OnEnable()
@@ -56,27 +53,25 @@ public class LightEstimation : MonoBehaviour
 
 	private void X_FrameChanged(ARCameraFrameEventArgs args)
 	{
+		// Early out
 		if (GameManager.Instance.CurrentMode != GameManager.Mode.Interaction)
 			return;
 
-		if (args.lightEstimation.averageBrightness.HasValue)
+		// Licht ggf. aktivieren
+		if (args.lightEstimation.averageIntensityInLumens.HasValue)
 		{
 			Lumen = args.lightEstimation.averageIntensityInLumens.Value;
-			_Light.enabled = Lumen.Value < 100f;
+			_Light.enabled = Lumen.Value < 800f || !_isHouseLight;
 		}
 
-		if (args.lightEstimation.averageBrightness.HasValue)
-		{
-			Brightness = args.lightEstimation.averageBrightness.Value;
-			_Light.intensity = Mathf.Lerp(0f, _maxIntensity, Brightness.Value);
-		}
-
+		// Farbtemperatur setzen
 		if (args.lightEstimation.averageColorTemperature.HasValue)
 		{
 			ColorTemperature = args.lightEstimation.averageColorTemperature.Value;
 			_Light.colorTemperature = ColorTemperature.Value;
 		}
 
+		// Farbkorrektur setzen
 		if (args.lightEstimation.colorCorrection.HasValue)
 		{
 			ColorCorrection = args.lightEstimation.colorCorrection.Value;

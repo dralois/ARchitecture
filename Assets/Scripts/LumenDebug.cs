@@ -25,9 +25,9 @@ public class LumenDebug : MonoBehaviour
 		if (GameManager.Instance.CurrentMode != GameManager.Mode.Interaction)
 			return;
 
-		if (args.lightEstimation.averageBrightness.HasValue)
+		if (args.lightEstimation.averageIntensityInLumens.HasValue)
 		{
-			_lumenText.text = $"{args.lightEstimation.averageIntensityInLumens.Value}";
+			_lumenText.text = $"{args.lightEstimation.averageIntensityInLumens.Value.ToString("N0")}";
 		}
 	}
 

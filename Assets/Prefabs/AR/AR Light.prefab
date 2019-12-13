@@ -105,3 +105,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _CameraManager: {fileID: 0}
+  _isHouseLight: 0
