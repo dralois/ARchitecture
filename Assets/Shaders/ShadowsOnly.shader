@@ -1,4 +1,4 @@
-﻿Shader "Lightweight Render Pipeline/Custom/ShadowsOnly"
+﻿Shader "Universal Render Pipeline/Custom/ShadowsOnly"
 {
   Properties
   {
@@ -8,7 +8,7 @@
     Tags
     {
       "RenderType" = "AlphaTest"
-      "RenderPipeline" = "LightweightPipeline"
+      "RenderPipeline" = "UniversalPipeline"
       "IgnoreProjector" = "True"
     }
     Pass
@@ -16,7 +16,7 @@
       Name "ShadowsOnly"
       Tags
       {
-        "LightMode" = "LightweightForward"
+        "LightMode" = "UniversalForward"
       }
 
       ZWrite On
@@ -35,8 +35,8 @@
       #pragma vertex ShadowVertex
       #pragma fragment ShadowFragment
 
-      #include "Packages/com.unity.render-pipelines.lightweight/ShaderLibrary/Core.hlsl"
-      #include "Packages/com.unity.render-pipelines.lightweight/ShaderLibrary/Lighting.hlsl"
+      #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+      #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 
       struct Attributes
       {
@@ -73,7 +73,7 @@
       ENDHLSL
     }
     // Depth Pre-Pass
-    UsePass "Lightweight Render Pipeline/Lit/DepthOnly"
+    UsePass "Universal Render Pipeline/Lit/DepthOnly"
   }
   // ggf. Error
   FallBack "Hidden/InternalErrorShader"

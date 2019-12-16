@@ -1,0 +1,11 @@
+
+=== Sun Dec 15 23:31:46 2019
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were updated:
+  com.unity.render-pipelines.lightweight from version 6.9.2 to 7.1.6
+  com.unity.xr.management from version 3.0.3 to 3.0.4
+The following packages were removed:
+  com.unity.package-manager-ui@2.2.0
