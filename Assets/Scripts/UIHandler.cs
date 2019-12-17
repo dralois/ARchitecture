@@ -10,10 +10,10 @@ public class UIHandler : MonoBehaviour
 
 	public void AcceptPlacement()
 	{
-		GameManager.Instance.SwitchMode(GameManager.Mode.Interaction);
+		GameManager.Instance.SwitchMode(GameManager.InputMode.Interaction);
 	}
 
-	private void X_ModeChange(GameManager.Mode newMode)
+	private void X_ModeChange(GameManager.InputMode newMode)
 	{
 		// Zunaechst alles deaktivieren
 		_spawnUI.SetActive(false);
@@ -23,22 +23,22 @@ public class UIHandler : MonoBehaviour
 		// UI umschalten
 		switch (newMode)
 		{
-			case GameManager.Mode.Spawn:
+			case GameManager.InputMode.Spawn:
 				{
 					_spawnUI.SetActive(true);
 					break;
 				}
-			case GameManager.Mode.Placement:
+			case GameManager.InputMode.Placement:
 				{
 					_placementUI.SetActive(true);
 					break;
 				}
-			case GameManager.Mode.Interaction:
+			case GameManager.InputMode.Interaction:
 				{
 					_interactionUI.SetActive(true);
 					break;
 				}
-			case GameManager.Mode.Decoration:
+			case GameManager.InputMode.Decoration:
 				{
 					_decorationUI.SetActive(true);
 					break;

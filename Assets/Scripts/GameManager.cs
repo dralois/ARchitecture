@@ -5,13 +5,19 @@ public class GameManager : MonoBehaviour
 
 	#region Enums
 
-	public enum Mode
+	public enum InputMode
 	{
 		None = -1,
 		Spawn,
 		Placement,
 		Interaction,
 		Decoration
+	}
+
+	public enum LightMood
+	{
+		Day,
+		Night
 	}
 
 	#endregion
@@ -26,7 +32,9 @@ public class GameManager : MonoBehaviour
 
 	#region Events
 
-	public event System.Action<Mode> ModeChanged;
+	public event System.Action<InputMode> ModeChanged;
+
+	public event System.Action<LightMood> MoodChanged;
 
 	#endregion
 
@@ -36,41 +44,73 @@ public class GameManager : MonoBehaviour
 
 	public GameObject House { get => _houseGO; set => _houseGO = value; }
 
-	public Mode CurrentMode { get; private set; } = Mode.None;
+	public InputMode CurrentMode { get; private set; } = InputMode.None;
+
+	public LightMood CurrentMood { get; private set; } = LightMood.Day;
 
 	#endregion
 
 	#region Methods
 
-	public void SwitchMode(Mode nextMode)
+	public void SwitchMood(float lumen)
 	{
-		// Aktionen je nach Modus
-		switch (nextMode)
+		LightMood nextMood = lumen < 800 ? LightMood.Night : LightMood.Day;
+		// Falls geaendert
+		if(nextMood != CurrentMood)
 		{
-			case Mode.Spawn:
-				{
+			// Aktionen je nach Modus
+			switch (nextMood)
+			{
+				case LightMood.Day:
+					{
 
-					break;
-				}
-			case Mode.Placement:
-				{
+						break;
+					}
+				case LightMood.Night:
+					{
 
-					break;
-				}
-			case Mode.Interaction:
-				{
-
-					break;
-				}
-			case Mode.Decoration:
-				{
-
-					break;
-				}
+						break;
+					}
+			}
+			// Modus speichern & Event ausloesen
+			CurrentMood = nextMood;
+			MoodChanged?.Invoke(CurrentMood);
 		}
-		// Modus speichern & Event ausloesen
-		CurrentMode = nextMode;
-		ModeChanged?.Invoke(CurrentMode);
+	}
+
+	public void SwitchMode(InputMode nextMode)
+	{
+		// Falls geaendert
+		if(nextMode != CurrentMode)
+		{
+			// Aktionen je nach Modus
+			switch (nextMode)
+			{
+				case InputMode.Spawn:
+					{
+
+						break;
+					}
+				case InputMode.Placement:
+					{
+
+						break;
+					}
+				case InputMode.Interaction:
+					{
+
+						break;
+					}
+				case InputMode.Decoration:
+					{
+
+						break;
+					}
+			}
+			// Modus speichern & Event ausloesen
+			CurrentMode = nextMode;
+			ModeChanged?.Invoke(CurrentMode);
+		}
 	}
 
 	#region Unity
@@ -89,7 +129,7 @@ public class GameManager : MonoBehaviour
 
 	private void Start()
 	{
-		SwitchMode(Mode.Spawn);
+		SwitchMode(InputMode.Spawn);
 	}
 
 	#endregion

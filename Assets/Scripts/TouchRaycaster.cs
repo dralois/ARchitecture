@@ -26,11 +26,11 @@ public class TouchRaycaster : MonoBehaviour
 	private void X_FingerDown(Finger finger)
 	{
 		// Early out
-		if (GameManager.Instance.CurrentMode != GameManager.Mode.Interaction)
+		if (GameManager.Instance.CurrentMode != GameManager.InputMode.Interaction)
 			return;
 		// Mit Screen Ray ersten Hit bestimmen
 		var screenRay = _ARCam.ScreenPointToRay(finger.screenPosition);
-		if(Physics.Raycast(screenRay, out RaycastHit hit, Mathf.Infinity, _rayMask))
+		if (Physics.Raycast(screenRay, out RaycastHit hit, Mathf.Infinity, _rayMask))
 		{
 			// ggf. alte GUI loeschen
 			if (_descSpawned)

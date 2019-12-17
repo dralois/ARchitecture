@@ -24,9 +24,9 @@ public class PlaneMeshVisualizer : MonoBehaviour
 
 #region Methods
 
-	private void X_ModeChange(GameManager.Mode newMode)
+	private void X_ModeChange(GameManager.InputMode newMode)
 	{
-		if(newMode != GameManager.Mode.Spawn)
+		if(newMode != GameManager.InputMode.Spawn)
 		{
 			GetComponent<MeshRenderer>().material = _shadowMaterial;
 		}
@@ -34,7 +34,7 @@ public class PlaneMeshVisualizer : MonoBehaviour
 
 	private void X_BoundaryUpdate(ARPlaneBoundaryChangedEventArgs eventArgs)
 	{
-		if(GameManager.Instance.CurrentMode == GameManager.Mode.Spawn)
+		if(GameManager.Instance.CurrentMode == GameManager.InputMode.Spawn)
 			X_GenerateBoundaryUVs(_planeMeshVisualizer.mesh);
 	}
 

@@ -53,14 +53,15 @@ public class LightEstimation : MonoBehaviour
 	private void X_FrameChanged(ARCameraFrameEventArgs args)
 	{
 		// Early out
-		if (GameManager.Instance.CurrentMode != GameManager.Mode.Interaction)
+		if (GameManager.Instance.CurrentMode != GameManager.InputMode.Interaction)
 			return;
 
 		// Licht ggf. aktivieren
 		if (args.lightEstimation.averageIntensityInLumens.HasValue)
 		{
 			Lumen = args.lightEstimation.averageIntensityInLumens.Value;
-			_Light.enabled = Lumen.Value < 800f;
+			GameManager.Instance.SwitchMood(Lumen.Value);
+			_Light.enabled = GameManager.Instance.CurrentMood == GameManager.LightMood.Day;
 		}
 
 		// Farbtemperatur setzen

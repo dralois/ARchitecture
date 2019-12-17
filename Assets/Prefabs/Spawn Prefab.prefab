@@ -1,5 +1,97 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &652438444
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 652438445}
+  - component: {fileID: 652438446}
+  m_Layer: 0
+  m_Name: Day Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &652438445
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652438444}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 4.064, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5035810429531985855}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!108 &652438446
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652438444}
+  m_Enabled: 0
+  serializedVersion: 10
+  m_Type: 0
+  m_Shape: 0
+  m_Color: {r: 1, g: 0.9984353, b: 0.7216981, a: 1}
+  m_Intensity: 0.5
+  m_Range: 10
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 0
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1 &1934569588295450
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,6 +101,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4181027171868550}
+  - component: {fileID: 1283086807}
   m_Layer: 0
   m_Name: Spawn Prefab
   m_TagString: Untagged
@@ -27,11 +120,26 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1109191554637947142}
+  - {fileID: 5035810429531985855}
   - {fileID: 3630533352028861987}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1283086807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934569588295450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4228476ae77a0b044a0264f11b63a207, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nightPrefab: {fileID: 2012753048768145020}
+  _dayPrefab: {fileID: 8296172668894278473}
+  _dayLight: {fileID: 652438446}
 --- !u!1 &668602860532117831
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,6 +416,38 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &4675352080430419614
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5035810429531985855}
+  m_Layer: 0
+  m_Name: Lights
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5035810429531985855
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4675352080430419614}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 652438445}
+  - {fileID: 1109191554637947142}
+  m_Father: {fileID: 4181027171868550}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4763496635617304529
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,7 +642,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3630533352028861987}
   m_Layer: 0
-  m_Name: Model
+  m_Name: Models
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -534,7 +674,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1109191554637947142}
   m_Layer: 0
-  m_Name: Baked Lights
+  m_Name: Night Lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -557,8 +697,8 @@ Transform:
   - {fileID: 7576406860601678502}
   - {fileID: 6778713079206509698}
   - {fileID: 3570123151490803935}
-  m_Father: {fileID: 4181027171868550}
-  m_RootOrder: 0
+  m_Father: {fileID: 5035810429531985855}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8428912263556574901
 GameObject:
@@ -877,7 +1017,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: aad76e7841d10954083205efea59b709,
         type: 3}
       propertyPath: m_Name
-      value: Realtime
+      value: Day Model
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: aad76e7841d10954083205efea59b709,
         type: 3}
@@ -1146,6 +1286,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aad76e7841d10954083205efea59b709, type: 3}
+--- !u!1 &8296172668894278473 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: aad76e7841d10954083205efea59b709,
+    type: 3}
+  m_PrefabInstance: {fileID: 850405952}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5006512735637832026 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: aad76e7841d10954083205efea59b709,
@@ -1362,7 +1508,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: aad76e7841d10954083205efea59b709,
         type: 3}
       propertyPath: m_Name
-      value: Baked
+      value: Night Model
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: aad76e7841d10954083205efea59b709,
         type: 3}
@@ -1611,6 +1757,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aad76e7841d10954083205efea59b709, type: 3}
+--- !u!1 &2012753048768145020 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: aad76e7841d10954083205efea59b709,
+    type: 3}
+  m_PrefabInstance: {fileID: 7552344356832132981}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3293791466484012143 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: aad76e7841d10954083205efea59b709,

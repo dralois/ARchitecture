@@ -22,7 +22,7 @@ public class LumenDebug : MonoBehaviour
 
 	private void X_FrameChanged(ARCameraFrameEventArgs args)
 	{
-		if (GameManager.Instance.CurrentMode != GameManager.Mode.Interaction)
+		if (GameManager.Instance.CurrentMode != GameManager.InputMode.Interaction)
 			return;
 
 		if (args.lightEstimation.averageIntensityInLumens.HasValue)

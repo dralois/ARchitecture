@@ -16,7 +16,7 @@ public class PlaceOnPlane : MonoBehaviour
 
 	private void X_TouchStarted(Finger finger)
 	{
-		if(finger.index == 0 && GameManager.Instance.CurrentMode == GameManager.Mode.Spawn)
+		if(finger.index == 0 && GameManager.Instance.CurrentMode == GameManager.InputMode.Spawn)
 		{
 #if UNITY_EDITOR
 			var screenRay = Camera.main.ScreenPointToRay(finger.screenPosition);
@@ -32,7 +32,7 @@ public class PlaceOnPlane : MonoBehaviour
 #endif
 				// Haus spawnen und speichern
 				GameManager.Instance.House = Instantiate(_placedPrefab, hitPose.position, hitPose.rotation);
-				GameManager.Instance.SwitchMode(GameManager.Mode.Placement);
+				GameManager.Instance.SwitchMode(GameManager.InputMode.Placement);
 				// Detection deaktivieren
 				GetComponent<ARPlaneManager>().detectionMode = PlaneDetectionMode.None;
 				GetComponent<ARTrackedObjectManager>().referenceLibrary = null;
