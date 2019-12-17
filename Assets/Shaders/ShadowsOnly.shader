@@ -31,6 +31,7 @@
       #pragma multi_compile _ _SHADOWS_SOFT
       #pragma multi_compile _ _MAIN_LIGHT_SHADOWS
       #pragma multi_compile _ _MAIN_LIGHT_SHADOWS_CASCADE
+      #pragma multi_compile _ _ADDITIONAL_LIGHT_SHADOWS
 
       #pragma vertex ShadowVertex
       #pragma fragment ShadowFragment
@@ -46,7 +47,8 @@
       struct v2f
       {
         float4 positionCS   : SV_POSITION;
-        float4 shadowCoord  : TEXCOORD0;
+        float3 positionWS   : TEXCOORD0;
+        float4 shadowCoord  : TEXCOORD1;
       };
 
       v2f ShadowVertex(Attributes input)
@@ -57,14 +59,22 @@
         // Speichern
         output.shadowCoord = GetShadowCoord(vertexInput);
         output.positionCS = vertexInput.positionCS;
+        output.positionWS = vertexInput.positionWS;
         // An Fragment weitergeben
         return output;
       }
 
       half4 ShadowFragment(v2f input) : SV_Target
       {
-        // Attenuation bestimmen
+        // Main Light Attenuation bestimmen
         half shadowAtten = MainLightRealtimeShadow(input.shadowCoord);
+        // Additional Light Attenuation bestimmen
+        uint lightsCount = GetAdditionalLightsCount();
+        // Maximalen Schatten nehmen
+        for (uint lightIndex = 0u; lightIndex < lightsCount; lightIndex++)
+        {
+          shadowAtten = min(shadowAtten, AdditionalLightRealtimeShadow(lightIndex, input.positionWS));
+        }
         // Clip falls kein Schatten (-> Schatten != 0)
         clip(-shadowAtten);
         // Schwarz zurueck

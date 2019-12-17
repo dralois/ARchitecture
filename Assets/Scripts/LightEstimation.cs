@@ -5,26 +5,25 @@ using UnityEngine.XR.ARFoundation;
 public class LightEstimation : MonoBehaviour
 {
 
-	[SerializeField] private ARCameraManager _CameraManager = null;
-	[SerializeField] private bool _isHouseLight = true;
+	[SerializeField] private ARCameraManager _cameraManager = null;
 
 	private Light _Light = null;
 
 	public ARCameraManager CameraManager
 	{
-		get { return _CameraManager; }
+		get { return _cameraManager; }
 		set
 		{
-			if (_CameraManager == value)
+			if (_cameraManager == value)
 				return;
 
-			if (_CameraManager != null)
-				_CameraManager.frameReceived -= X_FrameChanged;
+			if (_cameraManager != null)
+				_cameraManager.frameReceived -= X_FrameChanged;
 
-			_CameraManager = value;
+			_cameraManager = value;
 
-			if (_CameraManager != null & enabled)
-				_CameraManager.frameReceived += X_FrameChanged;
+			if (_cameraManager != null & enabled)
+				_cameraManager.frameReceived += X_FrameChanged;
 		}
 	}
 
@@ -41,14 +40,14 @@ public class LightEstimation : MonoBehaviour
 
 	private void OnEnable()
 	{
-		if (_CameraManager != null)
-			_CameraManager.frameReceived += X_FrameChanged;
+		if (_cameraManager != null)
+			_cameraManager.frameReceived += X_FrameChanged;
 	}
 
 	private void OnDisable()
 	{
-		if (_CameraManager != null)
-			_CameraManager.frameReceived -= X_FrameChanged;
+		if (_cameraManager != null)
+			_cameraManager.frameReceived -= X_FrameChanged;
 	}
 
 	private void X_FrameChanged(ARCameraFrameEventArgs args)
@@ -61,7 +60,7 @@ public class LightEstimation : MonoBehaviour
 		if (args.lightEstimation.averageIntensityInLumens.HasValue)
 		{
 			Lumen = args.lightEstimation.averageIntensityInLumens.Value;
-			_Light.enabled = Lumen.Value < 800f || !_isHouseLight;
+			_Light.enabled = Lumen.Value < 800f;
 		}
 
 		// Farbtemperatur setzen
