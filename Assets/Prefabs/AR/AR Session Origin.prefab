@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ReferenceLibrary: {fileID: 11400000, guid: 225cf2b7eaf758e46a9a0156e4bd92d0, type: 2}
-  m_TrackedObjectPrefab: {fileID: 8522349059033595760, guid: 70a0b0d6f04fdc044943f758db8e98bb,
+  m_TrackedObjectPrefab: {fileID: 5302558266138609711, guid: a0d38aabe2136fe42a35d0f75f5926f9,
     type: 3}
 --- !u!114 &7578912244606691468
 MonoBehaviour:
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d5359d5f13250e4485741ed685a32be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _placedPrefab: {fileID: 1934569588295450, guid: b34b6c8f1206a6844b983e23b9da0441,
+  _placedPrefab: {fileID: 5302558266138609711, guid: a0d38aabe2136fe42a35d0f75f5926f9,
     type: 3}
   _hitMask:
     serializedVersion: 2
@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 6881084381434289963}
   - component: {fileID: 3272015326083536668}
   - component: {fileID: 7578912245298982230}
+  - component: {fileID: 559222445}
   m_Layer: 0
   m_Name: AR Camera
   m_TagString: MainCamera
@@ -265,3 +266,34 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7578912245298982231}
   m_Enabled: 1
+--- !u!114 &559222445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7578912245298982231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_CameraOutput: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2

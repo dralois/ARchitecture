@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 351294403025898739}
   - component: {fileID: 364669981}
   m_Layer: 0
-  m_Name: TouchInput
+  m_Name: Touch Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,6 +99,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _UIPrefab: {fileID: 13482117, guid: a01d9be9986223348a924b3a6318acee, type: 3}
-  _rayMask:
+  _tridifyMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 512

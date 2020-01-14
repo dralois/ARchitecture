@@ -3,9 +3,8 @@
 public class LightSwitcher : MonoBehaviour
 {
 
-	[SerializeField] private GameObject _nightPrefab = null;
-	[SerializeField] private GameObject _dayPrefab = null;
-	[SerializeField] private Light _dayLight = null;
+	[SerializeField] private GameObject _nightLights = null;
+	[SerializeField] private GameObject _dayLights = null;
 
 	[ContextMenu("Mood Switch Day")]
 	public void SwitchDay()
@@ -25,16 +24,14 @@ public class LightSwitcher : MonoBehaviour
 		{
 			case GameManager.LightMood.Day:
 				{
-					_nightPrefab.SetActive(false);
-					_dayPrefab.SetActive(true);
-					_dayLight.enabled = true;
+					_nightLights.SetActive(false);
+					_dayLights.SetActive(true);
 					break;
 				}
 			case GameManager.LightMood.Night:
 				{
-					_nightPrefab.SetActive(true);
-					_dayPrefab.SetActive(false);
-					_dayLight.enabled = false;
+					_nightLights.SetActive(true);
+					_dayLights.SetActive(false);
 					break;
 				}
 		}

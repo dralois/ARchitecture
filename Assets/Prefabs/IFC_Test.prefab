@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1257811020509141109
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4826798024170836791}
+  m_Layer: 0
+  m_Name: Day Lights
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4826798024170836791
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257811020509141109}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6479395655588745116}
+  m_Father: {fileID: 5302558266138609708}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5302558265645593265
 GameObject:
   m_ObjectHideFlags: 0
@@ -16,7 +47,9 @@ GameObject:
   - component: {fileID: 5302558265645593277}
   - component: {fileID: 5302558265645593276}
   - component: {fileID: 5302558265645593279}
-  m_Layer: 0
+  - component: {fileID: 5838220853175114244}
+  - component: {fileID: 165258892649080072}
+  m_Layer: 9
   m_Name: Component 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,6 +236,32 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &5838220853175114244
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558265645593265}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 9121957296604757404, guid: 905fcb45d05588941ae0f2a866d95b86, type: 3}
+--- !u!114 &165258892649080072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558265645593265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558265653522450
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,7 +278,9 @@ GameObject:
   - component: {fileID: 5302558265653522462}
   - component: {fileID: 5302558265653522449}
   - component: {fileID: 5302558265653522448}
-  m_Layer: 0
+  - component: {fileID: 8547513728320079405}
+  - component: {fileID: 3022102756053411585}
+  m_Layer: 9
   m_Name: Component 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -406,6 +467,32 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &8547513728320079405
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558265653522450}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6109074675406971932, guid: 87db4e576a56a4340b40c0da0304f87b, type: 3}
+--- !u!114 &3022102756053411585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558265653522450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558265706154479
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,7 +509,9 @@ GameObject:
   - component: {fileID: 5302558265706154475}
   - component: {fileID: 5302558265706154474}
   - component: {fileID: 5302558265706154477}
-  m_Layer: 0
+  - component: {fileID: 300313385521696418}
+  - component: {fileID: 1199600866662615268}
+  m_Layer: 9
   m_Name: Component 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -609,6 +698,32 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &300313385521696418
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558265706154479}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5506204767524074118, guid: 905fcb45d05588941ae0f2a866d95b86, type: 3}
+--- !u!114 &1199600866662615268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558265706154479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558265717418183
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,7 +740,9 @@ GameObject:
   - component: {fileID: 5302558265717418179}
   - component: {fileID: 5302558265717418178}
   - component: {fileID: 5302558265717418181}
-  m_Layer: 0
+  - component: {fileID: 1388489376919299807}
+  - component: {fileID: 7010973291882823653}
+  m_Layer: 9
   m_Name: Component 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -812,6 +929,32 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &1388489376919299807
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558265717418183}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7219856313537685187, guid: 87db4e576a56a4340b40c0da0304f87b, type: 3}
+--- !u!114 &7010973291882823653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558265717418183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558265768140445
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,7 +972,7 @@ GameObject:
   - component: {fileID: 5302558265768140441}
   - component: {fileID: 5302558265768140440}
   - component: {fileID: 5302558265768140443}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Objekt-002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1156,7 +1299,9 @@ GameObject:
   - component: {fileID: 5302558265814286369}
   - component: {fileID: 5302558265814286368}
   - component: {fileID: 5302558265814286371}
-  m_Layer: 0
+  - component: {fileID: 6681546529167681190}
+  - component: {fileID: 989241988747064242}
+  m_Layer: 9
   m_Name: Component 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1343,6 +1488,32 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &6681546529167681190
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558265814286373}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1239000416290609420, guid: 87db4e576a56a4340b40c0da0304f87b, type: 3}
+--- !u!114 &989241988747064242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558265814286373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558265820419823
 GameObject:
   m_ObjectHideFlags: 0
@@ -1353,7 +1524,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5302558265820419820}
   - component: {fileID: 5302558265820419821}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: "Gel\xE4nde"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1420,7 +1591,9 @@ GameObject:
   - component: {fileID: 5302558265916054599}
   - component: {fileID: 5302558265916054598}
   - component: {fileID: 5302558265916054713}
-  m_Layer: 0
+  - component: {fileID: 6682425676343465931}
+  - component: {fileID: 5469328355275109201}
+  m_Layer: 9
   m_Name: Component 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1607,6 +1780,32 @@ MonoBehaviour:
     Value: Decken Roh
   - Name: Name
     Value: Decken Roh
+--- !u!64 &6682425676343465931
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558265916054715}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6367145575858930879, guid: 905fcb45d05588941ae0f2a866d95b86, type: 3}
+--- !u!114 &5469328355275109201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558265916054715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558265940571949
 GameObject:
   m_ObjectHideFlags: 0
@@ -1623,7 +1822,9 @@ GameObject:
   - component: {fileID: 5302558265940571945}
   - component: {fileID: 5302558265940571944}
   - component: {fileID: 5302558265940571947}
-  m_Layer: 0
+  - component: {fileID: 2710430386952706910}
+  - component: {fileID: 5250243551868684871}
+  m_Layer: 9
   m_Name: Component 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1810,6 +2011,32 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &2710430386952706910
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558265940571949}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4407090676692615534, guid: 905fcb45d05588941ae0f2a866d95b86, type: 3}
+--- !u!114 &5250243551868684871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558265940571949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558265941817218
 GameObject:
   m_ObjectHideFlags: 0
@@ -1826,7 +2053,9 @@ GameObject:
   - component: {fileID: 5302558265941817230}
   - component: {fileID: 5302558265941817217}
   - component: {fileID: 5302558265941817216}
-  m_Layer: 0
+  - component: {fileID: 2368434466805077633}
+  - component: {fileID: 6771719558735305802}
+  m_Layer: 9
   m_Name: Component 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2013,6 +2242,32 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &2368434466805077633
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558265941817218}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2847628612180395859, guid: 905fcb45d05588941ae0f2a866d95b86, type: 3}
+--- !u!114 &6771719558735305802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558265941817218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558265988921908
 GameObject:
   m_ObjectHideFlags: 0
@@ -2029,7 +2284,9 @@ GameObject:
   - component: {fileID: 5302558265988921904}
   - component: {fileID: 5302558265988921907}
   - component: {fileID: 5302558265988921906}
-  m_Layer: 0
+  - component: {fileID: 2796713941519759442}
+  - component: {fileID: 2973582860730008994}
+  m_Layer: 9
   m_Name: Component 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2216,6 +2473,32 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &2796713941519759442
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558265988921908}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1694844129982444465, guid: 905fcb45d05588941ae0f2a866d95b86, type: 3}
+--- !u!114 &2973582860730008994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558265988921908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558266012875404
 GameObject:
   m_ObjectHideFlags: 0
@@ -2232,7 +2515,9 @@ GameObject:
   - component: {fileID: 5302558266012875400}
   - component: {fileID: 5302558266012875403}
   - component: {fileID: 5302558266012875402}
-  m_Layer: 0
+  - component: {fileID: 5003434581199218380}
+  - component: {fileID: 6451452793569154253}
+  m_Layer: 9
   m_Name: Component 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2419,6 +2704,32 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &5003434581199218380
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266012875404}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -342183526932370202, guid: 905fcb45d05588941ae0f2a866d95b86, type: 3}
+--- !u!114 &6451452793569154253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266012875404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558266024815445
 GameObject:
   m_ObjectHideFlags: 0
@@ -2435,7 +2746,9 @@ GameObject:
   - component: {fileID: 5302558266024815441}
   - component: {fileID: 5302558266024815440}
   - component: {fileID: 5302558266024815443}
-  m_Layer: 0
+  - component: {fileID: 6204107036383611123}
+  - component: {fileID: 929000944046921282}
+  m_Layer: 9
   m_Name: Component 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2622,6 +2935,32 @@ MonoBehaviour:
     Value: Decken Roh
   - Name: Name
     Value: Decken Roh
+--- !u!64 &6204107036383611123
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266024815445}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5649623341354299244, guid: 905fcb45d05588941ae0f2a866d95b86, type: 3}
+--- !u!114 &929000944046921282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266024815445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558266039849760
 GameObject:
   m_ObjectHideFlags: 0
@@ -2638,7 +2977,9 @@ GameObject:
   - component: {fileID: 5302558266039849772}
   - component: {fileID: 5302558266039849775}
   - component: {fileID: 5302558266039849774}
-  m_Layer: 0
+  - component: {fileID: 7564889943919428989}
+  - component: {fileID: 1056350971757444376}
+  m_Layer: 9
   m_Name: Component 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2825,6 +3166,32 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &7564889943919428989
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266039849760}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5084784332352131058, guid: 87db4e576a56a4340b40c0da0304f87b, type: 3}
+--- !u!114 &1056350971757444376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266039849760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558266043701917
 GameObject:
   m_ObjectHideFlags: 0
@@ -2847,7 +3214,8 @@ GameObject:
   - component: {fileID: 5302558266043701913}
   - component: {fileID: 5302558266043701912}
   - component: {fileID: 5302558266043701915}
-  m_Layer: 0
+  - component: {fileID: 5447190628159102262}
+  m_Layer: 9
   m_Name: "T\xFCr-001"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4306,6 +4674,20 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &5447190628159102262
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266043701917}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1793797374224610211, guid: f13f03d986534d94c807d332e36ee7e7, type: 3}
 --- !u!1 &5302558266045617042
 GameObject:
   m_ObjectHideFlags: 0
@@ -4322,7 +4704,9 @@ GameObject:
   - component: {fileID: 5302558266045617054}
   - component: {fileID: 5302558266045617041}
   - component: {fileID: 5302558266045617040}
-  m_Layer: 0
+  - component: {fileID: 2175954216643955190}
+  - component: {fileID: 6215602922121227916}
+  m_Layer: 9
   m_Name: Component 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4509,6 +4893,32 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &2175954216643955190
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266045617042}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8672540019522918288, guid: 905fcb45d05588941ae0f2a866d95b86, type: 3}
+--- !u!114 &6215602922121227916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266045617042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558266048052898
 GameObject:
   m_ObjectHideFlags: 0
@@ -4525,7 +4935,9 @@ GameObject:
   - component: {fileID: 5302558266048052910}
   - component: {fileID: 5302558266048052897}
   - component: {fileID: 5302558266048052896}
-  m_Layer: 0
+  - component: {fileID: 5514911659812322397}
+  - component: {fileID: 5314264699626249708}
+  m_Layer: 9
   m_Name: Component 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4712,6 +5124,32 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &5514911659812322397
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266048052898}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3346154607026717623, guid: 905fcb45d05588941ae0f2a866d95b86, type: 3}
+--- !u!114 &5314264699626249708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266048052898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558266117058949
 GameObject:
   m_ObjectHideFlags: 0
@@ -4728,7 +5166,9 @@ GameObject:
   - component: {fileID: 5302558266117058945}
   - component: {fileID: 5302558266117058944}
   - component: {fileID: 5302558266117058947}
-  m_Layer: 0
+  - component: {fileID: 9118634503487483499}
+  - component: {fileID: 2158470417174706664}
+  m_Layer: 9
   m_Name: Component 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4915,6 +5355,32 @@ MonoBehaviour:
     Value: Decken Roh
   - Name: Name
     Value: Decken Roh
+--- !u!64 &9118634503487483499
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266117058949}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7116595733689772906, guid: 905fcb45d05588941ae0f2a866d95b86, type: 3}
+--- !u!114 &2158470417174706664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266117058949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558266138609711
 GameObject:
   m_ObjectHideFlags: 0
@@ -4924,8 +5390,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5302558266138609708}
-  m_Layer: 0
-  m_Name: DemoIFC
+  - component: {fileID: 6223376577427657888}
+  m_Layer: 9
+  m_Name: IFC_Test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4943,9 +5410,25 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5302558266627968270}
+  - {fileID: 4826798024170836791}
+  - {fileID: 3961415522125971681}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6223376577427657888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266138609711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4228476ae77a0b044a0264f11b63a207, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nightLights: {fileID: 8173541382326176161}
+  _dayLights: {fileID: 1257811020509141109}
 --- !u!1 &5302558266232376278
 GameObject:
   m_ObjectHideFlags: 0
@@ -4962,7 +5445,9 @@ GameObject:
   - component: {fileID: 5302558266232376274}
   - component: {fileID: 5302558266232376277}
   - component: {fileID: 5302558266232376276}
-  m_Layer: 0
+  - component: {fileID: 6019274854654931886}
+  - component: {fileID: 5485863738281822267}
+  m_Layer: 9
   m_Name: Component 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5149,6 +5634,32 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &6019274854654931886
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266232376278}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6641043252326254759, guid: 87db4e576a56a4340b40c0da0304f87b, type: 3}
+--- !u!114 &5485863738281822267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266232376278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558266257411480
 GameObject:
   m_ObjectHideFlags: 0
@@ -5168,7 +5679,7 @@ GameObject:
   - component: {fileID: 5302558266257411492}
   - component: {fileID: 5302558266257411495}
   - component: {fileID: 5302558266257411494}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Treppe-001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5496,7 +6007,9 @@ GameObject:
   - component: {fileID: 5302558266259765525}
   - component: {fileID: 5302558266259765524}
   - component: {fileID: 5302558266259765527}
-  m_Layer: 0
+  - component: {fileID: 2424733145594178665}
+  - component: {fileID: 5147033601705347812}
+  m_Layer: 9
   m_Name: Component 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5683,6 +6196,32 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &2424733145594178665
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266259765513}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4527744560265269930, guid: 87db4e576a56a4340b40c0da0304f87b, type: 3}
+--- !u!114 &5147033601705347812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266259765513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558266281212868
 GameObject:
   m_ObjectHideFlags: 0
@@ -5704,7 +6243,8 @@ GameObject:
   - component: {fileID: 5302558266281212864}
   - component: {fileID: 5302558266281212867}
   - component: {fileID: 5302558266281212866}
-  m_Layer: 0
+  - component: {fileID: 1018428482880726167}
+  m_Layer: 9
   m_Name: Fenster-001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7285,6 +7825,20 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &1018428482880726167
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266281212868}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2424381233182329080, guid: 71b4543039b86dc4999c8262b2338fb9, type: 3}
 --- !u!1 &5302558266359038933
 GameObject:
   m_ObjectHideFlags: 0
@@ -7295,7 +7849,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5302558266359038930}
   - component: {fileID: 5302558266359038931}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 1. OG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7367,7 +7921,9 @@ GameObject:
   - component: {fileID: 5302558266378538483}
   - component: {fileID: 5302558266378538482}
   - component: {fileID: 5302558266378538485}
-  m_Layer: 0
+  - component: {fileID: 4394465491369051267}
+  - component: {fileID: 4313577731212572083}
+  m_Layer: 9
   m_Name: Component 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7554,6 +8110,32 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &4394465491369051267
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266378538487}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 125853663038592759, guid: 905fcb45d05588941ae0f2a866d95b86, type: 3}
+--- !u!114 &4313577731212572083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266378538487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558266386440329
 GameObject:
   m_ObjectHideFlags: 0
@@ -7571,7 +8153,7 @@ GameObject:
   - component: {fileID: 5302558266386440341}
   - component: {fileID: 5302558266386440340}
   - component: {fileID: 5302558266386440343}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Objekt-001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7896,7 +8478,8 @@ GameObject:
   - component: {fileID: 5302558266388261328}
   - component: {fileID: 5302558266388261331}
   - component: {fileID: 5302558266388261330}
-  m_Layer: 0
+  - component: {fileID: 6658995357403747110}
+  m_Layer: 9
   m_Name: Wand-001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8099,6 +8682,19 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!114 &6658995357403747110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266388261332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b72bdf804810b44cbb6615bba2fb0bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _outModifier: 0.1
 --- !u!1 &5302558266399851717
 GameObject:
   m_ObjectHideFlags: 0
@@ -8115,7 +8711,9 @@ GameObject:
   - component: {fileID: 5302558266399851713}
   - component: {fileID: 5302558266399851712}
   - component: {fileID: 5302558266399851715}
-  m_Layer: 0
+  - component: {fileID: 2911375767939474692}
+  - component: {fileID: 5302928877711758612}
+  m_Layer: 9
   m_Name: Component 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8302,6 +8900,32 @@ MonoBehaviour:
     Value: Decken Roh
   - Name: Name
     Value: Decken Roh
+--- !u!64 &2911375767939474692
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266399851717}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4523321863102628325, guid: 905fcb45d05588941ae0f2a866d95b86, type: 3}
+--- !u!114 &5302928877711758612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266399851717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558266496396702
 GameObject:
   m_ObjectHideFlags: 0
@@ -8318,7 +8942,9 @@ GameObject:
   - component: {fileID: 5302558266496396698}
   - component: {fileID: 5302558266496396701}
   - component: {fileID: 5302558266496396700}
-  m_Layer: 0
+  - component: {fileID: 7000792971830679674}
+  - component: {fileID: 1480362841097617750}
+  m_Layer: 9
   m_Name: Component 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8505,6 +9131,32 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &7000792971830679674
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266496396702}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3891634663623377761, guid: 87db4e576a56a4340b40c0da0304f87b, type: 3}
+--- !u!114 &1480362841097617750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266496396702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558266552146287
 GameObject:
   m_ObjectHideFlags: 0
@@ -8521,7 +9173,9 @@ GameObject:
   - component: {fileID: 5302558266552146283}
   - component: {fileID: 5302558266552146282}
   - component: {fileID: 5302558266552146285}
-  m_Layer: 0
+  - component: {fileID: 333406477412969081}
+  - component: {fileID: 193185923257974837}
+  m_Layer: 9
   m_Name: Component 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8708,6 +9362,32 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &333406477412969081
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266552146287}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2211349984178573257, guid: 87db4e576a56a4340b40c0da0304f87b, type: 3}
+--- !u!114 &193185923257974837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266552146287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558266576717158
 GameObject:
   m_ObjectHideFlags: 0
@@ -8724,7 +9404,9 @@ GameObject:
   - component: {fileID: 5302558266576717154}
   - component: {fileID: 5302558266576717157}
   - component: {fileID: 5302558266576717156}
-  m_Layer: 0
+  - component: {fileID: 8463356453506095808}
+  - component: {fileID: 8798562082148471916}
+  m_Layer: 9
   m_Name: Component 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8911,6 +9593,32 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &8463356453506095808
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266576717158}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6988689052092788772, guid: 905fcb45d05588941ae0f2a866d95b86, type: 3}
+--- !u!114 &8798562082148471916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266576717158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558266617731864
 GameObject:
   m_ObjectHideFlags: 0
@@ -8927,7 +9635,9 @@ GameObject:
   - component: {fileID: 5302558266617731876}
   - component: {fileID: 5302558266617731879}
   - component: {fileID: 5302558266617731878}
-  m_Layer: 0
+  - component: {fileID: 4195387355507782799}
+  - component: {fileID: 8119652115598666713}
+  m_Layer: 9
   m_Name: Component 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9114,6 +9824,32 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &4195387355507782799
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266617731864}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2743390100867668544, guid: 905fcb45d05588941ae0f2a866d95b86, type: 3}
+--- !u!114 &8119652115598666713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266617731864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558266627968257
 GameObject:
   m_ObjectHideFlags: 0
@@ -9124,7 +9860,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5302558266627968270}
   - component: {fileID: 5302558266627968271}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Projekt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9181,7 +9917,9 @@ GameObject:
   - component: {fileID: 5302558266641974459}
   - component: {fileID: 5302558266641974458}
   - component: {fileID: 5302558266641974461}
-  m_Layer: 0
+  - component: {fileID: 9022779585282869998}
+  - component: {fileID: 3268059362811403040}
+  m_Layer: 9
   m_Name: Component 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9368,6 +10106,32 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &9022779585282869998
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266641974463}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6351233774888747640, guid: 87db4e576a56a4340b40c0da0304f87b, type: 3}
+--- !u!114 &3268059362811403040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266641974463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558266784468973
 GameObject:
   m_ObjectHideFlags: 0
@@ -9389,7 +10153,8 @@ GameObject:
   - component: {fileID: 5302558266784468969}
   - component: {fileID: 5302558266784468968}
   - component: {fileID: 5302558266784468971}
-  m_Layer: 0
+  - component: {fileID: 1085511446600781887}
+  m_Layer: 9
   m_Name: Fenster-002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10970,6 +11735,20 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &1085511446600781887
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266784468973}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2703805185525547441, guid: 71b4543039b86dc4999c8262b2338fb9, type: 3}
 --- !u!1 &5302558266807007098
 GameObject:
   m_ObjectHideFlags: 0
@@ -10983,7 +11762,8 @@ GameObject:
   - component: {fileID: 5302558266807006982}
   - component: {fileID: 5302558266807007097}
   - component: {fileID: 5302558266807007096}
-  m_Layer: 0
+  - component: {fileID: 8886834531052709042}
+  m_Layer: 9
   m_Name: Decke-003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11154,6 +11934,19 @@ MonoBehaviour:
     Value: "DA |\_Flachdach Warmdach 480"
   - Name: PredefinedType
     Value: NOTDEFINED
+--- !u!114 &8886834531052709042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266807007098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b72bdf804810b44cbb6615bba2fb0bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _outModifier: 0.05
 --- !u!1 &5302558266908909565
 GameObject:
   m_ObjectHideFlags: 0
@@ -11172,7 +11965,8 @@ GameObject:
   - component: {fileID: 5302558266908909561}
   - component: {fileID: 5302558266908909560}
   - component: {fileID: 5302558266908909563}
-  m_Layer: 0
+  - component: {fileID: 5166058757676678599}
+  m_Layer: 9
   m_Name: Wand-004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11455,6 +12249,19 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!114 &5166058757676678599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266908909565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b72bdf804810b44cbb6615bba2fb0bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _outModifier: 0.1
 --- !u!1 &5302558266948448657
 GameObject:
   m_ObjectHideFlags: 0
@@ -11471,7 +12278,9 @@ GameObject:
   - component: {fileID: 5302558266948448669}
   - component: {fileID: 5302558266948448668}
   - component: {fileID: 5302558266948448671}
-  m_Layer: 0
+  - component: {fileID: 8077907620830281143}
+  - component: {fileID: 6252974275583425434}
+  m_Layer: 9
   m_Name: Component 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11658,6 +12467,32 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &8077907620830281143
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266948448657}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4708672360505374196, guid: 87db4e576a56a4340b40c0da0304f87b, type: 3}
+--- !u!114 &6252974275583425434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558266948448657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558266960301249
 GameObject:
   m_ObjectHideFlags: 0
@@ -11668,7 +12503,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5302558266960301262}
   - component: {fileID: 5302558266960301263}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: "Geb\xE4ude"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11730,7 +12565,9 @@ GameObject:
   - component: {fileID: 5302558267084238965}
   - component: {fileID: 5302558267084238964}
   - component: {fileID: 5302558267084238967}
-  m_Layer: 0
+  - component: {fileID: 8233621316785288650}
+  - component: {fileID: 6844483686933315285}
+  m_Layer: 9
   m_Name: Component 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11917,6 +12754,32 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &8233621316785288650
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267084238953}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7164221961670216003, guid: 87db4e576a56a4340b40c0da0304f87b, type: 3}
+--- !u!114 &6844483686933315285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267084238953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558267090578884
 GameObject:
   m_ObjectHideFlags: 0
@@ -11935,7 +12798,8 @@ GameObject:
   - component: {fileID: 5302558267090578880}
   - component: {fileID: 5302558267090578883}
   - component: {fileID: 5302558267090578882}
-  m_Layer: 0
+  - component: {fileID: 8520463403642957324}
+  m_Layer: 9
   m_Name: Wand-003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12218,6 +13082,19 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!114 &8520463403642957324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267090578884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b72bdf804810b44cbb6615bba2fb0bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _outModifier: 0.1
 --- !u!1 &5302558267098593517
 GameObject:
   m_ObjectHideFlags: 0
@@ -12237,7 +13114,7 @@ GameObject:
   - component: {fileID: 5302558267098593513}
   - component: {fileID: 5302558267098593512}
   - component: {fileID: 5302558267098593515}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Decke-001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12584,7 +13461,9 @@ GameObject:
   - component: {fileID: 5302558267147010811}
   - component: {fileID: 5302558267147010810}
   - component: {fileID: 5302558267147010813}
-  m_Layer: 0
+  - component: {fileID: 5945649096759145941}
+  - component: {fileID: 3549068741373657241}
+  m_Layer: 9
   m_Name: Component 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12771,6 +13650,32 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &5945649096759145941
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267147010815}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6040839868297845377, guid: 905fcb45d05588941ae0f2a866d95b86, type: 3}
+--- !u!114 &3549068741373657241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267147010815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558267170819807
 GameObject:
   m_ObjectHideFlags: 0
@@ -12787,7 +13692,9 @@ GameObject:
   - component: {fileID: 5302558267170819803}
   - component: {fileID: 5302558267170819802}
   - component: {fileID: 5302558267170819805}
-  m_Layer: 0
+  - component: {fileID: 1689879983858503812}
+  - component: {fileID: 2370726863140880773}
+  m_Layer: 9
   m_Name: Component 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12974,6 +13881,32 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &1689879983858503812
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267170819807}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2833556892361150953, guid: 87db4e576a56a4340b40c0da0304f87b, type: 3}
+--- !u!114 &2370726863140880773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267170819807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558267194981705
 GameObject:
   m_ObjectHideFlags: 0
@@ -12992,7 +13925,8 @@ GameObject:
   - component: {fileID: 5302558267194981717}
   - component: {fileID: 5302558267194981716}
   - component: {fileID: 5302558267194981719}
-  m_Layer: 0
+  - component: {fileID: 5556315713299071190}
+  m_Layer: 9
   m_Name: Wand-002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13275,6 +14209,19 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!114 &5556315713299071190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267194981705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b72bdf804810b44cbb6615bba2fb0bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _outModifier: 0.1
 --- !u!1 &5302558267262048729
 GameObject:
   m_ObjectHideFlags: 0
@@ -13291,7 +14238,9 @@ GameObject:
   - component: {fileID: 5302558267262048741}
   - component: {fileID: 5302558267262048740}
   - component: {fileID: 5302558267262048743}
-  m_Layer: 0
+  - component: {fileID: 541595029359478000}
+  - component: {fileID: 945660360132606007}
+  m_Layer: 9
   m_Name: Component 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13478,6 +14427,32 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &541595029359478000
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267262048729}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6683031525192977629, guid: 905fcb45d05588941ae0f2a866d95b86, type: 3}
+--- !u!114 &945660360132606007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267262048729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558267308149478
 GameObject:
   m_ObjectHideFlags: 0
@@ -13499,7 +14474,8 @@ GameObject:
   - component: {fileID: 5302558267308149474}
   - component: {fileID: 5302558267308149477}
   - component: {fileID: 5302558267308149476}
-  m_Layer: 0
+  - component: {fileID: 3608805534408862149}
+  m_Layer: 9
   m_Name: Fenster-003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15080,6 +16056,20 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &3608805534408862149
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267308149478}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3814518501777109534, guid: 7e4990573eb21244490aecbcd695bf96, type: 3}
 --- !u!1 &5302558267326755860
 GameObject:
   m_ObjectHideFlags: 0
@@ -15096,7 +16086,9 @@ GameObject:
   - component: {fileID: 5302558267326755856}
   - component: {fileID: 5302558267326755859}
   - component: {fileID: 5302558267326755858}
-  m_Layer: 0
+  - component: {fileID: 3954769295750003824}
+  - component: {fileID: 6862779942230075235}
+  m_Layer: 9
   m_Name: Component 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15283,6 +16275,32 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &3954769295750003824
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267326755860}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2552735513756021870, guid: 87db4e576a56a4340b40c0da0304f87b, type: 3}
+--- !u!114 &6862779942230075235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267326755860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558267343946108
 GameObject:
   m_ObjectHideFlags: 0
@@ -15301,7 +16319,8 @@ GameObject:
   - component: {fileID: 5302558267343946104}
   - component: {fileID: 5302558267343946107}
   - component: {fileID: 5302558267343946106}
-  m_Layer: 0
+  - component: {fileID: 5254360114399017514}
+  m_Layer: 9
   m_Name: Wand-003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15584,6 +16603,19 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!114 &5254360114399017514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267343946108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b72bdf804810b44cbb6615bba2fb0bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _outModifier: 0.1
 --- !u!1 &5302558267405178567
 GameObject:
   m_ObjectHideFlags: 0
@@ -15600,7 +16632,9 @@ GameObject:
   - component: {fileID: 5302558267405178563}
   - component: {fileID: 5302558267405178562}
   - component: {fileID: 5302558267405178565}
-  m_Layer: 0
+  - component: {fileID: 1939708447060574531}
+  - component: {fileID: 8319040822136147334}
+  m_Layer: 9
   m_Name: Component 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15787,6 +16821,32 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &1939708447060574531
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267405178567}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -718232810632564320, guid: 87db4e576a56a4340b40c0da0304f87b, type: 3}
+--- !u!114 &8319040822136147334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267405178567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558267464557531
 GameObject:
   m_ObjectHideFlags: 0
@@ -15805,7 +16865,8 @@ GameObject:
   - component: {fileID: 5302558267464557543}
   - component: {fileID: 5302558267464557542}
   - component: {fileID: 5302558267464557529}
-  m_Layer: 0
+  - component: {fileID: 5909118096639280364}
+  m_Layer: 9
   m_Name: Wand-004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16088,6 +17149,19 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!114 &5909118096639280364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267464557531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b72bdf804810b44cbb6615bba2fb0bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _outModifier: 0.1
 --- !u!1 &5302558267514500584
 GameObject:
   m_ObjectHideFlags: 0
@@ -16104,7 +17178,9 @@ GameObject:
   - component: {fileID: 5302558267514500596}
   - component: {fileID: 5302558267514500599}
   - component: {fileID: 5302558267514500598}
-  m_Layer: 0
+  - component: {fileID: 8540746854210920609}
+  - component: {fileID: 3988172413663586868}
+  m_Layer: 9
   m_Name: Component 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16291,6 +17367,32 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &8540746854210920609
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267514500584}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1942737529461165144, guid: 87db4e576a56a4340b40c0da0304f87b, type: 3}
+--- !u!114 &3988172413663586868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267514500584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558267607237545
 GameObject:
   m_ObjectHideFlags: 0
@@ -16313,7 +17415,8 @@ GameObject:
   - component: {fileID: 5302558267607237557}
   - component: {fileID: 5302558267607237556}
   - component: {fileID: 5302558267607237559}
-  m_Layer: 0
+  - component: {fileID: 3324155657926879413}
+  m_Layer: 9
   m_Name: "T\xFCr-001"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17772,6 +18875,20 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &3324155657926879413
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267607237545}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -9139217080198300332, guid: e3124f1188bcf1046bedc0b0eee67625, type: 3}
 --- !u!1 &5302558267615141967
 GameObject:
   m_ObjectHideFlags: 0
@@ -17793,7 +18910,8 @@ GameObject:
   - component: {fileID: 5302558267615141963}
   - component: {fileID: 5302558267615141962}
   - component: {fileID: 5302558267615141965}
-  m_Layer: 0
+  - component: {fileID: 8237536043818201067}
+  m_Layer: 9
   m_Name: Fenster-004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19374,6 +20492,20 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &8237536043818201067
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267615141967}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5284659763653049676, guid: 7e4990573eb21244490aecbcd695bf96, type: 3}
 --- !u!1 &5302558267639454919
 GameObject:
   m_ObjectHideFlags: 0
@@ -19388,7 +20520,8 @@ GameObject:
   - component: {fileID: 5302558267639454915}
   - component: {fileID: 5302558267639454914}
   - component: {fileID: 5302558267639454917}
-  m_Layer: 0
+  - component: {fileID: 1875244227139153660}
+  m_Layer: 9
   m_Name: Wand-001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19591,6 +20724,19 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!114 &1875244227139153660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267639454919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b72bdf804810b44cbb6615bba2fb0bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _outModifier: 0.1
 --- !u!1 &5302558267658283754
 GameObject:
   m_ObjectHideFlags: 0
@@ -19607,7 +20753,9 @@ GameObject:
   - component: {fileID: 5302558267658283766}
   - component: {fileID: 5302558267658283753}
   - component: {fileID: 5302558267658283752}
-  m_Layer: 0
+  - component: {fileID: 5451727211632621635}
+  - component: {fileID: 1811646964287163137}
+  m_Layer: 9
   m_Name: Component 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19794,6 +20942,32 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &5451727211632621635
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267658283754}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3567532926943301659, guid: 905fcb45d05588941ae0f2a866d95b86, type: 3}
+--- !u!114 &1811646964287163137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267658283754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558267659775781
 GameObject:
   m_ObjectHideFlags: 0
@@ -19810,7 +20984,9 @@ GameObject:
   - component: {fileID: 5302558267659775777}
   - component: {fileID: 5302558267659775776}
   - component: {fileID: 5302558267659775779}
-  m_Layer: 0
+  - component: {fileID: 4284580279066021715}
+  - component: {fileID: 7539016729514219325}
+  m_Layer: 9
   m_Name: Component 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19997,6 +21173,32 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &4284580279066021715
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267659775781}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2540074295394913029, guid: 87db4e576a56a4340b40c0da0304f87b, type: 3}
+--- !u!114 &7539016729514219325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267659775781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558267698730452
 GameObject:
   m_ObjectHideFlags: 0
@@ -20007,7 +21209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5302558267698730453}
   - component: {fileID: 5302558267698730450}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20080,7 +21282,9 @@ GameObject:
   - component: {fileID: 5302558267705574214}
   - component: {fileID: 5302558267705574329}
   - component: {fileID: 5302558267705574328}
-  m_Layer: 0
+  - component: {fileID: 3851377395660734913}
+  - component: {fileID: 8598010511870125020}
+  m_Layer: 9
   m_Name: Component 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20267,6 +21471,32 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &3851377395660734913
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267705574330}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7445105837803745320, guid: 905fcb45d05588941ae0f2a866d95b86, type: 3}
+--- !u!114 &8598010511870125020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267705574330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558267735677407
 GameObject:
   m_ObjectHideFlags: 0
@@ -20283,7 +21513,9 @@ GameObject:
   - component: {fileID: 5302558267735677403}
   - component: {fileID: 5302558267735677402}
   - component: {fileID: 5302558267735677405}
-  m_Layer: 0
+  - component: {fileID: 7589962491625385154}
+  - component: {fileID: 5146868001926317290}
+  m_Layer: 9
   m_Name: Component 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20470,6 +21702,32 @@ MonoBehaviour:
     Value: Decken Roh
   - Name: Name
     Value: Decken Roh
+--- !u!64 &7589962491625385154
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267735677407}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -534447619106967029, guid: 905fcb45d05588941ae0f2a866d95b86, type: 3}
+--- !u!114 &5146868001926317290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267735677407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5302558267742037390
 GameObject:
   m_ObjectHideFlags: 0
@@ -20488,7 +21746,8 @@ GameObject:
   - component: {fileID: 5302558267742037386}
   - component: {fileID: 5302558267742037389}
   - component: {fileID: 5302558267742037388}
-  m_Layer: 0
+  - component: {fileID: 7049083478695908620}
+  m_Layer: 9
   m_Name: Wand-002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20771,6 +22030,19 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!114 &7049083478695908620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267742037390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b72bdf804810b44cbb6615bba2fb0bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _outModifier: 0.1
 --- !u!1 &5302558267763689212
 GameObject:
   m_ObjectHideFlags: 0
@@ -20787,7 +22059,9 @@ GameObject:
   - component: {fileID: 5302558267763689208}
   - component: {fileID: 5302558267763689211}
   - component: {fileID: 5302558267763689210}
-  m_Layer: 0
+  - component: {fileID: 4197294527297697049}
+  - component: {fileID: 6623660142632119935}
+  m_Layer: 9
   m_Name: Component 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20974,3 +22248,151 @@ MonoBehaviour:
     Value: Wand Aussen
   - Name: Name
     Value: Wand Aussen
+--- !u!64 &4197294527297697049
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267763689212}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3117383573031985627, guid: 905fcb45d05588941ae0f2a866d95b86, type: 3}
+--- !u!114 &6623660142632119935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302558267763689212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435096c6c9bd13348b9974cfd9d26bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &8173541382326176161
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3961415522125971681}
+  m_Layer: 0
+  m_Name: Night Lights
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3961415522125971681
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8173541382326176161}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5302558266138609708}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8203777581168259583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6479395655588745116}
+  - component: {fileID: 5050633791821460120}
+  m_Layer: 9
+  m_Name: Spot Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6479395655588745116
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8203777581168259583}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0.5, y: 4, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4826798024170836791}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!108 &5050633791821460120
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8203777581168259583}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 0
+  m_Shape: 0
+  m_Color: {r: 1, g: 0.9984353, b: 0.7216981, a: 1}
+  m_Intensity: 0.5
+  m_Range: 10
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 0
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0

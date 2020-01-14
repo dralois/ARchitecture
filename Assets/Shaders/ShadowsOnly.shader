@@ -86,5 +86,5 @@
 		UsePass "Universal Render Pipeline/Lit/DepthOnly"
 	}
 	// ggf. Error
-	FallBack "Hidden/InternalErrorShader"
+	FallBack "Hidden/Universal Render Pipeline/FallbackError"
 }
