@@ -24,9 +24,8 @@ public class GameManager : MonoBehaviour
 
 	#region Fields
 
+	// Singleton
 	private static GameManager _instance = null;
-
-	private GameObject _houseGO = null;
 
 	#endregion
 
@@ -42,7 +41,9 @@ public class GameManager : MonoBehaviour
 
 	public static GameManager Instance { get =>_instance; }
 
-	public GameObject House { get => _houseGO; set => _houseGO = value; }
+	public GameObject House { get; set; } = null;
+
+	public VisualizationSwitcher Visualizer { get; set; }
 
 	public InputMode CurrentMode { get; private set; } = InputMode.None;
 

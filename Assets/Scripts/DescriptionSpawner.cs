@@ -10,13 +10,7 @@ public class DescriptionSpawner : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI _desc = null;
 
 	private LineRenderer _pointerRender = null;
-
-	private void Awake()
-	{
-		_pointerRender = GetComponent<LineRenderer>();
-		var worldCanvas = GetComponent<Canvas>();
-		worldCanvas.worldCamera = Camera.main;
-	}
+	private Canvas _worldCanvas = null;
 
 	public void CreateReference(Vector3 refPos, Vector3 refNormal)
 	{
@@ -32,4 +26,18 @@ public class DescriptionSpawner : MonoBehaviour
 		_title.text = title;
 		_desc.text = description;
 	}
+
+	private void Awake()
+	{
+		_pointerRender = GetComponent<LineRenderer>();
+		_worldCanvas = GetComponent<Canvas>();
+		_worldCanvas.worldCamera = Camera.main;
+	}
+
+	private void Update()
+	{
+		var camFwd = (transform.position - _worldCanvas.worldCamera.transform.position).normalized;
+		transform.rotation = Quaternion.LookRotation(new Vector3(camFwd.x, 0, camFwd.z));
+	}
+
 }

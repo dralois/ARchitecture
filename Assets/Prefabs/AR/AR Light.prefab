@@ -40,8 +40,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6405863465172123260}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 1
+  m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10
@@ -104,5 +105,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50c11494e9ace475f9dc92e2f907b42c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _CameraManager: {fileID: 0}
-  _isHouseLight: 0
+  _cameraManager: {fileID: 0}

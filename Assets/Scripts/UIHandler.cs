@@ -13,6 +13,13 @@ public class UIHandler : MonoBehaviour
 		GameManager.Instance.SwitchMode(GameManager.InputMode.Interaction);
 	}
 
+	public void SwitchVisualization()
+	{
+		var newVis = GameManager.Instance.Visualizer.CurrentVisualization == VisualizationSwitcher.Visualization.Normal ?
+			VisualizationSwitcher.Visualization.Ghosted : VisualizationSwitcher.Visualization.Normal;
+		GameManager.Instance.Visualizer.ChangeVisualization(newVis);
+	}
+
 	private void X_ModeChange(GameManager.InputMode newMode)
 	{
 		// Zunaechst alles deaktivieren
