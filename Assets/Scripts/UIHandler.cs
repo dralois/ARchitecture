@@ -8,6 +8,9 @@ public class UIHandler : MonoBehaviour
 	[SerializeField] private GameObject _interactionUI = null;
 	[SerializeField] private GameObject _decorationUI = null;
 
+	private bool _EGActive = true;
+	private bool _1OGActive = true;
+
 	public void AcceptPlacement()
 	{
 		GameManager.Instance.SwitchMode(GameManager.InputMode.Interaction);
@@ -18,6 +21,18 @@ public class UIHandler : MonoBehaviour
 		var newVis = GameManager.Instance.Visualizer.CurrentVisualization == VisualizationSwitcher.Visualization.Normal ?
 			VisualizationSwitcher.Visualization.Ghosted : VisualizationSwitcher.Visualization.Normal;
 		GameManager.Instance.Visualizer.ChangeVisualization(newVis);
+	}
+
+	public void SwitchEG()
+	{
+		_EGActive = !_EGActive;
+		TridifyQuery.SetStoreyActive(GameManager.Instance.House.transform, 0, _EGActive);
+	}
+	
+	public void Switch1OG()
+	{
+		_1OGActive = !_1OGActive;
+		TridifyQuery.SetStoreyActive(GameManager.Instance.House.transform, 1, _1OGActive);
 	}
 
 	private void X_ModeChange(GameManager.InputMode newMode)

@@ -2,15 +2,22 @@
 {
 	Properties
 	{
+		_ShadowTransparency("Transparency", Range(0, 1)) = 1
 	}
 	SubShader
 	{
 		Tags
 		{
-			"RenderType" = "AlphaTest"
+			"RenderType" = "Opaque"
 			"RenderPipeline" = "UniversalPipeline"
 			"IgnoreProjector" = "True"
+			"Queue" = "AlphaTest"
 		}
+
+		ZWrite Off
+		Blend SrcAlpha OneMinusSrcAlpha
+
+		// Shadow Pass
 		Pass
 		{
 			Name "ShadowsOnly"
@@ -50,6 +57,10 @@
 				float3 positionWS   : TEXCOORD0;
 				float4 shadowCoord  : TEXCOORD1;
 			};
+			
+			CBUFFER_START(UnityPerMaterial)
+			float _ShadowTransparency;
+			CBUFFER_END
 
 			v2f ShadowVertex(Attributes input)
 			{
@@ -78,7 +89,7 @@
 				// Clip falls kein Schatten (-> Schatten != 0)
 				clip(-shadowAtten);
 				// Schwarz zurueck
-				return half4(shadowAtten.xxx, 1);
+				return half4(shadowAtten.xxx, _ShadowTransparency);
 			}
 			ENDHLSL
 		}
