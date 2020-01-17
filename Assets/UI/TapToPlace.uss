@@ -1,0 +1,15 @@
+.general-text {
+    -unity-font: url('Library/unity default resources');
+    font-size: 20px;
+    color: rgb(67, 67, 67);
+}
+
+.general-panel {
+    flex-direction: row;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 255);
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}

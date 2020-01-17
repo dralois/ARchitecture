@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement name="panel" class="general-panel">
+        <Style src="TapToPlace.uss" />
+        <ui:VisualElement name="info-box" style="background-image: url('/Assets/Textures/Mockup/exclamation.png'); width: 25px; height: 25px; margin-left: 15px; margin-right: 15px; margin-top: 15px; margin-bottom: 15px; flex-shrink: 0;" />
+        <ui:Label text="To place the object, tap anywhere on the detected area ..." name="info-text" class="general-text" style="white-space: normal; -unity-text-align: middle-left; -unity-font-style: normal; -unity-font: url('Library/unity default resources');" />
+    </ui:VisualElement>
+</ui:UXML>

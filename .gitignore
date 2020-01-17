@@ -3,7 +3,9 @@
 [Oo]bj/
 [Bb]uild/
 [Bb]uilds/
+[Uu][Ii][Ee]lements[Ss]chema/
 Assets/AssetStoreTools*
+Assets/Samples
 
 # Visual Studio cache directory
 .vs/
