@@ -1,0 +1,34 @@
+<UXML xmlns="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <VisualElement name="game-ui" style="width: 146px;">
+        <Style src="RoughGameScreen.uss" />
+        <VisualElement name="stats">
+            <Label text="stats-box" name="title" style="background-color: rgb(0, 0, 0); color: rgb(154, 153, 153); height: 22px;" />
+            <VisualElement name="body">
+                <VisualElement name="stat-row" class="stat-row">
+                    <Label text="_speed: " />
+                    <Label text="42" name="_speed" />
+                </VisualElement>
+                <VisualElement name="stat-row" class="stat-row">
+                    <Label text="_kills: " />
+                    <Label text="42" name="_kills" />
+                </VisualElement>
+                <VisualElement name="stat-row" class="stat-row">
+                    <Label text="_shots: " />
+                    <Label text="42" name="_shots" />
+                </VisualElement>
+                <VisualElement name="stat-row" class="stat-row">
+                    <Label text="_accuracy: " />
+                    <Label text="42" name="_accuracy" />
+                    <Label text="%" />
+                </VisualElement>
+            </VisualElement>
+        </VisualElement>
+        <VisualElement style="width: 302px; height: 246px;">
+            <Label text="players-list" name="title" style="background-color: rgb(0, 0, 0); color: rgb(154, 153, 153); height: 22px;" />
+            <ListView focusable="True" name="player-list" item-height="100" view-data-key="player-list" style="flex-grow: 1; background-color: rgba(48, 48, 48, 0.72);" />
+        </VisualElement>
+        <Button text="increase-speed" name="increase-speed" style="width: 123px; height: 33px;" />
+        <Button text="random-explosion" name="random-explosion" />
+        <Button text="back-to-menu" name="back-to-menu" style="width: 133px; margin-top: 3px;" />
+    </VisualElement>
+</UXML>
