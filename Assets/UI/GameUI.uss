@@ -6,6 +6,8 @@
     left: 0;
     right: 0;
     bottom: 0;
+    flex-grow: 1;
+    top: auto;
 }
 
 .general-icon {
@@ -74,21 +76,6 @@
 }
 
 .button-options {
-    font-size: 40px;
-    padding-left: 35px;
-    padding-right: 35px;
-    padding-top: 35px;
-    padding-bottom: 35px;
-    border-top-left-radius: 25px;
-    border-bottom-left-radius: 25px;
-    border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px;
-    border-left-color: rgb(255, 255, 255);
-    border-right-color: rgb(255, 255, 255);
-    border-top-color: rgb(255, 255, 255);
-    border-bottom-color: rgb(255, 255, 255);
     background-color: rgb(255, 255, 255);
-    min-width: 500px;
-    margin-right: 40px;
-    color: rgb(41, 41, 41);
+    color: rgb(51, 51, 51);
 }
