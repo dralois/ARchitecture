@@ -121,6 +121,7 @@ PlayerSettings:
   bundleVersion: 0.6
   preloadedAssets:
   - {fileID: 4800000, guid: bcb247dca059048ee90ca702c4d92e93, type: 3}
+  - {fileID: 11400000, guid: 6ec57d753e62d014e9ef8d587c4d13c5, type: 2}
   - {fileID: 11400000, guid: 8b2c893d654a5664cbac59500b4a2e75, type: 2}
   - {fileID: -4376487229028786947, guid: 2730cc816a70bb24489b52d8ca4bce06, type: 2}
   - {fileID: 11400000, guid: f3a5f97ac587efb4494345abd76aacfb, type: 2}
@@ -171,7 +172,7 @@ PlayerSettings:
     iPhone: com.interactivevisualization.test
   buildNumber:
     Standalone: 0.1
-    iPhone: 0
+    iPhone: 1
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 24
   AndroidTargetSdkVersion: 0
