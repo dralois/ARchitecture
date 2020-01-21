@@ -14,13 +14,13 @@
 			"RenderPipeline" = "UniversalPipeline"
 		}
 
-		ZTest Always
-		ZWrite Off
-		Blend SrcAlpha OneMinusSrcAlpha
-
 		Pass
 		{
 			Name "Ghost"
+
+			ZTest Always
+			ZWrite Off
+			Blend SrcAlpha OneMinusSrcAlpha
 
 			HLSLPROGRAM
 
@@ -32,7 +32,7 @@
 
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
-			struct appdata
+			struct Attributes
 			{
 				float4 vertex : POSITION;
 			};
@@ -42,7 +42,7 @@
 				float4 position : SV_POSITION;
 			};
 
-			v2f vert (appdata v)
+			v2f vert (Attributes v)
 			{
 				v2f o = (v2f)0;
 				VertexPositionInputs vertexInput = GetVertexPositionInputs(v.vertex.xyz);

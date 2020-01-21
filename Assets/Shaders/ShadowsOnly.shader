@@ -9,25 +9,24 @@
 		Tags
 		{
 			"RenderType" = "Opaque"
+			"Queue" = "AlphaTest"
 			"RenderPipeline" = "UniversalPipeline"
 			"IgnoreProjector" = "True"
-			"Queue" = "AlphaTest"
 		}
 
-		ZWrite Off
-		Blend SrcAlpha OneMinusSrcAlpha
-
-		// Shadow Pass
+		// Shadow only pass
 		Pass
 		{
 			Name "ShadowsOnly"
+
 			Tags
 			{
 				"LightMode" = "UniversalForward"
 			}
 
-			ZWrite On
 			Cull Off
+			ZWrite Off
+			Blend SrcAlpha OneMinusSrcAlpha
 
 			HLSLPROGRAM
 
@@ -40,8 +39,8 @@
 			#pragma multi_compile _ _MAIN_LIGHT_SHADOWS_CASCADE
 			#pragma multi_compile _ _ADDITIONAL_LIGHT_SHADOWS
 
-			#pragma vertex ShadowVertex
-			#pragma fragment ShadowFragment
+			#pragma vertex vert
+			#pragma fragment frag
 
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
@@ -62,7 +61,7 @@
 			float _ShadowTransparency;
 			CBUFFER_END
 
-			v2f ShadowVertex(Attributes input)
+			v2f vert(Attributes input)
 			{
 				v2f output = (v2f)0;
 				// Positionen berechnen
@@ -75,7 +74,7 @@
 				return output;
 			}
 
-			half4 ShadowFragment(v2f input) : SV_Target
+			half4 frag(v2f input) : SV_Target
 			{
 				// Main Light Attenuation bestimmen
 				half shadowAtten = MainLightRealtimeShadow(input.shadowCoord);
@@ -93,9 +92,9 @@
 			}
 			ENDHLSL
 		}
-		// Depth Pre-Pass
+		// Depth pre-pass
 		UsePass "Universal Render Pipeline/Lit/DepthOnly"
 	}
-	// ggf. Error
+	// Error
 	FallBack "Hidden/Universal Render Pipeline/FallbackError"
 }

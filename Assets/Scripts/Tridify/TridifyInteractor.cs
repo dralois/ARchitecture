@@ -1,7 +1,6 @@
 ﻿using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 using UnityEngine.InputSystem.EnhancedTouch;
 using UnityEngine;
-using System;
 
 public class TridifyInteractor : MonoBehaviour
 {

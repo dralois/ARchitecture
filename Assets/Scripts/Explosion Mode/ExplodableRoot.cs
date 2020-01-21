@@ -10,7 +10,7 @@ public class ExplodableRoot : MonoBehaviour
 		for (int i = 0; i < transform.childCount; i++)
 		{
 			var explodable = transform.GetChild(i).GetComponent<ExplodableComponent>();
-			explodable.SetupExplodable(this, i, _outModifier);
+			explodable.SetupExplodable(this, transform.childCount - i, _outModifier);
 		}
 	}
 

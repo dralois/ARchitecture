@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using UnityEngine.InputSystem.EnhancedTouch;
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 [RequireComponent(typeof(ARRaycastManager))]
 public class PlaceOnPlane : MonoBehaviour
@@ -31,7 +32,7 @@ public class PlaceOnPlane : MonoBehaviour
 				Pose hitPose = _Hits[0].pose;
 #endif
 				// Haus spawnen und speichern
-				GameManager.Instance.House = Instantiate(_placedPrefab, hitPose.position, hitPose.rotation);
+				GameManager.Instance.House = Instantiate(_placedPrefab, hitPose.position + new Vector3(0f, 0.0001f, 0f), hitPose.rotation);
 				GameManager.Instance.SwitchMode(GameManager.InputMode.Placement);
 				// Detection deaktivieren
 				GetComponent<ARPlaneManager>().detectionMode = PlaneDetectionMode.None;
@@ -52,12 +53,12 @@ public class PlaceOnPlane : MonoBehaviour
 
 	private void OnEnable()
 	{
-		UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerDown += X_TouchStarted;
+		Touch.onFingerDown += X_TouchStarted;
 	}
 
 	private void OnDisable()
 	{
-		UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerDown -= X_TouchStarted;
+		Touch.onFingerDown -= X_TouchStarted;
 	}
 
 }
