@@ -24,9 +24,9 @@
         </ui:VisualElement>
         <ui:VisualElement name="options-panel" class="general-panel" style="background-color: rgb(51, 51, 51);">
             <ui:Button name="options-exit" style="background-image: url('/Assets/Textures/Mockup/cross.png'); -unity-background-image-tint-color: rgb(255, 255, 255); width: 80px; height: 80px; margin-left: 60px; margin-right: 75px; margin-top: 45px; margin-bottom: 45px; background-color: rgba(255, 255, 255, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0);" />
-            <ui:Button text="Hide Building Sections" name="options-sections-edit" class="general-text general-button button-options" />
-            <ui:Button text="Show Section Infos" name="options-sections-info" class="general-text general-button button-options" />
-            <ui:Button text="Place Decorations" name="options-decorations" class="general-text general-button button-options" />
+            <ui:Button text="Hide Building Sections" name="options-sections-edit" class="button-options" />
+            <ui:Button text="Switch Ghosted" name="options-switch-ghosted" class="button-options" />
+            <ui:Button text="Place Decorations" name="options-decorations" class="button-options" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

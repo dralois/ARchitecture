@@ -75,4 +75,13 @@
     color: rgb(51, 51, 51);
     width: 550px;
     height: 120px;
+    font-size: 45px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
