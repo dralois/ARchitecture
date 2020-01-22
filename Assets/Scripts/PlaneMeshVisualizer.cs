@@ -85,7 +85,7 @@ public class PlaneMeshVisualizer : MonoBehaviour
 
 	private void Awake()
 	{
-		#if !UNITY_EDITOR
+#if !(UNITY_EDITOR || UNITY_STANDALONE)
 		_plane = GetComponent<ARPlane>();
 		_planeMaterial = GetComponent<MeshRenderer>().material;
 		_planeMeshVisualizer = GetComponent<ARPlaneMeshVisualizer>();
@@ -94,7 +94,7 @@ public class PlaneMeshVisualizer : MonoBehaviour
 
 	private void OnEnable()
 	{
-#if !UNITY_EDITOR
+#if !(UNITY_EDITOR || UNITY_STANDALONE)
 		_plane.boundaryChanged += X_BoundaryUpdate;
 #endif
 		GameManager.Instance.ModeChanged += X_ModeChange;
@@ -102,7 +102,7 @@ public class PlaneMeshVisualizer : MonoBehaviour
 
 	private void OnDisable()
 	{
-#if !UNITY_EDITOR
+#if !(UNITY_EDITOR || UNITY_STANDALONE)
 		_plane.boundaryChanged -= X_BoundaryUpdate;
 #endif
 		GameManager.Instance.ModeChanged -= X_ModeChange;

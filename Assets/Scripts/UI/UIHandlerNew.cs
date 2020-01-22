@@ -47,7 +47,6 @@ public class UIHandlerNew : MonoBehaviour
 	private IEnumerable<Object> BindPanel()
 	{
 		var root = _UIRenderer.visualTree;
-
 		root.Q<Button>("placement-accept").clickable.clicked += () =>
 		{
 			// Modus wechseln (Placement -> Interaction)

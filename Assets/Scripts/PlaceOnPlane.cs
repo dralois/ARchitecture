@@ -19,14 +19,14 @@ public class PlaceOnPlane : MonoBehaviour
 	{
 		if(finger.index == 0 && GameManager.Instance.CurrentMode == GameManager.InputMode.Spawn)
 		{
-#if UNITY_EDITOR
+#if UNITY_EDITOR || UNITY_STANDALONE
 			var screenRay = Camera.main.ScreenPointToRay(finger.screenPosition);
 			if (Physics.Raycast(screenRay, out RaycastHit hit, Mathf.Infinity, _hitMask))
 #else
 			if (_RaycastManager.Raycast(finger.screenPosition, _Hits, TrackableType.PlaneWithinPolygon))
 #endif
 			{
-#if UNITY_EDITOR
+#if UNITY_EDITOR || UNITY_STANDALONE
 				Pose hitPose = new Pose(hit.point, Quaternion.identity);
 #else
 				Pose hitPose = _Hits[0].pose;
