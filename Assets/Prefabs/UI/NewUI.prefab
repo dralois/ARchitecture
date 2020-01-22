@@ -10,7 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4631087885152535837}
   - component: {fileID: 4631087885152535825}
+  - component: {fileID: 5560906795256494598}
   - component: {fileID: 4631087885152535827}
+  - component: {fileID: 7284581841792905191}
   - component: {fileID: 4631087885152535826}
   m_Layer: 0
   m_Name: NewUI
@@ -45,15 +47,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe6c4600f907e64ca01409d01326a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SendNavigationEvents: 0
   m_SendIMGUIEvents: 0
   m_SendInputEvents: 1
+  m_SendNavigationEvents: 0
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
+--- !u!114 &5560906795256494598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4631087885152535838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcbe65f2f9664fb5bfe4edc4434bd667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4631087885152535827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,7 +85,29 @@ MonoBehaviour:
   stylesheets: []
   targetTexture: {fileID: 0}
   panelTransform: {fileID: 0}
-  enableLiveUpdates: 1
+  m_EnableLiveUpdate: 0
+--- !u!114 &7284581841792905191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4631087885152535838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3edfc36141f0f64f9e3444d411ce064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  constantPixelSizeScaler:
+    scaleFactor: 1
+  constantPhysicalSizeScaler:
+    referenceDpi: 96
+    fallbackDpi: 96
+  scaleWithScreenSizeScaler:
+    referenceResolution: {x: 2436, y: 1125}
+    screenMatchMode: 0
+    match: 0
+  scaleMode: 2
 --- !u!114 &4631087885152535826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,4 +120,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfac7f0b0f19d6d48aba9fc7c57f2da0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _UIRenderer: {fileID: 4631087885152535827}

@@ -133,10 +133,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AR Plane Simulation
       objectReference: {fileID: 0}
-    - target: {fileID: 1585201990951412, guid: b3454bbeb70f9734aa4ab470a473b82b, type: 3}
-      propertyPath: m_TagString
-      value: EditorOnly
-      objectReference: {fileID: 0}
     - target: {fileID: 4266372707468888, guid: b3454bbeb70f9734aa4ab470a473b82b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -459,11 +455,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Occluder Test
       objectReference: {fileID: 0}
-    - target: {fileID: 11573541760615024, guid: bf17325ec0137ac408e9f7d5c871c6c6,
-        type: 3}
-      propertyPath: m_TagString
-      value: EditorOnly
-      objectReference: {fileID: 0}
     - target: {fileID: 11573541760615027, guid: bf17325ec0137ac408e9f7d5c871c6c6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -657,11 +648,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Touch Simulation
       objectReference: {fileID: 0}
-    - target: {fileID: 8574700773322450242, guid: b9fb96554187b9b44b30ea5f2aa3353c,
-        type: 3}
-      propertyPath: m_TagString
-      value: EditorOnly
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9fb96554187b9b44b30ea5f2aa3353c, type: 3}
 --- !u!4 &1724935311331092356 stripped
@@ -762,6 +748,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 985870750}
     m_Modifications:
+    - target: {fileID: 4631087885152535825, guid: dbbced1a02dfd6b45a34fd4ae8e4a71a,
+        type: 3}
+      propertyPath: m_SendIMGUIEvents
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631087885152535825, guid: dbbced1a02dfd6b45a34fd4ae8e4a71a,
+        type: 3}
+      propertyPath: m_SendInputEvents
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4631087885152535837, guid: dbbced1a02dfd6b45a34fd4ae8e4a71a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -821,11 +817,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: NewUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 4631087885152535838, guid: dbbced1a02dfd6b45a34fd4ae8e4a71a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbbced1a02dfd6b45a34fd4ae8e4a71a, type: 3}
