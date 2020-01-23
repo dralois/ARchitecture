@@ -1,4 +1,4 @@
-﻿Shader "Universal Render Pipeline/Custom/WriteDepth"
+﻿Shader "Universal Render Pipeline/Custom/Occlusion"
 {
 	Properties
 	{
@@ -21,6 +21,7 @@
 			Cull Off
 			ZWrite On
 			ZTest LEqual
+
 			ColorMask 0
 
 			HLSLPROGRAM
@@ -63,7 +64,7 @@
 
 			ENDHLSL
 		}
-		// Depth pre-pass
+		// Shadow caster pass
 		UsePass "Universal Render Pipeline/Lit/ShadowCaster"
 	}
 	// Error

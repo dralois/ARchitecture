@@ -20,6 +20,7 @@
 
 			ZTest Always
 			ZWrite Off
+
 			Blend SrcAlpha OneMinusSrcAlpha
 
 			HLSLPROGRAM

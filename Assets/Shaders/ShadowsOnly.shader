@@ -26,6 +26,7 @@
 
 			Cull Off
 			ZWrite Off
+
 			Blend SrcAlpha OneMinusSrcAlpha
 
 			HLSLPROGRAM
