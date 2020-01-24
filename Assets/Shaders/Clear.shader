@@ -1,4 +1,4 @@
-﻿Shader "Universal Render Pipeline/Custom/Occlusion"
+﻿Shader "Universal Render Pipeline/Custom/Clear"
 {
 	Properties
 	{
@@ -7,16 +7,16 @@
 	{
 		Tags
 		{
-			"RenderType" = "Opaque"
-			"Queue" = "Geometry"
+			"RenderType" = "Transparent"
+			"Queue" = "Transparent"
 			"RenderPipeline" = "UniversalPipeline"
 			"IgnoreProjector" = "True"
 		}
 
-		// Depth write only pass
+		// Clear to transparent pass
 		Pass
 		{
-			Name "Occlusion"
+			Name "Clear"
 
 			Tags
 			{
@@ -24,10 +24,6 @@
 			}
 
 			Cull Off
-			ZWrite On
-			ZTest LEqual
-
-			ColorMask 0
 
 			HLSLPROGRAM
 
@@ -63,16 +59,13 @@
 
 			half4 frag(v2f input) : SV_Target
 			{
-				// Kein Farboutput
-				return 0;
+				// Weiss, voll Transparent
+				return half4(1, 1, 1, 0);
 			}
 
 			ENDHLSL
 		}
-		// Shadow caster pass
-		UsePass "Universal Render Pipeline/Lit/ShadowCaster"
 	}
 	// Error
 	FallBack "Hidden/Universal Render Pipeline/FallbackError"
 }
-

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 11573541760615027}
   - component: {fileID: 11573541760615037}
   - component: {fileID: 11573541760615026}
+  - component: {fileID: 3446831518934977867}
   m_Layer: 8
   m_Name: Occluder Test
   m_TagString: EditorOnly
@@ -80,3 +81,15 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &3446831518934977867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11573541760615024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9f483ce92d36624b8c5f25cf8d4ca67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

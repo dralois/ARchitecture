@@ -22,6 +22,7 @@
 		Pass
 		{
 			Name "PlaneFinder"
+
 			HLSLPROGRAM
 
 			#pragma prefer_hlslcc gles

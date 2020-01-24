@@ -1,22 +1,23 @@
-﻿Shader "Universal Render Pipeline/Custom/Occlusion"
+﻿Shader "Universal Render Pipeline/Custom/FullBlend"
 {
 	Properties
 	{
+		_BaseMap("BaseMap", 2D) = "white" {}
 	}
 	SubShader
 	{
 		Tags
 		{
-			"RenderType" = "Opaque"
-			"Queue" = "Geometry"
+			"RenderType" = "Transparent"
+			"Queue" = "Transparent"
 			"RenderPipeline" = "UniversalPipeline"
 			"IgnoreProjector" = "True"
 		}
 
-		// Depth write only pass
+		// Full Blend Pass
 		Pass
 		{
-			Name "Occlusion"
+			Name "FullBlend"
 
 			Tags
 			{
@@ -24,10 +25,7 @@
 			}
 
 			Cull Off
-			ZWrite On
-			ZTest LEqual
-
-			ColorMask 0
+			Blend SrcAlpha OneMinusSrcAlpha
 
 			HLSLPROGRAM
 
@@ -43,12 +41,21 @@
 			struct Attributes
 			{
 				float4 positionOS   : POSITION;
+				float2 uv           : TEXCOORD0;
 			};
 
 			struct v2f
 			{
 				float4 positionCS   : SV_POSITION;
+				float2 uv           : TEXCOORD0;
 			};
+
+			TEXTURE2D(_BaseMap);
+			SAMPLER(sampler_BaseMap);
+
+			CBUFFER_START(UnityPerMaterial)
+			float4 _BaseMap_ST;
+			CBUFFER_END
 
 			v2f vert(Attributes input)
 			{
@@ -57,22 +64,29 @@
 				VertexPositionInputs vertexInput = GetVertexPositionInputs(input.positionOS.xyz);
 				// Speichern
 				output.positionCS = vertexInput.positionCS;
+				output.uv = TRANSFORM_TEX(input.uv, _BaseMap);
 				// An Fragment weitergeben
 				return output;
 			}
 
 			half4 frag(v2f input) : SV_Target
 			{
-				// Kein Farboutput
-				return 0;
+				// Farbe holen
+				half4 col = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, input.uv);
+				// Blending entweder voll undurchsichtig oder transparnet
+				if(col.a > 0.1)
+				{
+					return half4(col.rgb, 1);
+				}
+				else
+				{
+					return 0;
+				}
 			}
 
 			ENDHLSL
 		}
-		// Shadow caster pass
-		UsePass "Universal Render Pipeline/Lit/ShadowCaster"
 	}
 	// Error
 	FallBack "Hidden/Universal Render Pipeline/FallbackError"
 }
-

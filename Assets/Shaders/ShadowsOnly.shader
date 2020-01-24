@@ -8,7 +8,7 @@
 	{
 		Tags
 		{
-			"RenderType" = "Opaque"
+			"RenderType" = "Transparent"
 			"Queue" = "AlphaTest"
 			"RenderPipeline" = "UniversalPipeline"
 			"IgnoreProjector" = "True"
@@ -24,7 +24,7 @@
 				"LightMode" = "UniversalForward"
 			}
 
-			Cull Off
+			Cull Back
 			ZWrite Off
 
 			Blend SrcAlpha OneMinusSrcAlpha
@@ -38,6 +38,7 @@
 			#pragma multi_compile _ _SHADOWS_SOFT
 			#pragma multi_compile _ _MAIN_LIGHT_SHADOWS
 			#pragma multi_compile _ _MAIN_LIGHT_SHADOWS_CASCADE
+			#pragma multi_compile _ _ADDITIONAL_LIGHTS_VERTEX _ADDITIONAL_LIGHTS
 			#pragma multi_compile _ _ADDITIONAL_LIGHT_SHADOWS
 
 			#pragma vertex vert
@@ -93,8 +94,6 @@
 			}
 			ENDHLSL
 		}
-		// Depth pre-pass
-		UsePass "Universal Render Pipeline/Lit/DepthOnly"
 	}
 	// Error
 	FallBack "Hidden/Universal Render Pipeline/FallbackError"
