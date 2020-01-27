@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9180373873230945287
+--- !u!114 &-5133003458509520471
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,10 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39efdfbaa15e2634fb1590028c1044b9, type: 3}
-  m_Name: ShadowBlend
+  m_Name: Shadow Blend
   m_EditorClassIdentifier: 
   settings:
-    shadowMaterial: {fileID: 2100000, guid: ebe954bde72296347940473d60674ed2, type: 2}
+    effectMaterial: {fileID: 2100000, guid: ebe954bde72296347940473d60674ed2, type: 2}
+--- !u!114 &-3918460893256368541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39efdfbaa15e2634fb1590028c1044b9, type: 3}
+  m_Name: Outline Blend
+  m_EditorClassIdentifier: 
+  settings:
+    effectMaterial: {fileID: 2100000, guid: 653f927acbeea7145a7bf6da2766deb8, type: 2}
 --- !u!114 &-3801268923698513273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,7 +80,7 @@ MonoBehaviour:
   m_Name: ShadowPass
   m_EditorClassIdentifier: 
   settings:
-    shadowMaterial: {fileID: 2100000, guid: ebe954bde72296347940473d60674ed2, type: 2}
+    effectMaterial: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,7 +97,8 @@ MonoBehaviour:
   - {fileID: 7318811804354013651}
   - {fileID: -3801268923698513273}
   - {fileID: 7479301867451495011}
-  - {fileID: -9180373873230945287}
+  - {fileID: -5133003458509520471}
+  - {fileID: -3918460893256368541}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   shaders:
     blitPS: {fileID: 4800000, guid: c17132b1f77d20942aa75f8429c0f8bc, type: 3}
@@ -94,10 +109,10 @@ MonoBehaviour:
     fallbackErrorPS: {fileID: 4800000, guid: e6e9a19c3678ded42a3bc431ebef7dbd, type: 3}
   m_OpaqueLayerMask:
     serializedVersion: 2
-    m_Bits: 567
+    m_Bits: 1591
   m_TransparentLayerMask:
     serializedVersion: 2
-    m_Bits: 567
+    m_Bits: 1591
   m_DefaultStencilState:
     overrideStencilState: 0
     stencilReference: 0
@@ -127,10 +142,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
-  m_Name: Shadow
+  m_Name: Shadow AR
   m_EditorClassIdentifier: 
   settings:
-    passTag: Shadow
+    passTag: Shadow AR
     Event: 450
     filterSettings:
       RenderQueueType: 0

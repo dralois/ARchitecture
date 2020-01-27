@@ -22,6 +22,7 @@ public class TextureScaler : MonoBehaviour
 
 	private void OnDestroy()
 	{
+		// Rendertexture freigeben
 		RenderTexture.ReleaseTemporary(_rt);
 	}
 

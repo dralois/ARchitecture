@@ -17,14 +17,14 @@ public class CastShadowSwitcher : MonoBehaviour
 
 	private void BeginRender(ScriptableRenderContext ctx, Camera cam)
 	{
-		// Quick and dirty hack: Bei Shadow Camera Schattenwurf des Renderers deaktivieren
-		if (cam.name != "Shadow Camera")
+		// Bei Shadow Camera Schattenwurf des Renderers deaktivieren
+		if (cam.CompareTag("ShadowCam"))
 		{
-			_meshRender.shadowCastingMode = ShadowCastingMode.Off;
+			_meshRender.shadowCastingMode = ShadowCastingMode.On;
 		}
 		else
 		{
-			_meshRender.shadowCastingMode = ShadowCastingMode.On;
+			_meshRender.shadowCastingMode = ShadowCastingMode.Off;
 		}
 	}
 

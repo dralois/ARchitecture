@@ -2,23 +2,23 @@
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-public class ShadowRender : ScriptableRendererFeature
+public class FullscreenEffect : ScriptableRendererFeature
 {
 
 	[System.Serializable]
-	public class ShadowPassSettings
+	public class FullscreenEffectSettings
 	{
-		public Material shadowMaterial = null;
+		public Material effectMaterial = null;
 	}
 
-	public ShadowPassSettings settings = new ShadowPassSettings();
+	public FullscreenEffectSettings settings = new FullscreenEffectSettings();
 
-	private ShadowRenderPass _scriptablePass;
+	private FullscreenEffectPass _scriptablePass;
 
 	public override void Create()
 	{
 		// Pass erstellen, laueft zum Schluss
-		_scriptablePass = new ShadowRenderPass(settings.shadowMaterial);
+		_scriptablePass = new FullscreenEffectPass(settings.effectMaterial);
 		_scriptablePass.renderPassEvent = RenderPassEvent.AfterRendering;
 	}
 
@@ -29,10 +29,10 @@ public class ShadowRender : ScriptableRendererFeature
 	}
 }
 
-public class ShadowRenderPass : ScriptableRenderPass
+public class FullscreenEffectPass : ScriptableRenderPass
 {
 
-	private Material _shadowMaterial = null;
+	private Material _effectMaterial = null;
 
 	public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
 	{
@@ -43,14 +43,14 @@ public class ShadowRenderPass : ScriptableRenderPass
 		Mesh fullQuad = RenderingUtils.fullscreenMesh;
 		Matrix4x4 inverseVP = (GL.GetGPUProjectionMatrix(usedCam.projectionMatrix, false) * usedCam.worldToCameraMatrix).inverse;
 		// Draw Call hinzufuegen & ausfuehren
-		cmdBuff.DrawMesh(fullQuad, inverseVP, _shadowMaterial);
+		cmdBuff.DrawMesh(fullQuad, inverseVP, _effectMaterial);
 		context.ExecuteCommandBuffer(cmdBuff);
 		// Buffer freigeben
 		CommandBufferPool.Release(cmdBuff);
 	}
 
-	public ShadowRenderPass(Material shadowMaterial)
+	public FullscreenEffectPass(Material effectMat)
 	{
-		_shadowMaterial = shadowMaterial;
+		_effectMaterial = effectMat;
 	}
 }
