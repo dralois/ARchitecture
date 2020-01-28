@@ -9,29 +9,38 @@ public class LightEstimation : MonoBehaviour
 
 	private Light _Light = null;
 
-	public ARCameraManager CameraManager
+	public float? Lumen { get; private set; }
+	public float? ColorTemperature { get; private set; }
+	public Color? ColorCorrection { get; private set; }
+
+	private void X_FrameChanged(ARCameraFrameEventArgs args)
 	{
-		get { return _cameraManager; }
-		set
+		// Early out
+		if (GameManager.Instance.CurrentMenu != GameManager.MenuMode.Interaction)
+			return;
+
+		// Licht ggf. aktivieren
+		if (args.lightEstimation.averageIntensityInLumens.HasValue)
 		{
-			if (_cameraManager == value)
-				return;
+			Lumen = args.lightEstimation.averageIntensityInLumens.Value;
+			GameManager.Instance.SwitchTime(Lumen.Value);
+			_Light.enabled = GameManager.Instance.CurrentLight == GameManager.LightTime.Day;
+		}
 
-			if (_cameraManager != null)
-				_cameraManager.frameReceived -= X_FrameChanged;
+		// Farbtemperatur setzen
+		if (args.lightEstimation.averageColorTemperature.HasValue)
+		{
+			ColorTemperature = args.lightEstimation.averageColorTemperature.Value;
+			_Light.colorTemperature = ColorTemperature.Value;
+		}
 
-			_cameraManager = value;
-
-			if (_cameraManager != null & enabled)
-				_cameraManager.frameReceived += X_FrameChanged;
+		// Farbkorrektur setzen
+		if (args.lightEstimation.colorCorrection.HasValue)
+		{
+			ColorCorrection = args.lightEstimation.colorCorrection.Value;
+			_Light.color = ColorCorrection.Value;
 		}
 	}
-
-	public float? Lumen { get; private set; }
-
-	public float? ColorTemperature { get; private set; }
-
-	public Color? ColorCorrection { get; private set; }
 
 	private void Awake()
 	{
@@ -48,35 +57,6 @@ public class LightEstimation : MonoBehaviour
 	{
 		if (_cameraManager != null)
 			_cameraManager.frameReceived -= X_FrameChanged;
-	}
-
-	private void X_FrameChanged(ARCameraFrameEventArgs args)
-	{
-		// Early out
-		if (GameManager.Instance.CurrentMode != GameManager.InputMode.Interaction)
-			return;
-
-		// Licht ggf. aktivieren
-		if (args.lightEstimation.averageIntensityInLumens.HasValue)
-		{
-			Lumen = args.lightEstimation.averageIntensityInLumens.Value;
-			GameManager.Instance.SwitchMood(Lumen.Value);
-			_Light.enabled = GameManager.Instance.CurrentMood == GameManager.LightMood.Day;
-		}
-
-		// Farbtemperatur setzen
-		if (args.lightEstimation.averageColorTemperature.HasValue)
-		{
-			ColorTemperature = args.lightEstimation.averageColorTemperature.Value;
-			_Light.colorTemperature = ColorTemperature.Value;
-		}
-
-		// Farbkorrektur setzen
-		if (args.lightEstimation.colorCorrection.HasValue)
-		{
-			ColorCorrection = args.lightEstimation.colorCorrection.Value;
-			_Light.color = ColorCorrection.Value;
-		}
 	}
 
 }

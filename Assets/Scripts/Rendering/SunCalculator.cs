@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Light))]
 public class SunCalculator : MonoBehaviour
 {
 	// Standartwert ist Mitte Muenchen
@@ -11,41 +10,49 @@ public class SunCalculator : MonoBehaviour
 	[SerializeField] [Range(0,60)] private int _minutes;
 	[SerializeField] [Range(0,24)] private int _hour;
 
+	[SerializeField] private Light _sunLight = null;
+	[SerializeField] private Light _nightLight = null;
+
 	private DateTime _time;
-	private Light _light;
 
 	public void SetTime(int hour, int minutes)
 	{
 		_hour = hour;
 		_minutes = minutes;
 		_time = DateTime.Today + new TimeSpan(hour, minutes, 0);
-		X_SetPosition();
+		// Winkel einstellen
+		X_SetSunAngle();
 	}
 
-	private void X_SetPosition()
+	private void X_SetSunAngle()
 	{
+		double alt, azi;
 		Vector3 angles = new Vector3();
-		double alt;
-		double azi;
+		// Berechnen
 		SunPosition.CalculateSunPosition(_time, (double)_latitude, (double)_longitude, out azi, out alt);
+		// Als Euler Winkel speichern
 		angles.x = (float)alt * Mathf.Rad2Deg;
 		angles.y = (float)azi * Mathf.Rad2Deg;
-		transform.rotation = Quaternion.Euler(angles);
-		_light.intensity = Mathf.InverseLerp(-12, 0, angles.x);
+		_sunLight.transform.rotation = Quaternion.Euler(angles);
+		// Sonne und Nachtlicht (de)aktivieren
+		_sunLight.intensity = Mathf.InverseLerp(-12, 0, angles.x);
+		_sunLight.gameObject.SetActive(_sunLight.intensity > 0);
+		_nightLight.gameObject.SetActive(_sunLight.intensity == 0);
 	}
 
 	private void Start()
 	{
-		_light = GetComponent<Light>();
 		_time = DateTime.Now;
 		_hour = _time.Hour;
 		_minutes = _time.Minute;
-		X_SetPosition();
+		// Winkel initalisieren
+		X_SetSunAngle();
 	}
 
 	private void OnValidate()
 	{
-		if (_light)
+		// Editor only
+		if (_sunLight && _nightLight)
 		{
 			SetTime(_hour, _minutes);
 		}

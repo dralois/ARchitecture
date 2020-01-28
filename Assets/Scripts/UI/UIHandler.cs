@@ -1,80 +1,107 @@
 ﻿using UnityEngine;
+using UnityEngine.UIElements;
+using Unity.UIElements.Runtime;
+using System.Collections.Generic;
 
+[RequireComponent(typeof(PanelRenderer))]
 public class UIHandler : MonoBehaviour
 {
 
-	[SerializeField] private GameObject _spawnUI = null;
-	[SerializeField] private GameObject _placementUI = null;
-	[SerializeField] private GameObject _interactionUI = null;
-	[SerializeField] private GameObject _decorationUI = null;
+	private PanelRenderer _UIRenderer = null;
 
-	private bool _EGActive = true;
-	private bool _1OGActive = true;
-
-	public void AcceptPlacement()
+	private void X_ModeChanged(GameManager.MenuMode newMode)
 	{
-		GameManager.Instance.SwitchMode(GameManager.InputMode.Interaction);
-	}
-
-	public void SwitchVisualization()
-	{
-		var newVis = GameManager.Instance.Visualizer.CurrentVisualization == VisualizationSwitcher.Visualization.Normal ?
-			VisualizationSwitcher.Visualization.Ghosted : VisualizationSwitcher.Visualization.Normal;
-		GameManager.Instance.Visualizer.ChangeVisualization(newVis);
-	}
-
-	public void SwitchEG()
-	{
-		_EGActive = !_EGActive;
-		TridifyQuery.SetStoreyActive(GameManager.Instance.House.transform, 0, _EGActive);
-	}
-	
-	public void Switch1OG()
-	{
-		_1OGActive = !_1OGActive;
-		TridifyQuery.SetStoreyActive(GameManager.Instance.House.transform, 1, _1OGActive);
-	}
-
-	private void X_ModeChange(GameManager.InputMode newMode)
-	{
-		// Zunaechst alles deaktivieren
-		_spawnUI.SetActive(false);
-		_placementUI.SetActive(false);
-		_interactionUI.SetActive(false);
-		_decorationUI.SetActive(false);
-		// UI umschalten
 		switch (newMode)
 		{
-			case GameManager.InputMode.Spawn:
+			case GameManager.MenuMode.Spawn:
 				{
-					_spawnUI.SetActive(true);
+					// Hier nichts tun da noch nicht initialisiert!
 					break;
 				}
-			case GameManager.InputMode.Placement:
+			case GameManager.MenuMode.Placement:
 				{
-					_placementUI.SetActive(true);
+					// Von Info zu Placement Panel wechseln
+					_UIRenderer.visualTree.Q("info-panel").style.display = DisplayStyle.None;
+					_UIRenderer.visualTree.Q("placement-panel").style.display = DisplayStyle.Flex;
 					break;
 				}
-			case GameManager.InputMode.Interaction:
+			case GameManager.MenuMode.Interaction:
 				{
-					_interactionUI.SetActive(true);
+					// Von Placement zu Interaction Panel wechseln
+					_UIRenderer.visualTree.Q("placement-panel").style.display = DisplayStyle.None;
+					_UIRenderer.visualTree.Q("options-panel").style.display = DisplayStyle.None;
+					_UIRenderer.visualTree.Q("interaction-panel").style.display = DisplayStyle.Flex;
 					break;
 				}
-			case GameManager.InputMode.Decoration:
+			case GameManager.MenuMode.Decoration:
 				{
-					_decorationUI.SetActive(true);
+					// Von Interaction zu Decoration Panel wechseln
+					_UIRenderer.visualTree.Q("interaction-panel").style.display = DisplayStyle.None;
+					_UIRenderer.visualTree.Q("options-panel").style.display = DisplayStyle.None;
+					//_UIRenderer.visualTree.Q("decoration-panel").style.display = DisplayStyle.Flex;
 					break;
 				}
 		}
 	}
 
-	private void OnEnable()
+	private IEnumerable<Object> BindPanel()
 	{
-		GameManager.Instance.ModeChanged += X_ModeChange;
+		var root = _UIRenderer.visualTree;
+		root.Q<Button>("placement-accept").clickable.clicked += () =>
+		{
+			// Modus wechseln (Placement -> Interaction)
+			GameManager.Instance.SwitchMenu(GameManager.MenuMode.Interaction);
+		};
+
+		root.Q<Button>("placement-edit").clickable.clicked += () =>
+		{
+			// Von Placement Uebersicht zu Placement Edit wechseln
+			//_UIRenderer.visualTree.Q("placement-panel").style.display = DisplayStyle.None;
+			//_UIRenderer.visualTree.Q("edit-panel").style.display = DisplayStyle.Flex;
+		};
+
+		root.Q<Button>("interaction-options").clickable.clicked += () =>
+		{
+			// Von Interaction Uebersicht zu Interaction Options wechseln
+			_UIRenderer.visualTree.Q("interaction-panel").style.display = DisplayStyle.None;
+			_UIRenderer.visualTree.Q("options-panel").style.display = DisplayStyle.Flex;
+		};
+
+		root.Q<Button>("options-exit").clickable.clicked += () =>
+		{
+			// Von Interaction Options zu Interaction Uebersicht wechseln
+			_UIRenderer.visualTree.Q("options-panel").style.display = DisplayStyle.None;
+			_UIRenderer.visualTree.Q("interaction-panel").style.display = DisplayStyle.Flex;
+		};
+
+		root.Q<Button>("options-switch-ghosted").clickable.clicked += () =>
+		{
+			// Ghosted umschalten
+			var newVis = GameManager.Instance.CameraController.GetVisualization() == CameraController.Visualization.Normal ?
+				CameraController.Visualization.Ghosted : CameraController.Visualization.Normal;
+			GameManager.Instance.CameraController.SetVisualization(newVis);
+		};
+
+		// Initialisieren
+		_UIRenderer.visualTree.Q("info-panel").style.display = DisplayStyle.Flex;
+		_UIRenderer.visualTree.Q("placement-panel").style.display = DisplayStyle.None;
+		_UIRenderer.visualTree.Q("options-panel").style.display = DisplayStyle.None;
+		_UIRenderer.visualTree.Q("interaction-panel").style.display = DisplayStyle.None;
+		//_UIRenderer.visualTree.Q("decoration-panel").style.display = DisplayStyle.None;
+
+		return null;
 	}
 
-	private void OnDisable()
+	private void Awake()
 	{
-		GameManager.Instance.ModeChanged -= X_ModeChange;
+		_UIRenderer = GetComponent<PanelRenderer>();
+		_UIRenderer.postUxmlReload = BindPanel;
+		GameManager.Instance.MenuChanged += X_ModeChanged;
 	}
+
+	private void OnDestroy()
+	{
+		GameManager.Instance.MenuChanged -= X_ModeChanged;
+	}
+
 }

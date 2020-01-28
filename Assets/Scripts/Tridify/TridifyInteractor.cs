@@ -20,22 +20,27 @@ public class TridifyInteractor : MonoBehaviour
 	private void X_FingerDown(Finger finger)
 	{
 		// Early out
-		if (GameManager.Instance.CurrentMode != GameManager.InputMode.Interaction || !_canSpawnDesc)
+		if (GameManager.Instance.CurrentMenu != GameManager.MenuMode.Interaction || !_canSpawnDesc)
 			return;
 		// Mit Screen Ray ersten Hit bestimmen
 		var screenRay = _ARCam.ScreenPointToRay(finger.screenPosition);
 		if (Physics.Raycast(screenRay, out RaycastHit hit, Mathf.Infinity, _tridifyMask))
 		{
+			// Layer anpassen
+			if (_lastHit)
+				_lastHit.layer = LayerMask.NameToLayer("Tridify");
+			// GameObjekt des Hits holen
+			_lastHit = hit.transform.gameObject;
+			#region RemoveMe
 			// ggf. alte GUI loeschen
 			if (_descSpawned)
 				Destroy(_descSpawned.gameObject);
-			// GameObjekt des Hits holen
-			_lastHit = hit.transform.gameObject;
 			// Neue instantiieren und befuellen
 			_descSpawned = Instantiate(_UIPrefab.gameObject).GetComponent<DescriptionSpawner>();
 			_descSpawned.CreateReference(hit.point, hit.normal);
 			_descSpawned.FillDescription(TridifyQuery.GetTitle(_lastHit),
 																		TridifyQuery.GetDescription(_lastHit));
+			#endregion
 			// Layer anpassen
 			_lastHit.layer = LayerMask.NameToLayer("Outline");
 			// Vorheriges Explodable einklappen
@@ -49,9 +54,11 @@ public class TridifyInteractor : MonoBehaviour
 		}
 		else
 		{
+			#region RemoveMe
 			// ggf. alte GUI loeschen
 			if (_descSpawned)
-				_descSpawned.gameObject.SetActive(false);
+				Destroy(_descSpawned.gameObject);
+			#endregion
 			// Vorheriges Explodable einklappen
 			_explodable?.ExitExplosionMode();
 			// Layer anpassen
@@ -70,36 +77,34 @@ public class TridifyInteractor : MonoBehaviour
 		}
 		// Events abonnieren
 		Touch.onFingerDown += X_FingerDown;
-		GameManager.Instance.ModeChanged += ModeChange;
+		GameManager.Instance.MenuChanged += ModeChange;
 	}
 
-	private void ModeChange(GameManager.InputMode mode)
+	private void ModeChange(GameManager.MenuMode mode)
 	{
 		// Beim ersten mal hooken
-		if (mode == GameManager.InputMode.Interaction && !_delegateHooked)
+		if (mode == GameManager.MenuMode.Interaction && !_delegateHooked)
 		{
-			GameManager.Instance.Visualizer.VisualizationChanged += VisualizationChange;
+			GameManager.Instance.CameraController.VisualizationChanged += VisualizationChange;
 			_delegateHooked = true;
 		}
 	}
 
-	private void VisualizationChange(VisualizationSwitcher.Visualization mode)
+	private void VisualizationChange(CameraController.Visualization mode)
 	{
-		if(mode == VisualizationSwitcher.Visualization.Normal)
+		if(mode != CameraController.Visualization.Normal)
 		{
-			// Explosion & GUI reaktivieren
+			#region RemoveMe
+			// ggf. alte GUI loeschen
 			if (_descSpawned)
-				_descSpawned.gameObject.SetActive(true);
-			_explodable?.EnterExplosionMode(_lastNormal);
-			_canSpawnDesc = true;
-		}
-		else
-		{
-			// Explosion & GUI deaktivieren
-			if (_descSpawned)
-				_descSpawned.gameObject.SetActive(false);
-			_explodable?.ExitExplosionMode();
+				Destroy(_descSpawned.gameObject);
+			#endregion
 			_canSpawnDesc = false;
+			// Explodable einklappen
+			_explodable?.ExitExplosionMode();
+			// Layer anpassen
+			if (_lastHit)
+				_lastHit.layer = LayerMask.NameToLayer("Tridify");
 		}
 	}
 
@@ -107,9 +112,9 @@ public class TridifyInteractor : MonoBehaviour
 	{
 		// Events entfernen
 		Touch.onFingerDown -= X_FingerDown;
-		GameManager.Instance.ModeChanged -= ModeChange;
-		if(GameManager.Instance.Visualizer)
-			GameManager.Instance.Visualizer.VisualizationChanged -= VisualizationChange;
+		GameManager.Instance.MenuChanged -= ModeChange;
+		if(GameManager.Instance.CameraController)
+			GameManager.Instance.CameraController.VisualizationChanged -= VisualizationChange;
 	}
 
 }

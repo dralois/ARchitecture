@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
 
 	#region Enums
 
-	public enum InputMode
+	public enum MenuMode
 	{
 		None = -1,
 		Spawn,
@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 		Decoration
 	}
 
-	public enum LightMood
+	public enum LightTime
 	{
 		Day,
 		Night
@@ -31,9 +31,9 @@ public class GameManager : MonoBehaviour
 
 	#region Events
 
-	public event System.Action<InputMode> ModeChanged;
+	public event System.Action<MenuMode> MenuChanged;
 
-	public event System.Action<LightMood> MoodChanged;
+	public event System.Action<LightTime> LightChanged;
 
 	#endregion
 
@@ -41,76 +41,76 @@ public class GameManager : MonoBehaviour
 
 	public static GameManager Instance { get =>_instance; }
 
-	public GameObject House { get; set; } = null;
+	public GameObject PlacedIFC { get; set; } = null;
 
-	public VisualizationSwitcher Visualizer { get; set; }
+	public CameraController CameraController { get; set; }
 
-	public InputMode CurrentMode { get; private set; } = InputMode.None;
+	public MenuMode CurrentMenu { get; private set; } = MenuMode.None;
 
-	public LightMood CurrentMood { get; private set; } = LightMood.Day;
+	public LightTime CurrentLight { get; private set; } = LightTime.Day;
 
 	#endregion
 
 	#region Methods
 
-	public void SwitchMood(float lumen)
+	public void SwitchTime(float lumen)
 	{
-		LightMood nextMood = lumen < 800 ? LightMood.Night : LightMood.Day;
+		LightTime nextTime = lumen < 800 ? LightTime.Night : LightTime.Day;
 		// Falls geaendert
-		if(nextMood != CurrentMood)
+		if(nextTime != CurrentLight)
 		{
 			// Aktionen je nach Modus
-			switch (nextMood)
+			switch (nextTime)
 			{
-				case LightMood.Day:
+				case LightTime.Day:
 					{
 
 						break;
 					}
-				case LightMood.Night:
+				case LightTime.Night:
 					{
 
 						break;
 					}
 			}
 			// Modus speichern & Event ausloesen
-			CurrentMood = nextMood;
-			MoodChanged?.Invoke(CurrentMood);
+			CurrentLight = nextTime;
+			LightChanged?.Invoke(CurrentLight);
 		}
 	}
 
-	public void SwitchMode(InputMode nextMode)
+	public void SwitchMenu(MenuMode nextMenu)
 	{
 		// Falls geaendert
-		if(nextMode != CurrentMode)
+		if(nextMenu != CurrentMenu)
 		{
 			// Aktionen je nach Modus
-			switch (nextMode)
+			switch (nextMenu)
 			{
-				case InputMode.Spawn:
+				case MenuMode.Spawn:
 					{
 
 						break;
 					}
-				case InputMode.Placement:
+				case MenuMode.Placement:
 					{
 
 						break;
 					}
-				case InputMode.Interaction:
+				case MenuMode.Interaction:
 					{
 
 						break;
 					}
-				case InputMode.Decoration:
+				case MenuMode.Decoration:
 					{
 
 						break;
 					}
 			}
 			// Modus speichern & Event ausloesen
-			CurrentMode = nextMode;
-			ModeChanged?.Invoke(CurrentMode);
+			CurrentMenu = nextMenu;
+			MenuChanged?.Invoke(CurrentMenu);
 		}
 	}
 
@@ -130,7 +130,7 @@ public class GameManager : MonoBehaviour
 
 	private void Start()
 	{
-		SwitchMode(InputMode.Spawn);
+		SwitchMenu(MenuMode.Spawn);
 	}
 
 	#endregion

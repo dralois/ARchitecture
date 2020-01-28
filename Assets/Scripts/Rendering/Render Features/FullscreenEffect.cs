@@ -39,11 +39,13 @@ public class FullscreenEffectPass : ScriptableRenderPass
 		Camera usedCam = renderingData.cameraData.camera;
 		// Buffer holen
 		CommandBuffer cmdBuff = CommandBufferPool.Get();
+		cmdBuff.BeginSample("Fullscreen Effect");
 		// Fullscreen Quad und inverse MVP erstellen
 		Mesh fullQuad = RenderingUtils.fullscreenMesh;
 		Matrix4x4 inverseVP = (GL.GetGPUProjectionMatrix(usedCam.projectionMatrix, false) * usedCam.worldToCameraMatrix).inverse;
 		// Draw Call hinzufuegen & ausfuehren
 		cmdBuff.DrawMesh(fullQuad, inverseVP, _effectMaterial);
+		cmdBuff.EndSample("Fullscreen Effect");
 		context.ExecuteCommandBuffer(cmdBuff);
 		// Buffer freigeben
 		CommandBufferPool.Release(cmdBuff);

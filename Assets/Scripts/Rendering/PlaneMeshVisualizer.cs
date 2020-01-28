@@ -24,9 +24,9 @@ public class PlaneMeshVisualizer : MonoBehaviour
 
 #region Methods
 
-	private void X_ModeChange(GameManager.InputMode newMode)
+	private void X_ModeChange(GameManager.MenuMode newMode)
 	{
-		if(newMode != GameManager.InputMode.Spawn)
+		if(newMode != GameManager.MenuMode.Spawn)
 		{
 			GetComponent<MeshRenderer>().material = _shadowMaterial;
 		}
@@ -34,7 +34,7 @@ public class PlaneMeshVisualizer : MonoBehaviour
 
 	private void X_BoundaryUpdate(ARPlaneBoundaryChangedEventArgs eventArgs)
 	{
-		if(GameManager.Instance.CurrentMode == GameManager.InputMode.Spawn)
+		if(GameManager.Instance.CurrentMenu == GameManager.MenuMode.Spawn)
 			X_GenerateBoundaryUVs(_planeMeshVisualizer.mesh);
 	}
 
@@ -97,7 +97,7 @@ public class PlaneMeshVisualizer : MonoBehaviour
 #if !(UNITY_EDITOR || UNITY_STANDALONE)
 		_plane.boundaryChanged += X_BoundaryUpdate;
 #endif
-		GameManager.Instance.ModeChanged += X_ModeChange;
+		GameManager.Instance.MenuChanged += X_ModeChange;
 	}
 
 	private void OnDisable()
@@ -105,7 +105,7 @@ public class PlaneMeshVisualizer : MonoBehaviour
 #if !(UNITY_EDITOR || UNITY_STANDALONE)
 		_plane.boundaryChanged -= X_BoundaryUpdate;
 #endif
-		GameManager.Instance.ModeChanged -= X_ModeChange;
+		GameManager.Instance.MenuChanged -= X_ModeChange;
 	}
 
 #endregion

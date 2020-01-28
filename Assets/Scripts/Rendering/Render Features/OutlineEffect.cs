@@ -43,6 +43,7 @@ public class OutlineEffectPass : ScriptableRenderPass
 		Camera usedCam = renderingData.cameraData.camera;
 		// Buffer holen
 		CommandBuffer cmdBuff = CommandBufferPool.Get();
+		cmdBuff.BeginSample("Outline Effect");
 		// Fullscreen Quad und inverse MVP erstellen
 		Mesh fullQuad = RenderingUtils.fullscreenMesh;
 		Matrix4x4 inverseVP = (GL.GetGPUProjectionMatrix(usedCam.projectionMatrix, false) * usedCam.worldToCameraMatrix).inverse;
@@ -51,6 +52,7 @@ public class OutlineEffectPass : ScriptableRenderPass
 		_effectMaterial.SetInt("_kernelHalfWidth", _gaussKernel.Length / 2);
 		// Draw Call hinzufuegen & ausfuehren
 		cmdBuff.DrawMesh(fullQuad, inverseVP, _effectMaterial, 0, 1);
+		cmdBuff.EndSample("Outline Effect");
 		context.ExecuteCommandBuffer(cmdBuff);
 		// Buffer freigeben
 		CommandBufferPool.Release(cmdBuff);
