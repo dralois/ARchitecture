@@ -20,6 +20,13 @@ public class GameManager : MonoBehaviour
 		Night
 	}
 
+	public enum SizeMode
+	{
+		Model,
+		Normal,
+		RealLife
+	}
+
 	#endregion
 
 	#region Fields
@@ -35,6 +42,8 @@ public class GameManager : MonoBehaviour
 
 	public event System.Action<LightTime> LightChanged;
 
+	public event System.Action<SizeMode> SizeChanged;
+
 	#endregion
 
 	#region Properties
@@ -48,6 +57,8 @@ public class GameManager : MonoBehaviour
 	public MenuMode CurrentMenu { get; private set; } = MenuMode.None;
 
 	public LightTime CurrentLight { get; private set; } = LightTime.Day;
+
+	public SizeMode CurrentSize { get; private set; } = SizeMode.Model;
 
 	#endregion
 
@@ -111,6 +122,36 @@ public class GameManager : MonoBehaviour
 			// Modus speichern & Event ausloesen
 			CurrentMenu = nextMenu;
 			MenuChanged?.Invoke(CurrentMenu);
+		}
+	}
+
+	public void SwitchSize(SizeMode nextSize)
+	{
+		// Falls geaendert
+		if(nextSize != CurrentSize)
+		{
+			// Aktion je nach Groesse
+			switch (nextSize)
+			{
+				case SizeMode.Model:
+					{
+
+						break;
+					}
+				case SizeMode.Normal:
+					{
+
+						break;
+					}
+				case SizeMode.RealLife:
+					{
+
+						break;
+					}
+			}
+			// Groesse speichern & Event ausloesen
+			CurrentSize = nextSize;
+			SizeChanged?.Invoke(CurrentSize);
 		}
 	}
 

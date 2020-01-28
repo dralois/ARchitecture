@@ -27,6 +27,10 @@
 	float4 _CameraOpaqueTexture_ST;
 	float2 _CameraOpaqueTexture_TexelSize;
 
+	CBUFFER_START(UnityPerFrame)
+	float4x4 _UnityDisplayTransform;
+	CBUFFER_END
+
 	v2f OutlineVert(Attributes input)
 	{
 		v2f output = (v2f)0;
