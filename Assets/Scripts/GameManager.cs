@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
 
 	#region Properties
 
-	public static GameManager Instance { get =>_instance; }
+	public static GameManager Instance { get => _instance; }
 
 	public GameObject PlacedIFC { get; set; } = null;
 
@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
 	{
 		LightTime nextTime = lumen < 800 ? LightTime.Night : LightTime.Day;
 		// Falls geaendert
-		if(nextTime != CurrentLight)
+		if (nextTime != CurrentLight)
 		{
 			// Aktionen je nach Modus
 			switch (nextTime)
@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
 	public void SwitchMenu(MenuMode nextMenu)
 	{
 		// Falls geaendert
-		if(nextMenu != CurrentMenu)
+		if (nextMenu != CurrentMenu)
 		{
 			// Aktionen je nach Modus
 			switch (nextMenu)
@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
 
 						break;
 					}
-            }
+			}
 			// Modus speichern & Event ausloesen
 			CurrentMenu = nextMenu;
 			MenuChanged?.Invoke(CurrentMenu);
@@ -128,7 +128,7 @@ public class GameManager : MonoBehaviour
 	public void SwitchSize(SizeMode nextSize)
 	{
 		// Falls geaendert
-		if(nextSize != CurrentSize)
+		if (nextSize != CurrentSize)
 		{
 			// Aktion je nach Groesse
 			switch (nextSize)

@@ -778,16 +778,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 985870750}
     m_Modifications:
-    - target: {fileID: 4631087885152535825, guid: dbbced1a02dfd6b45a34fd4ae8e4a71a,
-        type: 3}
-      propertyPath: m_SendIMGUIEvents
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4631087885152535825, guid: dbbced1a02dfd6b45a34fd4ae8e4a71a,
-        type: 3}
-      propertyPath: m_SendInputEvents
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4631087885152535837, guid: dbbced1a02dfd6b45a34fd4ae8e4a71a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -846,7 +836,7 @@ PrefabInstance:
     - target: {fileID: 4631087885152535838, guid: dbbced1a02dfd6b45a34fd4ae8e4a71a,
         type: 3}
       propertyPath: m_Name
-      value: NewUI
+      value: UIElementsRenderer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbbced1a02dfd6b45a34fd4ae8e4a71a, type: 3}

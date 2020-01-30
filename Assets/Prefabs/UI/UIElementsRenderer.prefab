@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 4631087885152535825}
   - component: {fileID: 4631087885152535827}
   - component: {fileID: 7284581841792905191}
-  - component: {fileID: 4631087885152535826}
+  - component: {fileID: 67177176781387697}
   m_Layer: 0
-  m_Name: NewUI
+  m_Name: UIElementsRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,7 +97,7 @@ MonoBehaviour:
     screenMatchMode: 0
     match: 0
   scaleMode: 2
---- !u!114 &4631087885152535826
+--- !u!114 &67177176781387697
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,6 +106,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 4631087885152535838}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfac7f0b0f19d6d48aba9fc7c57f2da0, type: 3}
+  m_Script: {fileID: 11500000, guid: a405856245a87a144a1a1a526784b11c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -6,16 +6,16 @@ using System;
 public class TridifyQuery
 {
 
-    private static string[] _storeyNames = { "EG", "1. OG" };
+	private static string[] _storeyNames = { "EG", "1. OG" };
 
-    private static string[] _materialFilter = { "Name" };
-    private static string[] _archiCADFilter = { "Nominale B x H x T", "Innenseite Oberfläche", "Außenseite Oberfläche" };
-     
-    public static string[] GetStoreyNames()
-    {
-        string[] storeyNames = _storeyNames;
-        return storeyNames;
-    }
+	private static string[] _materialFilter = { "Name" };
+	private static string[] _archiCADFilter = { "Nominale B x H x T", "Innenseite Oberfläche", "Außenseite Oberfläche" };
+
+	public static string[] GetStoreyNames()
+	{
+		string[] storeyNames = _storeyNames;
+		return storeyNames;
+	}
 
 	public static string GetDescription(GameObject target)
 	{
@@ -99,41 +99,42 @@ public class TridifyQuery
 		return "Error";
 	}
 
-    public static void changeStoreyState(bool active, string storeyName) {
-        GameObject storeyObject = null;
+	public static void changeStoreyState(bool active, string storeyName)
+	{
+		GameObject storeyObject = null;
 
-        if (active)
-        {
-            storeyObject = FindInActiveObjectByName(storeyName);
-        }
-        else
-        {
-            storeyObject = GameObject.Find(storeyName);
-        }
+		if (active)
+		{
+			storeyObject = FindInActiveObjectByName(storeyName);
+		}
+		else
+		{
+			storeyObject = GameObject.Find(storeyName);
+		}
 
-        Transform storeyFinal = storeyObject.transform;
+		Transform storeyFinal = storeyObject.transform;
 
-        uint storeyIndex = (uint) Array.IndexOf(_storeyNames, storeyName);
-        SetStoreyActive(storeyFinal, storeyIndex, active);
-    }
+		uint storeyIndex = (uint)Array.IndexOf(_storeyNames, storeyName);
+		SetStoreyActive(storeyFinal, storeyIndex, active);
+	}
 
-    private static GameObject FindInActiveObjectByName(string name)
-    {
-        Transform[] objs = Resources.FindObjectsOfTypeAll<Transform>() as Transform[];
-        for (int i = 0; i < objs.Length; i++)
-        {
-            if (objs[i].hideFlags == HideFlags.None)
-            {
-                if (objs[i].name == name)
-                {
-                    return objs[i].gameObject;
-                }
-            }
-        }
-        return null;
-    }
+	private static GameObject FindInActiveObjectByName(string name)
+	{
+		Transform[] objs = Resources.FindObjectsOfTypeAll<Transform>() as Transform[];
+		for (int i = 0; i < objs.Length; i++)
+		{
+			if (objs[i].hideFlags == HideFlags.None)
+			{
+				if (objs[i].name == name)
+				{
+					return objs[i].gameObject;
+				}
+			}
+		}
+		return null;
+	}
 
-    public static void SetStoreyActive(Transform target, uint storey, bool active)
+	public static void SetStoreyActive(Transform target, uint storey, bool active)
 	{
 		// Sanity Check
 		if (storey >= _storeyNames.Length || target == null)

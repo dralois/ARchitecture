@@ -46,7 +46,7 @@ public class TridifyInteractor : MonoBehaviour
 			// Layer anpassen
 			_lastHit.layer = LayerMask.NameToLayer("Outline");
 			// Description setzen
-			UIHandlerNew.ShowDescription(TridifyQuery.GetTitle(_lastHit),
+			UIHandler.ShowDescription(TridifyQuery.GetTitle(_lastHit),
 										TridifyQuery.GetDescription(_lastHit));
 			// Vorheriges Explodable einklappen
 			_explodable?.ExitExplosionMode();

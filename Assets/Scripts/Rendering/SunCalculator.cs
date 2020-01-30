@@ -15,6 +15,11 @@ public class SunCalculator : MonoBehaviour
 
 	private DateTime _time;
 
+	/// <summary>
+	/// Setzt die Tageszeit -> Lichtwinkel
+	/// </summary>
+	/// <param name="hour">Stunden, 0-24</param>
+	/// <param name="minutes">Minuten, 0-60</param>
 	public void SetTime(int hour, int minutes)
 	{
 		_hour = hour;
