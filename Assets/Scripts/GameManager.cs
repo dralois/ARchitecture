@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
 
 						break;
 					}
-			}
+            }
 			// Modus speichern & Event ausloesen
 			CurrentMenu = nextMenu;
 			MenuChanged?.Invoke(CurrentMenu);

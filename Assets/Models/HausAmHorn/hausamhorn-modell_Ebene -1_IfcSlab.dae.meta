@@ -3,12 +3,17 @@ guid: 38e042259a4cf394c8ff8543ececce8c
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ortbeton_-_bewehrt
+    second: {fileID: 2100000, guid: ab4112c076271114992f311f390087c9, type: 2}
   materials:
     materialImportMode: 1
     materialName: 1
-    materialSearch: 2
-    materialLocation: 1
+    materialSearch: 0
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0

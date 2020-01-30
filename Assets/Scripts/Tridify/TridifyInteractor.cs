@@ -15,7 +15,9 @@ public class TridifyInteractor : MonoBehaviour
 	private bool _delegateHooked = false;
 	private bool _canSpawnDesc = true;
 	private Vector3 _lastNormal = Vector3.zero;
-	private GameObject _lastHit = null;
+	public GameObject _lastHit = null;
+
+	private GameObject playerCanvas = null;
 
 	private void X_FingerDown(Finger finger)
 	{
@@ -39,10 +41,13 @@ public class TridifyInteractor : MonoBehaviour
 			_descSpawned = Instantiate(_UIPrefab.gameObject).GetComponent<DescriptionSpawner>();
 			_descSpawned.CreateReference(hit.point, hit.normal);
 			_descSpawned.FillDescription(TridifyQuery.GetTitle(_lastHit),
-																		TridifyQuery.GetDescription(_lastHit));
+										TridifyQuery.GetDescription(_lastHit));
 			#endregion
 			// Layer anpassen
 			_lastHit.layer = LayerMask.NameToLayer("Outline");
+			// Description setzen
+			UIHandlerNew.ShowDescription(TridifyQuery.GetTitle(_lastHit),
+										TridifyQuery.GetDescription(_lastHit));
 			// Vorheriges Explodable einklappen
 			_explodable?.ExitExplosionMode();
 			// ggf. Explodable ausklappen
