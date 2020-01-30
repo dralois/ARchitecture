@@ -47,9 +47,9 @@
 			float4 _BaseMap_ST;
 			CBUFFER_END
 
-			CBUFFER_START(UnityPerFrame)
-			float4x4 _UnityDisplayTransform;
-			CBUFFER_END
+			//CBUFFER_START(UnityPerFrame)
+			//float4x4 _UnityDisplayTransform;
+			//CBUFFER_END
 
 			struct Attributes
 			{
@@ -70,7 +70,8 @@
 				VertexPositionInputs vertexInput = GetVertexPositionInputs(input.positionOS.xyz);
 				// Speichern
 				output.positionCS = vertexInput.positionCS;
-				output.uv = TRANSFORM_TEX(mul(float3(input.uv, 1.0f), _UnityDisplayTransform).xy, _BaseMap);
+				output.uv = TRANSFORM_TEX(input.uv, _BaseMap);
+				//output.uv = TRANSFORM_TEX(mul(float3(input.uv, 1.0f), _UnityDisplayTransform).xy, _BaseMap);
 				// An Fragment weitergeben
 				return output;
 			}

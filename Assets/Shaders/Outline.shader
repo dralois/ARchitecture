@@ -26,11 +26,8 @@
 
 	TEXTURE2D(_CameraOpaqueTexture);
 	SAMPLER(sampler_CameraOpaqueTexture);
-
-	CBUFFER_START(UnityPerMaterial)
 	float4 _CameraOpaqueTexture_ST;
 	float2 _CameraOpaqueTexture_TexelSize;
-	CBUFFER_END
 
 	//CBUFFER_START(UnityPerFrame)
 	//float4x4 _UnityDisplayTransform;
@@ -44,6 +41,7 @@
 		// Speichern
 		output.positionCS = vertexInput.positionCS;
 		output.uv = TRANSFORM_TEX(input.uv, _CameraOpaqueTexture);
+		//output.uv = TRANSFORM_TEX(mul(float3(input.uv, 1.0f), _UnityDisplayTransform).xy, _CameraOpaqueTexture);
 		// An Fragment weitergeben
 		return output;
 	}
