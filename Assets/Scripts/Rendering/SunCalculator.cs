@@ -52,9 +52,12 @@ public class SunCalculator : MonoBehaviour
 	private void OnValidate()
 	{
 		// Editor only
-		if (_sunLight && _nightLight)
+		if (isActiveAndEnabled)
 		{
-			SetTime(_hour, _minutes);
+			if (_sunLight && _nightLight)
+			{
+				SetTime(_hour, _minutes);
+			}
 		}
 	}
 

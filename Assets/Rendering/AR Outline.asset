@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
-  m_Name: Render
+  m_Name: IFC Opaque
   m_EditorClassIdentifier: 
   settings:
-    passTag: Render
+    passTag: IFC Opaque
     Event: 250
     filterSettings:
       RenderQueueType: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c3e545837bf0e04585a6b1aa8ec8698, type: 3}
-  m_Name: Outline
+  m_Name: Blur Outline
   m_EditorClassIdentifier: 
   settings:
     effectMaterial: {fileID: 2100000, guid: 2c9b1ba6ac33cd645b844e3d2f3a5472, type: 2}

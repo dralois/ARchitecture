@@ -8,6 +8,8 @@
 
 	HLSLINCLUDE
 
+	// #pragma enable_d3d11_debug_symbols
+
 	#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
 	struct Attributes
@@ -24,12 +26,15 @@
 
 	TEXTURE2D(_CameraOpaqueTexture);
 	SAMPLER(sampler_CameraOpaqueTexture);
+
+	CBUFFER_START(UnityPerMaterial)
 	float4 _CameraOpaqueTexture_ST;
 	float2 _CameraOpaqueTexture_TexelSize;
-
-	CBUFFER_START(UnityPerFrame)
-	float4x4 _UnityDisplayTransform;
 	CBUFFER_END
+
+	//CBUFFER_START(UnityPerFrame)
+	//float4x4 _UnityDisplayTransform;
+	//CBUFFER_END
 
 	v2f OutlineVert(Attributes input)
 	{
@@ -104,10 +109,12 @@
 					return 0;
 				}
 
+				// Akkumulierter Blur
 				float sampleX = 0;
 				float sampleY = 0;
-				float texSizeX = _CameraOpaqueTexture_TexelSize.x;
-				float texSizeY = _CameraOpaqueTexture_TexelSize.y;
+				// Groessere Sample Range
+				float texSizeX = _CameraOpaqueTexture_TexelSize.x * 7.0;
+				float texSizeY = _CameraOpaqueTexture_TexelSize.y * 7.0;
 
 				[unroll]
 				// Gauss Horizontal <-
@@ -153,8 +160,8 @@
 																								input.uv.y + g * texSizeY)).r;
 				}
 
-				// Maximum zurueck fuer gleichmaessigen Blur
-				return max(sampleX, sampleY) * half4(0, 1, 1, 1);
+				// Maximum zurueck fuer gleichmaessigen Blur (max. 50% transparent)
+				return max(max(sampleX, sampleY) * half4(0, 1, 1, 1), half4(0, 0, 0, 0.5));
 			}
 
 			ENDHLSL

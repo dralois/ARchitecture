@@ -8,7 +8,7 @@
 	{
 		Tags
 		{
-			"RenderType" = "Transparent"
+			"RenderType" = "Background"
 			"Queue" = "Transparent"
 			"RenderPipeline" = "UniversalPipeline"
 			"IgnoreProjector" = "True"
@@ -17,7 +17,7 @@
 		// Full Blend Pass
 		Pass
 		{
-			Name "FullBlend"
+			Name "Full Blend"
 
 			Tags
 			{
@@ -33,6 +33,8 @@
 			#pragma exclude_renderers d3d11_9x
 			#pragma target 2.0
 
+			// #pragma enable_d3d11_debug_symbols
+
 			#pragma vertex vert
 			#pragma fragment frag
 
@@ -40,7 +42,10 @@
 
 			TEXTURE2D(_BaseMap);
 			SAMPLER(sampler_BaseMap);
+
+			CBUFFER_START(UnityPerMaterial)
 			float4 _BaseMap_ST;
+			CBUFFER_END
 
 			CBUFFER_START(UnityPerFrame)
 			float4x4 _UnityDisplayTransform;
@@ -73,16 +78,7 @@
 			half4 frag(v2f input) : SV_Target
 			{
 				// Farbe holen
-				half4 col = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, input.uv);
-				// Blending entweder voll undurchsichtig oder transparnet
-				if(col.a > 0.1)
-				{
-					return half4(col.rgb, 1);
-				}
-				else
-				{
-					return 0;
-				}
+				return SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, input.uv);
 			}
 
 			ENDHLSL

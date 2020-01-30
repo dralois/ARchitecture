@@ -90,7 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RenderShadows: 0
   m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 1
+  m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
   m_CameraOutput: 1
   m_Cameras: []
@@ -119,7 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14a13d9b7fcce23438b86d4b3983a4b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _masterARCam: {fileID: 6032722576231018865}
   _transferMaterial: {fileID: 2100000, guid: 653f927acbeea7145a7bf6da2766deb8, type: 2}
+  _depthBits: 0
 --- !u!1 &4161395803032187574
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,7 +241,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14a13d9b7fcce23438b86d4b3983a4b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _masterARCam: {fileID: 6032722576231018865}
   _transferMaterial: {fileID: 2100000, guid: ebe954bde72296347940473d60674ed2, type: 2}
+  _depthBits: 24
 --- !u!1 &6032722576231018870
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,6 +339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e72f477a4b2754459824035cc618dba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxCutPlane: 5
 --- !u!114 &4221348052071928460
 MonoBehaviour:
   m_ObjectHideFlags: 0

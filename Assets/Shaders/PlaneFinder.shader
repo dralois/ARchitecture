@@ -11,9 +11,9 @@
 		Tags
 		{
 			"RenderType" = "Transparent"
-			"IgnoreProjector" = "True"
-			"RenderPipeline" = "UniversalPipeline"
 			"Queue"="Transparent"
+			"RenderPipeline" = "UniversalPipeline"
+			"IgnoreProjector" = "True"
 		}
 
 		Blend SrcAlpha OneMinusSrcAlpha
@@ -28,6 +28,8 @@
 			#pragma prefer_hlslcc gles
 			#pragma exclude_renderers d3d11_9x
 			#pragma target 2.0
+
+			// #pragma enable_d3d11_debug_symbols
 
 			#pragma vertex vert
 			#pragma fragment frag
@@ -50,12 +52,12 @@
 
 			TEXTURE2D(_BaseMap);
 			SAMPLER(sampler_BaseMap);
+			float _ShortestUVMapping;
 
 			CBUFFER_START(UnityPerMaterial)
 			float4 _BaseMap_ST;
 			float4 _TexTintColor;
 			float4 _PlaneColor;
-			float _ShortestUVMapping;
 			CBUFFER_END
 
 			v2f vert (appdata v)

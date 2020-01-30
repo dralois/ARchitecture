@@ -118,7 +118,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.8
+  bundleVersion: 0.9
   preloadedAssets:
   - {fileID: 11400000, guid: 6ec57d753e62d014e9ef8d587c4d13c5, type: 2}
   - {fileID: 4800000, guid: bcb247dca059048ee90ca702c4d92e93, type: 3}
@@ -172,7 +172,7 @@ PlayerSettings:
     iPhone: com.interactivevisualization.test
   buildNumber:
     Standalone: 0.7
-    iPhone: 3
+    iPhone: 0
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 24
   AndroidTargetSdkVersion: 0

@@ -1,4 +1,4 @@
-﻿Shader "Universal Render Pipeline/Custom/ShadowsOnly"
+﻿Shader "Universal Render Pipeline/Custom/ShadowsAR"
 {
 	Properties
 	{
@@ -17,14 +17,13 @@
 		// Shadow only pass
 		Pass
 		{
-			Name "ShadowsOnly"
+			Name "Shadows AR"
 
 			Tags
 			{
 				"LightMode" = "UniversalForward"
 			}
 
-			Cull Back
 			ZWrite Off
 
 			Blend SrcAlpha OneMinusSrcAlpha
@@ -34,6 +33,8 @@
 			#pragma prefer_hlslcc gles
 			#pragma exclude_renderers d3d11_9x
 			#pragma target 2.0
+
+			// #pragma enable_d3d11_debug_symbols
 
 			#pragma multi_compile _ _SHADOWS_SOFT
 			#pragma multi_compile _ _MAIN_LIGHT_SHADOWS
@@ -47,6 +48,10 @@
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 
+			CBUFFER_START(UnityPerMaterial)
+			float _ShadowTransparency;
+			CBUFFER_END
+
 			struct Attributes
 			{
 				float4 positionOS   : POSITION;
@@ -58,10 +63,6 @@
 				float3 positionWS   : TEXCOORD0;
 				float4 shadowCoord  : TEXCOORD1;
 			};
-			
-			CBUFFER_START(UnityPerMaterial)
-			float _ShadowTransparency;
-			CBUFFER_END
 
 			v2f vert(Attributes input)
 			{
@@ -90,8 +91,9 @@
 				// Clip falls kein Schatten (-> Schatten != 0)
 				clip(-shadowAtten);
 				// Schwarz zurueck
-				return half4(shadowAtten.xxx, _ShadowTransparency);
+				return half4(0, 0, 0, _ShadowTransparency);
 			}
+
 			ENDHLSL
 		}
 	}
