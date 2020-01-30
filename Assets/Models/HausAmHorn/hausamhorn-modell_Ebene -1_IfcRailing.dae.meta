@@ -3,12 +3,17 @@ guid: 4d1b77c51a99e9b4fb363d9ea8d4f1fc
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kunststoff_-_grau_70-70-70
+    second: {instanceID: 0}
   materials:
     materialImportMode: 1
     materialName: 1
-    materialSearch: 2
-    materialLocation: 1
+    materialSearch: 0
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0

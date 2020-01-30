@@ -6,18 +6,21 @@ public class TridifyInteractor : MonoBehaviour
 {
 
 	[SerializeField] private DescriptionSpawner _UIPrefab = null;
-	[SerializeField] private LayerMask _tridifyMask = 0;
+    [SerializeField] private LayerMask _tridifyMask = 0;
 
 	private ExplodableComponent _explodable = null;
 	private DescriptionSpawner _descSpawned = null;
-	private Camera _ARCam = null;
+    private Camera _ARCam = null;
 
 	private bool _delegateHooked = false;
 	private bool _canSpawnDesc = true;
 	private Vector3 _lastNormal = Vector3.zero;
-	private GameObject _lastHit = null;
+	public GameObject _lastHit = null;
 
-	private void X_FingerDown(Finger finger)
+    private GameObject playerCanvas = null;
+    
+    
+    private void X_FingerDown(Finger finger)
 	{
 		// Early out
 		if (GameManager.Instance.CurrentMode != GameManager.InputMode.Interaction || !_canSpawnDesc)
@@ -26,7 +29,8 @@ public class TridifyInteractor : MonoBehaviour
 		var screenRay = _ARCam.ScreenPointToRay(finger.screenPosition);
 		if (Physics.Raycast(screenRay, out RaycastHit hit, Mathf.Infinity, _tridifyMask))
 		{
-			// ggf. alte GUI loeschen
+            
+            // ggf. alte GUI loeschen
 			if (_descSpawned)
 				Destroy(_descSpawned.gameObject);
 			// GameObjekt des Hits holen
@@ -36,8 +40,12 @@ public class TridifyInteractor : MonoBehaviour
 			_descSpawned.CreateReference(hit.point, hit.normal);
 			_descSpawned.FillDescription(TridifyQuery.GetTitle(_lastHit),
 																		TridifyQuery.GetDescription(_lastHit));
-			// Layer anpassen
-			_lastHit.layer = LayerMask.NameToLayer("Outline");
+
+            UIHandlerNew.ShowDescription(TridifyQuery.GetTitle(_lastHit),
+                                                                        TridifyQuery.GetDescription(_lastHit));
+
+            // Layer anpassen
+            _lastHit.layer = LayerMask.NameToLayer("Outline");
 			// Vorheriges Explodable einklappen
 			_explodable?.ExitExplosionMode();
 			// ggf. Explodable ausklappen
@@ -46,21 +54,26 @@ public class TridifyInteractor : MonoBehaviour
 				_explodable.EnterExplosionMode(hit.normal);
 				_lastNormal = hit.normal;
 			}
+
 		}
-		else
+        else
 		{
-			// ggf. alte GUI loeschen
-			if (_descSpawned)
-				_descSpawned.gameObject.SetActive(false);
-			// Vorheriges Explodable einklappen
-			_explodable?.ExitExplosionMode();
+            
+            // ggf. alte GUI loeschen
+            if (_descSpawned)
+            {
+                _descSpawned.gameObject.SetActive(false);
+            }
+            // Vorheriges Explodable einklappen
+            _explodable?.ExitExplosionMode();
 			// Layer anpassen
 			if(_lastHit)
 				_lastHit.layer = LayerMask.NameToLayer("Tridify");
-		}
-	}
+                
+    }
+    }
 
-	private void Awake()
+    private void Awake()
 	{
 		_ARCam = Camera.main;
 		// ggf. Touch aktivieren
@@ -71,6 +84,7 @@ public class TridifyInteractor : MonoBehaviour
 		// Events abonnieren
 		Touch.onFingerDown += X_FingerDown;
 		GameManager.Instance.ModeChanged += ModeChange;
+
 	}
 
 	private void ModeChange(GameManager.InputMode mode)
@@ -80,6 +94,7 @@ public class TridifyInteractor : MonoBehaviour
 		{
 			GameManager.Instance.Visualizer.VisualizationChanged += VisualizationChange;
 			_delegateHooked = true;
+            Debug.Log("mode: "+mode.ToString());
 		}
 	}
 
