@@ -102,20 +102,20 @@ public class TridifyQuery
 	public static void changeStoreyState(bool active, string storeyName)
 	{
 		GameObject storeyObject = null;
+        uint storeyIndex = (uint)Array.IndexOf(_storeyNames, storeyName);
 
-		if (active)
+        if (active)
 		{
 			storeyObject = FindInActiveObjectByName(storeyName);
-		}
+            Transform storeyFinal = storeyObject.transform;
+            SetStoreyActive(storeyFinal, storeyIndex, active);
+        }
 		else
 		{
 			storeyObject = GameObject.Find(storeyName);
-		}
-
-		Transform storeyFinal = storeyObject.transform;
-
-		uint storeyIndex = (uint)Array.IndexOf(_storeyNames, storeyName);
-		SetStoreyActive(storeyFinal, storeyIndex, active);
+            Transform storeyFinal = storeyObject.transform;
+            SetStoreyActive(storeyFinal, storeyIndex, active);
+        }
 	}
 
 	private static GameObject FindInActiveObjectByName(string name)

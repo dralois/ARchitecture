@@ -39,14 +39,6 @@ public class UIHandler : MonoBehaviour
 					_UIRenderer.visualTree.Q("hideSections-area").style.display = DisplayStyle.None;
 					break;
 				}
-			case GameManager.MenuMode.Decoration:
-				{
-					// Von Interaction zu Decoration Panel wechseln
-					_UIRenderer.visualTree.Q("interaction-panel").style.display = DisplayStyle.None;
-					_UIRenderer.visualTree.Q("options-panel").style.display = DisplayStyle.None;
-					//_UIRenderer.visualTree.Q("decoration-panel").style.display = DisplayStyle.Flex;
-					break;
-				}
 		}
 	}
 
@@ -103,20 +95,25 @@ public class UIHandler : MonoBehaviour
 			var newVis = GameManager.Instance.CameraController.GetVisualization() == CameraController.Visualization.Normal ?
 				CameraController.Visualization.Ghosted : CameraController.Visualization.Normal;
 			GameManager.Instance.CameraController.SetVisualization(newVis);
-		};
+
+            _UIRenderer.visualTree.Q("hideSections-area").style.display = DisplayStyle.None;
+        };
 
 		root.Q<Button>("options-sections-edit").clickable.clicked += () =>
 		{
 			_UIRenderer.visualTree.Q("hideSections-area").style.display = DisplayStyle.Flex;
-			foreach (string storey in storeyNames)
+            _UIRenderer.visualTree.Q("desc-area").style.display = DisplayStyle.None;
+            foreach (string storey in storeyNames)
 			{
-				Toggle storeyToggle = new Toggle(storey);
-				storeyToggle.AddToClassList("toggle-section");
-				StyleSheet styleToggle = Resources.Load<StyleSheet>("Assets/UI/toggle.uss");
-				storeyToggle.styleSheets.Add(styleToggle);
-				storeyToggle.name = "toggle-" + storey;
-				storeyToggle.value = true;
-				root.Q("toggle-area").Add(storeyToggle);
+                if (!root.Q("toggle-area").Contains(root.Q("toggle-area").Q<Toggle>("toggle-" + storey)))
+                {
+                    Toggle storeyToggle = new Toggle(storey);
+                    storeyToggle.AddToClassList("toggle-section");
+                    storeyToggle.name = "toggle-" + storey;
+                    storeyToggle.value = true;
+                    root.Q("toggle-area").Add(storeyToggle);
+                }
+                    
 			}
 
 			foreach (string storey in storeyNames)
@@ -167,7 +164,8 @@ public class UIHandler : MonoBehaviour
 	public static void ShowDescription(string title, string desc)
 	{
 		_UIRenderer.visualTree.Q("desc-area").style.display = DisplayStyle.Flex;
-		_UIRenderer.visualTree.Q<Label>("desc-heading").text = title;
+        _UIRenderer.visualTree.Q("hideSections-area").style.display = DisplayStyle.None;
+        _UIRenderer.visualTree.Q<Label>("desc-heading").text = title;
 		_UIRenderer.visualTree.Q<Label>("desc-txt").text = desc;
 	}
 

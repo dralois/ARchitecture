@@ -3,13 +3,13 @@
         <Style src="GameUI.uss" />
         <ui:VisualElement name="top-area" style="flex-grow: 1;">
             <ui:VisualElement name="desc-area" style="right: 0; width: 33%; height: 100%; position: absolute; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; bottom: auto; padding-left: 5%; padding-right: 5%; padding-top: 5%; padding-bottom: 5%; left: auto; background-color: rgba(255, 255, 255, 0.61);">
-                <ui:Label text="Label" name="desc-heading" style="white-space: normal; font-size: 50px; -unity-font: url('/Assets/Other/TMP/Fonts/LiberationSans.ttf');" />
-                <ui:Label text="Label" name="desc-txt" style="white-space: normal; font-size: 30px; -unity-font: url('/Assets/Other/TMP/Fonts/LiberationSans.ttf');" />
+                <ui:Label text="Label" name="desc-heading" style="max-height:100px; white-space: normal; font-size: 50px; -unity-font: url('/Assets/Other/TMP/Fonts/LiberationSans.ttf');" />
+                <ui:Label text="Label" name="desc-txt" style="max-height:150px; white-space: normal; font-size: 30px; -unity-font: url('/Assets/Other/TMP/Fonts/LiberationSans.ttf');" />
                 <ui:Button text="More" name="desc-btn" style="font-size: 30px; -unity-font-style: bold; margin-left: 10%; margin-right: 10%; margin-top: 10%; padding-left: 8%; padding-right: 8%; padding-top: 8%; padding-bottom: 8%; background-color: rgb(70, 70, 70); color: rgb(255, 255, 255);" />
             </ui:VisualElement>
             <ui:VisualElement name="hideSections-area" style="right: 0; width: 33%; height: 100%; position: absolute; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; bottom: auto; padding-left: 5%; padding-right: 5%; padding-top: 5%; padding-bottom: 5%; left: auto; background-color: rgba(255, 255, 255, 0.61);">
-                <ui:Label text="Display/hide building storeys" name="hideSections-heading" style="white-space: normal; height: auto; width: auto; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 10%; font-size: 50px; -unity-font-style: bold; -unity-font: url('/Assets/Other/TMP/Fonts/LiberationSans.ttf'); width: auto;" />
-                <ui:Label text="Disable the respective toggle to hide a storey and enable it to display it. Click reset to set up the start settings. " name="hideSections-txt" style="white-space: normal; font-size: 30px; -unity-font: url('/Assets/Other/TMP/Fonts/LiberationSans.ttf'); margin-left: 0; margin-right: 0; margin-top: 5%; margin-bottom: 5%;" />
+                <ui:Label text="Display/hide building storeys" name="hideSections-heading" style="white-space: normal; height: auto; width: auto; max-height:100px; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 10%; font-size: 50px; -unity-font-style: bold; -unity-font: url('/Assets/Other/TMP/Fonts/LiberationSans.ttf');" />
+                <ui:Label text="Disable the respective toggle to hide a storey and enable it to display it. Click reset to set up the start settings. " name="hideSections-txt" style="white-space: normal; font-size: 30px; max-height:150px; -unity-font: url('/Assets/Other/TMP/Fonts/LiberationSans.ttf'); margin-left: 0; margin-right: 0; margin-top: 5%; margin-bottom: 5%;" />
                 <ui:VisualElement name="toggle-area" />
                 <ui:Button text="Reset" name="reset-btn" style="font-size: 30px; -unity-font-style: bold; margin-left: 10%; margin-right: 10%; margin-top: 10%; padding-left: 8%; padding-right: 8%; padding-top: 8%; padding-bottom: 8%; background-color: rgb(70, 70, 70); color: rgb(255, 255, 255);" />
             </ui:VisualElement>
@@ -29,12 +29,12 @@
                     <ui:Label text="Edit Placement" name="placement-edit-text" class="general-text" style="color: rgb(255, 255, 255);" />
                 </ui:Button>
             </ui:VisualElement>
-            <ui:VisualElement name="placement-edit-panel" style="height: 170px; background-color: rgba(165, 165, 165, 255); position: absolute; bottom: 0; left: 0; width: 100%; padding: 10px 5%;">
-              <ui:Button name="scaling-accept" class="general-button" style="background-color: rgb(0, 78, 0); width:25%;">
+            <ui:VisualElement name="placement-edit-panel" class="general-panel" style="background-color: rgba(165, 165, 165, 255); position: relative; ">
+              <ui:Button name="scaling-accept" class="general-button" style="background-color: rgb(0, 78, 0);">
                 <ui:VisualElement name="placement-accept-icon" class="button-has-icon" style="background-image: url('/Assets/Textures/Mockup/checkmark.png');" />
                 <ui:Label name="placement-accept-text" text="Accept Scaling" class="general-text" style="color: rgb(255, 255, 255);" />
               </ui:Button>
-              <ui:SliderInt name="scale-edit-slider" picking-mode="Position" label="Scale-Ratio" value="0" low-value="-10" high-value="10" style="font-size:30px; color: rgba(231, 27, 27, 255); width: 70%; height: 100px; align-items: auto; position: absolute; top: 50px; left: 30%; right: 0; margin-left:5%;" />
+              <ui:SliderInt name="scale-edit-slider" picking-mode="Position" label="Scale-Ratio" value="0" low-value="-10" high-value="10" style="font-size:30px; color: rgba(231, 27, 27, 255); width: auto; height: 100px; align-items: auto; position: relative; flex-grow: 1; margin-left:50px;" />
             </ui:VisualElement>
             <ui:VisualElement name="interaction-panel" class="general-panel" style="display: none;">
                 <ui:Button name="interaction-options" class="button-is-icon" style="-unity-background-image-tint-color: rgb(51, 51, 51); background-image: url('/Assets/Textures/Mockup/foldout.png');" />
@@ -47,7 +47,6 @@
                 <ui:Button name="options-exit" class="button-is-icon" style="background-image: url('/Assets/Textures/Mockup/cross.png'); -unity-background-image-tint-color: rgb(255, 255, 255); width: 100px; height: 100px;" />
                 <ui:Button text="Hide Building Sections" name="options-sections-edit" class="button-options" />
                 <ui:Button text="Switch Ghosted" name="options-switch-ghosted" class="button-options" />
-                <ui:Button text="Place Decorations" name="options-decorations" class="button-options" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
