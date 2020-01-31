@@ -81,39 +81,37 @@
     margin-bottom: 0;
 }
 
-.toggle-section{
-	font-size: 30px;
-	width: auto;
-	height: auto;
-	margin-left: 0;
-	margin-right: 0;
-	margin-top: 5%;
-	margin-bottom: 5%;
-	font-size: 40px;
+.toggle-section {
+    font-size: 30px;
+    width: auto;
+    height: auto;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    font-size: 40px;
 }
 
 .toggle-section #unity-checkmark {
-	width: 50px;
-	height: 50px;
+    width: 50px;
+    height: 50px;
 }
 
-
 #unity-dragger {
-	width: 75px;
-	height: 50px;
-	position: absolute;
+    width: 75px;
+    height: 50px;
+    position: absolute;
 }
 
 #unity-tracker {
-	height: 30px;
-	position: relative;
+    height: 30px;
+    position: relative;
 }
 
-#scale-edit-slider Label{
-	display:none;
+#scale-edit-slider Label {
+    display: none;
 }
 
-#scale-edit-slider VisualElement{
-	margin:auto 0;
+#scale-edit-slider VisualElement {
+    margin: auto 0;
 }
-
