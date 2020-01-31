@@ -1,7 +1,6 @@
 ﻿using Tridify;
 using UnityEngine;
 using System.Linq;
-using System;
 
 public class TridifyQuery
 {
@@ -13,8 +12,10 @@ public class TridifyQuery
 
 	public static string[] GetStoreyNames()
 	{
-		string[] storeyNames = _storeyNames;
-		return storeyNames;
+		// Kopie des Arrays um Modifikation definitiv zu unterbinden
+		string[] storeyCopy = new string[_storeyNames.Length];
+		System.Array.Copy(_storeyNames, storeyCopy, _storeyNames.Length);
+		return storeyCopy;
 	}
 
 	public static string GetDescription(GameObject target)
@@ -28,7 +29,7 @@ public class TridifyQuery
 		{
 			// Filtern nach den Attributen die erlaubt sind
 			var attributes = mat.Attributes.Join(_materialFilter, attr => attr.Name, fltr => fltr, (attr, fltr) => "Material: " + attr.Value);
-			returnString += string.Join(System.Environment.NewLine, attributes) + System.Environment.NewLine;
+			returnString += string.Join("/n", attributes) + "/n";
 		}
 		// Falls Explodable (Wand, Dach..)
 		if (target.TryGetComponent(out ExplodableComponent explodable))
@@ -42,7 +43,7 @@ public class TridifyQuery
 				{
 					// Filtern nach den Attributen die erlaubt sind
 					var filtered = prop.Attributes.Join(_archiCADFilter, attr => attr.Name, fltr => fltr, (attr, fltr) => attr.Name + ": " + attr.Value);
-					returnString += string.Join(System.Environment.NewLine, filtered) + System.Environment.NewLine;
+					returnString += string.Join("/n;", filtered) + "/n";
 				}
 			}
 		}
@@ -55,7 +56,7 @@ public class TridifyQuery
 				{
 					// Filtern nach den Attributen die erlaubt sind
 					var filtered = prop.Attributes.Join(_archiCADFilter, attr => attr.Name, fltr => fltr, (attr, fltr) => attr.Name + ": " + attr.Value);
-					returnString += string.Join(System.Environment.NewLine, filtered) + System.Environment.NewLine;
+					returnString += string.Join("/n", filtered) + "/n";
 				}
 			}
 		}
@@ -99,39 +100,17 @@ public class TridifyQuery
 		return "Error";
 	}
 
-	public static void changeStoreyState(bool active, string storeyName)
+	public static void SetStoreyActive(Transform target, string storey, bool active)
 	{
-		GameObject storeyObject = null;
-
-		if (active)
-		{
-			storeyObject = FindInActiveObjectByName(storeyName);
-		}
-		else
-		{
-			storeyObject = GameObject.Find(storeyName);
-		}
-
-		Transform storeyFinal = storeyObject.transform;
-
-		uint storeyIndex = (uint)Array.IndexOf(_storeyNames, storeyName);
-		SetStoreyActive(storeyFinal, storeyIndex, active);
-	}
-
-	private static GameObject FindInActiveObjectByName(string name)
-	{
-		Transform[] objs = Resources.FindObjectsOfTypeAll<Transform>() as Transform[];
-		for (int i = 0; i < objs.Length; i++)
-		{
-			if (objs[i].hideFlags == HideFlags.None)
-			{
-				if (objs[i].name == name)
-				{
-					return objs[i].gameObject;
-				}
-			}
-		}
-		return null;
+		// Sanity Check
+		if (target == null || !_storeyNames.Contains(storey))
+			return;
+		// Ebenen finden
+		var storeys = target.GetComponentsInChildren<IfcBuildingStorey>(true);
+		// Filtern
+		var result = storeys.First(curr => curr.Attributes.Any(attr => attr.Value == storey));
+		// GO (de)aktivieren
+		result.gameObject.SetActive(active);
 	}
 
 	public static void SetStoreyActive(Transform target, uint storey, bool active)

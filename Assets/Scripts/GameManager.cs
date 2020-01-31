@@ -10,8 +10,7 @@ public class GameManager : MonoBehaviour
 		None = -1,
 		Spawn,
 		Placement,
-		Interaction,
-		Decoration
+		Interaction
 	}
 
 	public enum LightTime
@@ -53,6 +52,8 @@ public class GameManager : MonoBehaviour
 	public GameObject PlacedIFC { get; set; } = null;
 
 	public CameraController CameraController { get; set; }
+
+	public UIHandler UIController { get; set; }
 
 	public MenuMode CurrentMenu { get; private set; } = MenuMode.None;
 
@@ -109,11 +110,6 @@ public class GameManager : MonoBehaviour
 						break;
 					}
 				case MenuMode.Interaction:
-					{
-
-						break;
-					}
-				case MenuMode.Decoration:
 					{
 
 						break;

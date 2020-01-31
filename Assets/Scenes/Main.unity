@@ -213,22 +213,22 @@ PrefabInstance:
     - target: {fileID: 2560256854037519819, guid: e2e6bd96fe69dd74894c6048b83bfaf2,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.48644844
+      value: 0.48424688
       objectReference: {fileID: 0}
     - target: {fileID: 2560256854037519819, guid: e2e6bd96fe69dd74894c6048b83bfaf2,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.093837634
+      value: 0.09391645
       objectReference: {fileID: 0}
     - target: {fileID: 2560256854037519819, guid: e2e6bd96fe69dd74894c6048b83bfaf2,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.052645996
+      value: 0.052376892
       objectReference: {fileID: 0}
     - target: {fileID: 2560256854037519819, guid: e2e6bd96fe69dd74894c6048b83bfaf2,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.86705875
+      value: -0.86829793
       objectReference: {fileID: 0}
     - target: {fileID: 6405863465172123260, guid: e2e6bd96fe69dd74894c6048b83bfaf2,
         type: 3}
@@ -778,6 +778,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 985870750}
     m_Modifications:
+    - target: {fileID: 67177176781387697, guid: dbbced1a02dfd6b45a34fd4ae8e4a71a,
+        type: 3}
+      propertyPath: _storeyToggleUXML
+      value: 
+      objectReference: {fileID: 9197481963319205126, guid: c8ac6c967e05bc4469deb34017efb852,
+        type: 3}
+    - target: {fileID: 4631087885152535827, guid: dbbced1a02dfd6b45a34fd4ae8e4a71a,
+        type: 3}
+      propertyPath: m_EnableLiveUpdate
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4631087885152535837, guid: dbbced1a02dfd6b45a34fd4ae8e4a71a,
         type: 3}
       propertyPath: m_LocalPosition.x

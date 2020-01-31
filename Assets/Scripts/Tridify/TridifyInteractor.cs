@@ -5,19 +5,15 @@ using UnityEngine;
 public class TridifyInteractor : MonoBehaviour
 {
 
-	[SerializeField] private DescriptionSpawner _UIPrefab = null;
 	[SerializeField] private LayerMask _tridifyMask = 0;
 
 	private ExplodableComponent _explodable = null;
-	private DescriptionSpawner _descSpawned = null;
 	private Camera _ARCam = null;
 
 	private bool _delegateHooked = false;
 	private bool _canSpawnDesc = true;
 	private Vector3 _lastNormal = Vector3.zero;
-	public GameObject _lastHit = null;
-
-	private GameObject playerCanvas = null;
+	private GameObject _lastHit = null;
 
 	private void X_FingerDown(Finger finger)
 	{
@@ -30,24 +26,16 @@ public class TridifyInteractor : MonoBehaviour
 		{
 			// Layer anpassen
 			if (_lastHit)
+			{
 				_lastHit.layer = LayerMask.NameToLayer("Tridify");
+			}
 			// GameObjekt des Hits holen
 			_lastHit = hit.transform.gameObject;
-			#region RemoveMe
-			// ggf. alte GUI loeschen
-			if (_descSpawned)
-				Destroy(_descSpawned.gameObject);
-			// Neue instantiieren und befuellen
-			_descSpawned = Instantiate(_UIPrefab.gameObject).GetComponent<DescriptionSpawner>();
-			_descSpawned.CreateReference(hit.point, hit.normal);
-			_descSpawned.FillDescription(TridifyQuery.GetTitle(_lastHit),
-										TridifyQuery.GetDescription(_lastHit));
-			#endregion
 			// Layer anpassen
 			_lastHit.layer = LayerMask.NameToLayer("Outline");
 			// Description setzen
-			UIHandler.ShowDescription(TridifyQuery.GetTitle(_lastHit),
-										TridifyQuery.GetDescription(_lastHit));
+			GameManager.Instance.UIController.ShowDescription(TridifyQuery.GetTitle(_lastHit),
+																												TridifyQuery.GetDescription(_lastHit));
 			// Vorheriges Explodable einklappen
 			_explodable?.ExitExplosionMode();
 			// ggf. Explodable ausklappen
@@ -59,16 +47,15 @@ public class TridifyInteractor : MonoBehaviour
 		}
 		else
 		{
-			#region RemoveMe
-			// ggf. alte GUI loeschen
-			if (_descSpawned)
-				Destroy(_descSpawned.gameObject);
-			#endregion
 			// Vorheriges Explodable einklappen
 			_explodable?.ExitExplosionMode();
 			// Layer anpassen
 			if(_lastHit)
+			{
 				_lastHit.layer = LayerMask.NameToLayer("Tridify");
+			}
+			// Description entfernen
+			GameManager.Instance.UIController.HideDescription();
 		}
 	}
 
@@ -99,17 +86,22 @@ public class TridifyInteractor : MonoBehaviour
 	{
 		if(mode != CameraController.Visualization.Normal)
 		{
-			#region RemoveMe
-			// ggf. alte GUI loeschen
-			if (_descSpawned)
-				Destroy(_descSpawned.gameObject);
-			#endregion
+			// Spawning verbieten
 			_canSpawnDesc = false;
 			// Explodable einklappen
 			_explodable?.ExitExplosionMode();
 			// Layer anpassen
 			if (_lastHit)
+			{
 				_lastHit.layer = LayerMask.NameToLayer("Tridify");
+			}
+		}
+		else
+		{
+			// Spawning wieder erlaubt
+			_canSpawnDesc = true;
+			// Description entfernen
+			GameManager.Instance.UIController.HideDescription();
 		}
 	}
 
