@@ -5,6 +5,7 @@
 [Bb]uilds/
 [Uu][Ii][Ee]lements[Ss]chema/
 Assets/AssetStoreTools*
+Assets/StreamingAssets*
 Assets/Samples
 
 # Visual Studio cache directory

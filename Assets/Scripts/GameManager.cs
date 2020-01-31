@@ -22,8 +22,7 @@ public class GameManager : MonoBehaviour
 	public enum SizeMode
 	{
 		Model,
-		Normal,
-		RealLife
+		Normal
 	}
 
 	#endregion
@@ -32,6 +31,9 @@ public class GameManager : MonoBehaviour
 
 	// Singleton
 	private static GameManager _instance = null;
+
+	private Vector3 originalScale;
+	private GameObject _placedIFC = null;
 
 	#endregion
 
@@ -49,7 +51,15 @@ public class GameManager : MonoBehaviour
 
 	public static GameManager Instance { get => _instance; }
 
-	public GameObject PlacedIFC { get; set; } = null;
+	public GameObject PlacedIFC
+	{
+		get => _placedIFC;
+		set
+		{
+			_placedIFC = value;
+			originalScale = _placedIFC.transform.localScale;
+		}
+	}
 
 	public CameraController CameraController { get; set; }
 
@@ -139,16 +149,29 @@ public class GameManager : MonoBehaviour
 
 						break;
 					}
-				case SizeMode.RealLife:
-					{
-
-						break;
-					}
 			}
 			// Groesse speichern & Event ausloesen
 			CurrentSize = nextSize;
 			SizeChanged?.Invoke(CurrentSize);
 		}
+	}
+
+	public void ChangeScaling(int scalingValue)
+	{
+		float scaling;
+		// Wert umrechnen
+		if (scalingValue < 0)
+		{
+			scaling = 1 / Mathf.Abs(scalingValue);
+		}
+		else
+		{
+			scaling = scalingValue;
+		}
+		// Scale anpassen
+		Vector3 scaleChange = new Vector3(1.0f, 1.0f, 1.0f) * scaling;
+		scaleChange += originalScale;
+		_placedIFC.transform.localScale = scaleChange;
 	}
 
 	#region Unity

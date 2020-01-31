@@ -480,11 +480,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Occluder Test
       objectReference: {fileID: 0}
-    - target: {fileID: 11573541760615026, guid: bf17325ec0137ac408e9f7d5c871c6c6,
-        type: 3}
-      propertyPath: m_Materials.Array.data[2]
-      value: 
-      objectReference: {fileID: 2100000, guid: 40ffd102a98f97b45b421006bb18f734, type: 2}
     - target: {fileID: 11573541760615027, guid: bf17325ec0137ac408e9f7d5c871c6c6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -693,20 +688,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1636890185}
     m_Modifications:
-    - target: {fileID: 185784393911878349, guid: af9063d6b89c8b841a23ce5390123dff,
-        type: 3}
-      propertyPath: _UIConnection
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2762480733261312960, guid: af9063d6b89c8b841a23ce5390123dff,
         type: 3}
       propertyPath: m_Name
       value: Game Manager
-      objectReference: {fileID: 0}
-    - target: {fileID: 2762480733261312960, guid: af9063d6b89c8b841a23ce5390123dff,
-        type: 3}
-      propertyPath: m_TagString
-      value: GameController
       objectReference: {fileID: 0}
     - target: {fileID: 5070427406204589129, guid: af9063d6b89c8b841a23ce5390123dff,
         type: 3}
@@ -784,11 +769,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9197481963319205126, guid: c8ac6c967e05bc4469deb34017efb852,
         type: 3}
-    - target: {fileID: 4631087885152535827, guid: dbbced1a02dfd6b45a34fd4ae8e4a71a,
-        type: 3}
-      propertyPath: m_EnableLiveUpdate
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4631087885152535837, guid: dbbced1a02dfd6b45a34fd4ae8e4a71a,
         type: 3}
       propertyPath: m_LocalPosition.x

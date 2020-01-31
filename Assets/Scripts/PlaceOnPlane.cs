@@ -1,10 +1,10 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using UnityEngine.InputSystem.EnhancedTouch;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
-using System;
 
 [RequireComponent(typeof(ARRaycastManager))]
 public class PlaceOnPlane : MonoBehaviour
@@ -14,17 +14,19 @@ public class PlaceOnPlane : MonoBehaviour
 
 	private List<ARRaycastHit> _Hits = new List<ARRaycastHit>();
 	private ARRaycastManager _RaycastManager;
-	private GameObject _spawnedObject;
-	private static Vector3 originalScale;
 
 	private void X_TouchStarted(Finger finger)
 	{
+		// Sanity Check
 		if (finger.index == 0 && GameManager.Instance.CurrentMenu == GameManager.MenuMode.Spawn)
 		{
 #if UNITY_EDITOR || UNITY_STANDALONE
+			// Ray bestimmen
 			var screenRay = Camera.main.ScreenPointToRay(finger.screenPosition);
+			// Normaler Raycast
 			if (Physics.Raycast(screenRay, out RaycastHit hit, Mathf.Infinity, _hitMask))
 #else
+			// AR Raycast
 			if (_RaycastManager.Raycast(finger.screenPosition, _Hits, TrackableType.PlaneWithinPolygon))
 #endif
 			{
@@ -36,10 +38,11 @@ public class PlaceOnPlane : MonoBehaviour
 				// Haus spawnen und speichern
 				GameManager.Instance.PlacedIFC = Instantiate(_placedPrefab, hitPose.position + new Vector3(0f, 0.0001f, 0f), hitPose.rotation);
 				GameManager.Instance.SwitchMenu(GameManager.MenuMode.Placement);
-				originalScale = GameManager.Instance.PlacedIFC.transform.localScale;
 				// Detection deaktivieren
 				GetComponent<ARPlaneManager>().detectionMode = PlaneDetectionMode.None;
-				GetComponent<ARTrackedObjectManager>().referenceLibrary = null;
+				GetComponent<ARPlaneManager>().enabled = false;
+				// Script deaktivieren
+				enabled = false;
 			}
 		}
 	}
@@ -63,25 +66,5 @@ public class PlaceOnPlane : MonoBehaviour
 	{
 		Touch.onFingerDown -= X_TouchStarted;
 	}
-
-
-	public static void ChangeScaling(int scalingValue)
-	{
-		float scaling;
-		if (scalingValue < 0)
-		{
-			scaling = 1 / Math.Abs(scalingValue);
-		}
-		else
-		{
-			scaling = scalingValue;
-		}
-
-		Debug.Log(GameManager.MenuMode.Placement.ToString());
-		Vector3 scaleChange = new Vector3(1.0f, 1.0f, 1.0f) * scaling;
-		scaleChange += originalScale;
-		GameManager.Instance.PlacedIFC.transform.localScale = scaleChange;
-	}
-
 
 }

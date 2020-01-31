@@ -1,6 +1,7 @@
 ﻿using Tridify;
 using UnityEngine;
 using System.Linq;
+using System.Collections.Generic;
 
 public class TridifyQuery
 {
@@ -18,18 +19,18 @@ public class TridifyQuery
 		return storeyCopy;
 	}
 
-	public static string GetDescription(GameObject target)
+	public static string[] GetDescription(GameObject target)
 	{
-		string returnString = "";
+		List<string> descList = new List<string>();
 		// Sanity Check
 		if (target == null)
-			return returnString;
+			return descList.ToArray();
 		// Material
 		if (target.TryGetComponent(out IfcMaterial mat))
 		{
 			// Filtern nach den Attributen die erlaubt sind
 			var attributes = mat.Attributes.Join(_materialFilter, attr => attr.Name, fltr => fltr, (attr, fltr) => "Material: " + attr.Value);
-			returnString += string.Join("/n", attributes) + "/n";
+			descList.AddRange(attributes);
 		}
 		// Falls Explodable (Wand, Dach..)
 		if (target.TryGetComponent(out ExplodableComponent explodable))
@@ -43,7 +44,7 @@ public class TridifyQuery
 				{
 					// Filtern nach den Attributen die erlaubt sind
 					var filtered = prop.Attributes.Join(_archiCADFilter, attr => attr.Name, fltr => fltr, (attr, fltr) => attr.Name + ": " + attr.Value);
-					returnString += string.Join("/n;", filtered) + "/n";
+					descList.AddRange(filtered);
 				}
 			}
 		}
@@ -56,12 +57,12 @@ public class TridifyQuery
 				{
 					// Filtern nach den Attributen die erlaubt sind
 					var filtered = prop.Attributes.Join(_archiCADFilter, attr => attr.Name, fltr => fltr, (attr, fltr) => attr.Name + ": " + attr.Value);
-					returnString += string.Join("/n", filtered) + "/n";
+					descList.AddRange(filtered);
 				}
 			}
 		}
 		// Kombinierten Info-String zurueck
-		return returnString;
+		return descList.ToArray();
 	}
 
 	public static string GetTitle(GameObject target)

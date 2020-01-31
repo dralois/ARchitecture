@@ -3,51 +3,54 @@
         <Style src="GameUI.uss" />
         <ui:VisualElement name="top-area" style="flex-grow: 1; flex-direction: row-reverse;">
             <ui:VisualElement name="desc-area" class="general-sidebar" style="display: none;">
-                <ui:Label text="Label" name="desc-heading" class="general-text" />
-                <ui:Label text="Label" name="desc-txt" class="general-text" style="font-size: 30px; white-space: normal;" />
+                <ui:Label text="Label" name="desc-heading" class="general-text" style="color: rgb(51, 51, 51);" />
+                <ui:ListView name="desc-box" item-height="75" style="flex-grow: 1; width: 800px;" />
                 <ui:Button text="More" name="desc-btn" class="button-sidebar" />
             </ui:VisualElement>
             <ui:VisualElement name="hideSections-area" class="general-sidebar" style="display: none;">
-                <ui:Label text="Display/hide building storeys" name="hideSections-heading" class="general-text" />
-                <ui:Label text="Disable the respective toggle to hide a storey and enable it to display it. Click reset to set up the start settings. " name="hideSections-txt" class="general-text" style="font-size: 30px; white-space: normal; height: 100px;" />
-                <ui:VisualElement name="toggle-area" />
+                <ui:Label text="Building Storeys" name="hideSections-heading" class="general-text" style="color: rgb(51, 51, 51);" />
+                <ui:VisualElement name="hideSections-multiline" style="align-items: flex-start; height: 100px; justify-content: center;">
+                    <ui:Label text="Use the toggles to display or hide a storey." name="hideSections-txt-1" class="general-text" style="font-size: 30px; white-space: normal; color: rgb(51, 51, 51);" />
+                    <ui:Label text="Click on reset to display all storeys." name="hideSections-txt-2" class="general-text" style="font-size: 30px; white-space: normal; color: rgb(51, 51, 51);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="toggle-area" style="width: 400px;" />
                 <ui:Button text="Reset" name="reset-btn" class="button-sidebar" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="bottom-area" style="position: relative; bottom: 0;">
-            <ui:VisualElement name="info-panel" class="general-panel" style="display: flex;">
-                <ui:VisualElement name="info-icon" class="general-icon" style="background-image: url('/Assets/Textures/Mockup/exclamation.png'); -unity-background-image-tint-color: rgb(51, 51, 51);" />
-                <ui:Label text="To place the object, tap anywhere on the detected plane ..." name="info-text" class="general-text" style="color: rgb(51, 51, 51);" />
+            <ui:VisualElement name="info-panel" class="general-panel">
+                <ui:VisualElement name="info-icon" class="general-icon" style="background-image: url('/Assets/UI/Icons/Exclamation_t.png'); -unity-background-image-tint-color: rgb(51, 51, 51);" />
+                <ui:Label text="To place the building, tap anywhere on a detected plane" name="info-text" class="general-text" style="color: rgb(51, 51, 51);" />
             </ui:VisualElement>
             <ui:VisualElement name="placement-panel" class="general-panel" style="justify-content: space-between; display: none;">
                 <ui:Button name="placement-accept" class="general-button" style="background-color: rgb(0, 78, 0);">
-                    <ui:VisualElement name="placement-accept-icon" class="button-has-icon" style="background-image: url('/Assets/Textures/Mockup/checkmark.png');" />
+                    <ui:VisualElement name="placement-accept-icon" class="button-has-icon" style="background-image: url('/Assets/UI/Icons/Checkmark_t.png');" />
                     <ui:Label name="placement-accept-text" text="Accept Placement" class="general-text" style="color: rgb(255, 255, 255);" />
                 </ui:Button>
                 <ui:Button name="placement-edit" class="general-button" style="background-color: rgb(51, 51, 51);">
-                    <ui:VisualElement name="placement-edit-icon" class="button-has-icon" style="background-image: url('/Assets/Textures/Mockup/pencil.png');" />
+                    <ui:VisualElement name="placement-edit-icon" class="button-has-icon" style="background-image: url('/Assets/UI/Icons/Pencil_t.png');" />
                     <ui:Label text="Edit Placement" name="placement-edit-text" class="general-text" style="color: rgb(255, 255, 255);" />
                 </ui:Button>
             </ui:VisualElement>
             <ui:VisualElement name="placement-edit-panel" class="general-panel" style="padding: 10px 5%; display: none;">
                 <ui:Button name="scaling-accept" class="general-button" style="background-color: rgb(0, 78, 0);">
-                    <ui:VisualElement name="placement-accept-icon" class="button-has-icon" style="background-image: url('/Assets/Textures/Mockup/checkmark.png');" />
+                    <ui:VisualElement name="placement-accept-icon" class="button-has-icon" style="background-image: url('/Assets/UI/Icons/Checkmark_t.png');" />
                     <ui:Label name="placement-accept-text" text="Accept Scaling" class="general-text" style="color: rgb(255, 255, 255);" />
                 </ui:Button>
                 <ui:Slider picking-mode="Ignore" label="Scale" value="0" high-value="10" name="scale-edit-slider" low-value="-10" page-size="1" class="general-slider" />
             </ui:VisualElement>
             <ui:VisualElement name="interaction-panel" class="general-panel" style="display: none;">
-                <ui:Button name="interaction-options" class="button-is-icon" style="-unity-background-image-tint-color: rgb(51, 51, 51); background-image: url('/Assets/Textures/Mockup/foldout.png');" />
+                <ui:Button name="interaction-options" class="button-is-icon" style="-unity-background-image-tint-color: rgb(51, 51, 51); background-image: url('/Assets/UI/Icons/Foldout_t.png');" />
                 <ui:VisualElement name="interaction-info" style="flex-direction: row; justify-content: flex-start; align-items: center; flex-wrap: no-wrap; flex-grow: 1; flex-shrink: 0;">
-                    <ui:VisualElement name="interaction-info-icon" class="general-icon" style="background-image: url('/Assets/Textures/Mockup/exclamation.png'); -unity-background-image-tint-color: rgb(51, 51, 51);" />
-                    <ui:Label text="Tap at building sections to recieve further information ..." name="interaction-info-text" class="general-text" style="display: flex; color: rgb(51, 51, 51);" />
+                    <ui:VisualElement name="interaction-info-icon" class="general-icon" style="background-image: url('/Assets/UI/Icons/Exclamation_t.png'); -unity-background-image-tint-color: rgb(51, 51, 51);" />
+                    <ui:Label text="Tap on the building to recieve further information" name="interaction-info-text" class="general-text" style="color: rgb(51, 51, 51);" />
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="options-panel" class="general-panel" style="background-color: rgb(51, 51, 51); display: none;">
-                <ui:Button name="options-exit" class="button-is-icon" style="background-image: url('/Assets/Textures/Mockup/cross.png'); -unity-background-image-tint-color: rgb(255, 255, 255); width: 100px; height: 100px;" />
+                <ui:Button name="options-exit" class="button-is-icon" style="background-image: url('/Assets/UI/Icons/Cross_t.png'); -unity-background-image-tint-color: rgb(255, 255, 255); width: 100px; height: 100px;" />
                 <ui:Button text="Hide Building Sections" name="options-sections-edit" class="button-options" />
                 <ui:Button text="Switch Ghosted" name="options-switch-ghosted" class="button-options" />
-                <ui:Button text="Place Decorations" name="options-decorations" class="button-options" />
+                <ui:Button text="Switch Scale" name="options-scale" class="button-options" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

@@ -22,7 +22,30 @@
 .general-text {
     font-size: 50px;
     -unity-text-align: middle-center;
-    -unity-font: url('/Assets/Other/TMP/Fonts/LiberationSans.ttf');
+    -unity-font: url('/Assets/UI/Fonts/Montserrat-Light.ttf');
+}
+
+.general-slider {
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    flex-direction: row;
+    font-size: 50px;
+    -unity-text-align: middle-center;
+    -unity-font: url('/Assets/UI/Fonts/Montserrat-Light.ttf');
+}
+
+.general-sidebar {
+    flex-direction: column;
+    width: 900px;
+    background-color: rgba(255, 255, 255, 0.61);
+    align-items: center;
+    justify-content: space-around;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
 .general-button {
@@ -37,6 +60,7 @@
     padding-right: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
+    -unity-font: url('/Assets/UI/Fonts/Montserrat-Light.ttf');
 }
 
 .button-has-icon {
@@ -81,48 +105,79 @@
     margin-right: 0;
     margin-top: 0;
     margin-bottom: 0;
-}
-
-.general-slider {
-    flex-grow: 1;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-    flex-direction: row;
-    font-size: 50px;
-    -unity-text-align: middle-center;
-    -unity-font: url('/Assets/Other/TMP/Fonts/LiberationSans.ttf');
-}
-
-.general-sidebar {
-    flex-direction: column;
-    width: 900px;
-    background-color: rgba(255, 255, 255, 0.47);
-    align-items: center;
-    justify-content: space-around;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    -unity-font: url('/Assets/UI/Fonts/Montserrat-Light.ttf');
 }
 
 .button-sidebar {
     background-color: rgb(70, 70, 70);
     font-size: 30px;
-    -unity-font-style: bold;
     height: 120px;
     width: 300px;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
+    -unity-font: url('/Assets/UI/Fonts/Montserrat-Light.ttf');
+    color: rgba(255, 255, 255, 0.95);
 }
 
-.toggle-sidebar {
-    background-color: rgba(0, 0, 0, 0);
+.description-text {
+    color: rgb(51, 51, 51);
+    -unity-text-align: middle-left;
     font-size: 30px;
-    -unity-font: url('/Assets/Other/TMP/Fonts/LiberationSans.ttf');
-    height: 50px;
+    -unity-font: url('/Assets/UI/Fonts/Montserrat-Light.ttf');
+    white-space: normal;
+}
+
+.unity-toggle {
     align-items: center;
+    justify-content: space-around;
+}
+
+.unity-toggle__label {
+    -unity-font: url('/Assets/UI/Fonts/Montserrat-Light.ttf');
+    font-size: 50px;
+    color: rgb(51, 51, 51);
+    -unity-text-align: middle-left;
+}
+
+.unity-toggle__checkmark {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0);
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0);
+}
+
+.unity-toggle > .unity-toggle__input {
+    -unity-background-image-tint-color: rgb(51, 51, 51);
+    background-image: url('/Assets/UI/Icons/Checkbox_t.png');
+    width: 40px;
+    height: 40px;
+    -unity-background-scale-mode: scale-to-fit;
+    justify-content: center;
+    align-items: center;
+    max-width: 40px;
+    max-height: 40px;
+}
+
+.unity-toggle > .unity-toggle__input:checked {
+    -unity-background-image-tint-color: rgb(51, 51, 51);
+    background-image: url('/Assets/UI/Icons/CheckboxChecked_t.png');
+    width: 40px;
+    height: 40px;
+    -unity-background-scale-mode: scale-to-fit;
+    align-items: center;
+    justify-content: center;
+    max-width: 40px;
+    max-height: 40px;
+}
+
+.unity-scroll-view__content-container {
+    align-items: center;
+    justify-content: center;
+    -unity-text-align: middle-left;
+}
+
+.unity-scroll-view__content-viewport {
     justify-content: center;
 }
