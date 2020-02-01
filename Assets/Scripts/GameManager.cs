@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour
 		None = -1,
 		Spawn,
 		Placement,
-		Interaction
+		Interaction,
+		Options
 	}
 
 	public enum LightTime

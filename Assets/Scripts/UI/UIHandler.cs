@@ -157,6 +157,7 @@ public class UIHandler : MonoBehaviour
 		// Optionen Button binden
 		root.Q<Button>("interaction-options").clickable.clicked += () =>
 		{
+			GameManager.Instance.SwitchMenu(GameManager.MenuMode.Options);
 			root.Q("interaction-panel").style.display = DisplayStyle.None;
 			root.Q("options-panel").style.display = DisplayStyle.Flex;
 		};
@@ -164,6 +165,7 @@ public class UIHandler : MonoBehaviour
 		// Options Exit Button binden
 		root.Q<Button>("options-exit").clickable.clicked += () =>
 		{
+			GameManager.Instance.SwitchMenu(GameManager.MenuMode.Interaction);
 			root.Q("desc-area").style.display = DisplayStyle.None;
 			root.Q("hideSections-area").style.display = DisplayStyle.None;
 			root.Q("options-panel").style.display = DisplayStyle.None;
