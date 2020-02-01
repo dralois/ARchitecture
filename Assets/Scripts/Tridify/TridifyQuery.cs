@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Linq;
 using System;
+using System.Collections.Generic;
 
 public class TridifyQuery
 {
@@ -17,18 +18,21 @@ public class TridifyQuery
 		return storeyNames;
 	}
 
-	public static string GetDescription(GameObject target)
+	public static List<string> GetDescription(GameObject target)
 	{
 		string returnString = "";
+        List<string> returnStrings = new List<string>();
+        returnStrings.Clear();
+
 		// Sanity Check
 		if (target == null)
-			return returnString;
+			return returnStrings;
 		// Material
 		if (target.TryGetComponent(out IfcMaterial mat))
 		{
 			// Filtern nach den Attributen die erlaubt sind
 			var attributes = mat.Attributes.Join(_materialFilter, attr => attr.Name, fltr => fltr, (attr, fltr) => "Material: " + attr.Value);
-			returnString += string.Join(System.Environment.NewLine, attributes) + System.Environment.NewLine;
+			returnStrings.Add(string.Join("", attributes));
 		}
 		// Falls Explodable (Wand, Dach..)
 		if (target.TryGetComponent(out ExplodableComponent explodable))
@@ -42,7 +46,8 @@ public class TridifyQuery
 				{
 					// Filtern nach den Attributen die erlaubt sind
 					var filtered = prop.Attributes.Join(_archiCADFilter, attr => attr.Name, fltr => fltr, (attr, fltr) => attr.Name + ": " + attr.Value);
-					returnString += string.Join(System.Environment.NewLine, filtered) + System.Environment.NewLine;
+                    Debug.Log(string.Join(System.Environment.NewLine, filtered));
+                    returnStrings.Add(string.Join("", filtered));
 				}
 			}
 		}
@@ -53,14 +58,14 @@ public class TridifyQuery
 				// Falls ArchiCAD Property
 				if (prop.Attributes.Any(attr => attr.Value == "ArchiCADProperties"))
 				{
-					// Filtern nach den Attributen die erlaubt sind
-					var filtered = prop.Attributes.Join(_archiCADFilter, attr => attr.Name, fltr => fltr, (attr, fltr) => attr.Name + ": " + attr.Value);
-					returnString += string.Join(System.Environment.NewLine, filtered) + System.Environment.NewLine;
+                    // Filtern nach den Attributen die erlaubt sind
+                    var filtered = prop.Attributes.Join(_archiCADFilter, attr => attr.Name, fltr => fltr, (attr, fltr) => attr.Name + ": " + attr.Value);
+                    returnStrings.Add(string.Join("", filtered));
 				}
 			}
 		}
 		// Kombinierten Info-String zurueck
-		return returnString;
+		return returnStrings;
 	}
 
 	public static string GetTitle(GameObject target)

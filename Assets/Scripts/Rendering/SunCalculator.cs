@@ -45,7 +45,7 @@ public class SunCalculator : MonoBehaviour
 		_nightLight.gameObject.SetActive(_sunLight.intensity == 0);
 	}
 
-	private void Start()
+	public void Start()
 	{
 		_time = DateTime.Now;
 		_hour = _time.Hour;

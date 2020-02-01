@@ -15,9 +15,10 @@ public class PlaceOnPlane : MonoBehaviour
 	private List<ARRaycastHit> _Hits = new List<ARRaycastHit>();
 	private ARRaycastManager _RaycastManager;
 	private GameObject _spawnedObject;
-	private static Vector3 originalScale;
+	public static Vector3 originalScale;
+    public static float originalRot;
 
-	private void X_TouchStarted(Finger finger)
+    private void X_TouchStarted(Finger finger)
 	{
 		if (finger.index == 0 && GameManager.Instance.CurrentMenu == GameManager.MenuMode.Spawn)
 		{
@@ -37,6 +38,7 @@ public class PlaceOnPlane : MonoBehaviour
 				GameManager.Instance.PlacedIFC = Instantiate(_placedPrefab, hitPose.position + new Vector3(0f, 0.0001f, 0f), hitPose.rotation);
 				GameManager.Instance.SwitchMenu(GameManager.MenuMode.Placement);
 				originalScale = GameManager.Instance.PlacedIFC.transform.localScale;
+                originalRot = GameManager.Instance.PlacedIFC.transform.localRotation.y;
 				// Detection deaktivieren
 				GetComponent<ARPlaneManager>().detectionMode = PlaneDetectionMode.None;
 				GetComponent<ARTrackedObjectManager>().referenceLibrary = null;
@@ -63,25 +65,5 @@ public class PlaceOnPlane : MonoBehaviour
 	{
 		Touch.onFingerDown -= X_TouchStarted;
 	}
-
-
-	public static void ChangeScaling(int scalingValue)
-	{
-		float scaling;
-		if (scalingValue < 0)
-		{
-			scaling = 1 / Math.Abs(scalingValue);
-		}
-		else
-		{
-			scaling = scalingValue;
-		}
-
-		Debug.Log(GameManager.MenuMode.Placement.ToString());
-		Vector3 scaleChange = new Vector3(1.0f, 1.0f, 1.0f) * scaling;
-		scaleChange += originalScale;
-		GameManager.Instance.PlacedIFC.transform.localScale = scaleChange;
-	}
-
-
+    
 }

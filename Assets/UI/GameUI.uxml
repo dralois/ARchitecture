@@ -3,13 +3,13 @@
         <Style src="GameUI.uss" />
         <ui:VisualElement name="top-area" style="flex-grow: 1;">
             <ui:VisualElement name="desc-area" style="right: 0; width: 33%; height: 100%; position: absolute; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; bottom: auto; padding-left: 5%; padding-right: 5%; padding-top: 5%; padding-bottom: 5%; left: auto; background-color: rgba(255, 255, 255, 0.61);">
-                <ui:Label text="Label" name="desc-heading" style="max-height: 100px; white-space: normal; font-size: 50px; -unity-font: url('/Assets/Other/TMP/Fonts/LiberationSans.ttf');" />
-                <ui:Label text="Label" name="desc-txt" style="max-height: 150px; white-space: normal; font-size: 30px; -unity-font: url('/Assets/Other/TMP/Fonts/LiberationSans.ttf');" />
-                <ui:Button text="More" name="desc-btn" style="font-size: 30px; -unity-font-style: bold; margin-left: 10%; margin-right: 10%; margin-top: 10%; padding-left: 8%; padding-right: 8%; padding-top: 8%; padding-bottom: 8%; background-color: rgb(70, 70, 70); color: rgb(255, 255, 255);" />
+                <ui:TextElement text="Label" name="desc-heading" style="max-height: 100px; white-space: normal; font-size: 50px; -unity-font: url('/Assets/Other/TMP/Fonts/LiberationSans.ttf');" />
+                <ui:VisualElement name="desc-txt" style="max-height: 150px; white-space: normal; font-size: 30px; -unity-font: url('/Assets/Other/TMP/Fonts/LiberationSans.ttf'); width:auto; height:auto; position:relative;" />
+                <ui:Button text="More" name="desc-btn" style="font-size: 30px; -unity-font-style: bold; margin-left: 10%; margin-right: 10%; margin-top: 10%; padding-left: 8%; padding-right: 8%; padding-top: 8%; padding-bottom: 8%; background-color: rgb(70, 70, 70); color: rgb(255, 255, 255); position:relative;" />
             </ui:VisualElement>
             <ui:VisualElement name="hideSections-area" style="right: 0; width: 33%; height: 100%; position: absolute; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; bottom: auto; padding-left: 5%; padding-right: 5%; padding-top: 5%; padding-bottom: 5%; left: auto; background-color: rgba(255, 255, 255, 0.61);">
-                <ui:Label text="Display/hide building storeys" name="hideSections-heading" style="white-space: normal; height: auto; width: auto; max-height: 100px; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 10%; font-size: 50px; -unity-font-style: bold; -unity-font: url('/Assets/Other/TMP/Fonts/LiberationSans.ttf');" />
-                <ui:Label text="Disable the respective toggle to hide a storey and enable it to display it. Click reset to set up the start settings. " name="hideSections-txt" style="white-space: normal; font-size: 30px; max-height: 150px; -unity-font: url('/Assets/Other/TMP/Fonts/LiberationSans.ttf'); margin-left: 0; margin-right: 0; margin-top: 5%; margin-bottom: 5%;" />
+                <ui:TextElement text="Display/hide building storeys" name="hideSections-heading" style="white-space: normal; height: auto; width: auto; max-height: 100px; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 10%; font-size: 50px; -unity-font-style: bold; -unity-font: url('/Assets/Other/TMP/Fonts/LiberationSans.ttf');" />
+                <ui:TextElement text="Disable the respective toggle to hide a storey and enable it to display it. Click reset to set up the start settings. " name="hideSections-txt" style="white-space: normal; font-size: 30px; max-height: 150px; -unity-font: url('/Assets/Other/TMP/Fonts/LiberationSans.ttf'); margin-left: 0; margin-right: 0; margin-top: 5%; margin-bottom: 5%;" />
                 <ui:VisualElement name="toggle-area" />
                 <ui:Button text="Reset" name="reset-btn" style="font-size: 30px; -unity-font-style: bold; margin-left: 10%; margin-right: 10%; margin-top: 10%; padding-left: 8%; padding-right: 8%; padding-top: 8%; padding-bottom: 8%; background-color: rgb(70, 70, 70); color: rgb(255, 255, 255);" />
             </ui:VisualElement>
@@ -30,12 +30,38 @@
                 </ui:Button>
             </ui:VisualElement>
             <ui:VisualElement name="placement-edit-panel" class="general-panel" style="background-color: rgb(165, 165, 165); position: relative;">
-                <ui:Button name="scaling-accept" class="general-button" style="background-color: rgb(0, 78, 0);">
+              <ui:Button name="placement-edit-accept" class="general-button" style="background-color: rgb(0, 78, 0);">
+                <ui:VisualElement name="placement-accept-icon" class="button-has-icon" style="background-image: url('/Assets/Textures/Mockup/checkmark.png');" />
+                <ui:Label name="placement-accept-text" text="Done" class="general-text" style="color: rgb(255, 255, 255);" />
+              </ui:Button>
+              <ui:Button text="Scale" name="scale-obj" class="button-options" />
+              <ui:Button text="Rotate" name="rotate-obj" class="button-options" />
+              <ui:Button text="Move" name="move-obj" class="button-options" />
+            </ui:VisualElement>
+          <ui:VisualElement name="placement-edit-scale-panel" class="general-panel" style="background-color: rgb(165, 165, 165); position: relative;">
+            <ui:Button name="scaling-accept" class="general-button" style="background-color: rgb(0, 78, 0);">
                     <ui:VisualElement name="placement-accept-icon" class="button-has-icon" style="background-image: url('/Assets/Textures/Mockup/checkmark.png');" />
                     <ui:Label name="placement-accept-text" text="Accept Scaling" class="general-text" style="color: rgb(255, 255, 255);" />
                 </ui:Button>
-                <ui:SliderInt name="scale-edit-slider" label="Scale-Ratio" value="0" low-value="-10" high-value="10" style="font-size: 30px; color: rgb(231, 27, 27); width: auto; height: 100px; align-items: auto; position: relative; flex-grow: 1; margin-left: 50px;" />
+                <ui:SliderInt name="scale-edit-slider" label="Scale:" value="0" low-value="-10" high-value="75" style="font-size: 30px; color: rgb(231, 27, 27); width: auto; height: 100px; align-items: auto; position: relative; flex-grow: 1; margin-left: 50px;" />
             </ui:VisualElement>
+          <ui:VisualElement name="placement-edit-rotate-panel" class="general-panel" style="background-color: rgb(165, 165, 165); position: relative;">
+            <ui:Button name="rotation-accept" class="general-button" style="background-color: rgb(0, 78, 0);">
+              <ui:VisualElement name="placement-accept-icon" class="button-has-icon" style="background-image: url('/Assets/Textures/Mockup/checkmark.png');" />
+              <ui:Label name="rotation-accept-text" text="Accept Rotation" class="general-text" style="color: rgb(255, 255, 255);" />
+            </ui:Button>
+            <ui:SliderInt name="rotate-edit-slider" label="Rotate:" value="0" low-value="0" high-value="100" style="font-size: 30px; color: rgb(231, 27, 27); width: auto; height: 100px; align-items: auto; position: relative; flex-grow: 1; margin-left: 50px;" />
+          </ui:VisualElement>
+          <ui:VisualElement name="placement-edit-position-panel" class="general-panel" style="background-color: rgb(165, 165, 165); position: relative;">
+              <ui:Button name="move-accept" class="general-button" style="background-color: rgb(0, 78, 0);">
+                <ui:VisualElement name="placement-accept-icon" class="button-has-icon" style="background-image: url('/Assets/Textures/Mockup/checkmark.png');" />
+                <ui:Label name="move-accept-text" text="Accept Position" class="general-text" style="color: rgb(255, 255, 255);" />
+              </ui:Button>
+              <ui:Button text="To Back" name="move-up" class="button-options" style="width:350px;" />
+              <ui:Button text="To Front" name="move-down" class="button-options" style="width:350px;" />
+              <ui:Button text="Left" name="move-left" class="button-options" style="width:350px;" />
+              <ui:Button text="Right" name="move-right" class="button-options" style="width:350px;" />
+          </ui:VisualElement>
             <ui:VisualElement name="interaction-panel" class="general-panel" style="display: none;">
                 <ui:Button name="interaction-options" class="button-is-icon" style="-unity-background-image-tint-color: rgb(51, 51, 51); background-image: url('/Assets/Textures/Mockup/foldout.png');" />
                 <ui:VisualElement name="interaction-info" style="flex-direction: row; justify-content: flex-start; align-items: center; flex-wrap: no-wrap; flex-grow: 1; flex-shrink: 0;">
@@ -45,9 +71,20 @@
             </ui:VisualElement>
             <ui:VisualElement name="options-panel" class="general-panel" style="background-color: rgb(51, 51, 51); display: none;">
                 <ui:Button name="options-exit" class="button-is-icon" style="background-image: url('/Assets/Textures/Mockup/cross.png'); -unity-background-image-tint-color: rgb(255, 255, 255); width: 100px; height: 100px;" />
-                <ui:Button text="Hide Building Sections" name="options-sections-edit" class="button-options" />
+                <ui:Button text="Hide Storey(s)" name="options-storeys-edit" class="button-options" />
                 <ui:Button text="Switch Ghosted" name="options-switch-ghosted" class="button-options" />
+                <ui:Button text="Create Section" name="options-sections-create" class="button-options" />
+                <ui:Button text="Switch Daytime" name="options-switch-daytime" class="button-options" />
             </ui:VisualElement>
+          <ui:VisualElement name="create-section-panel" class="general-panel" style="background-color: rgb(165, 165, 165); position: relative;">
+            <ui:Button name="create-section-panel-exit" class="button-is-icon" style="background-image: url('/Assets/Textures/Mockup/cross.png'); -unity-background-image-tint-color: rgb(255, 255, 255); width: 100px; height: 100px;" />
+            <ui:Button text="Create Section" name="create-section" class="button-options" />
+            <ui:SliderInt name="move-section-slider" label="Move:" value="50" low-value="0" high-value="100" style="font-size: 30px; color: rgb(231, 27, 27); width: auto; height: 100px; align-items: auto; position: relative; flex-grow: 1; margin-left: 50px;" />
+          </ui:VisualElement>
+          <ui:VisualElement name="switch-daytime-panel" class="general-panel" style="background-color: rgb(165, 165, 165); position: relative;">
+            <ui:Button name="switch-daytime-exit" class="button-is-icon" style="background-image: url('/Assets/Textures/Mockup/cross.png'); -unity-background-image-tint-color: rgb(255, 255, 255); width: 100px; height: 100px;" />
+            <ui:SliderInt name="daytime-slider" label="Change Daytime" value="0" low-value="0" high-value="1440" style="font-size: 30px; color: rgb(231, 27, 27); width: auto; height: 100px; align-items: auto; position: relative; flex-grow: 1; margin-left: 50px;" />
+          </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

@@ -33,7 +33,8 @@ public class TridifyInteractor : MonoBehaviour
 				_lastHit.layer = LayerMask.NameToLayer("Tridify");
 			// GameObjekt des Hits holen
 			_lastHit = hit.transform.gameObject;
-			#region RemoveMe
+			/*
+             * #region RemoveMe
 			// ggf. alte GUI loeschen
 			if (_descSpawned)
 				Destroy(_descSpawned.gameObject);
@@ -43,6 +44,7 @@ public class TridifyInteractor : MonoBehaviour
 			_descSpawned.FillDescription(TridifyQuery.GetTitle(_lastHit),
 										TridifyQuery.GetDescription(_lastHit));
 			#endregion
+            */
 			// Layer anpassen
 			_lastHit.layer = LayerMask.NameToLayer("Outline");
 			// Description setzen

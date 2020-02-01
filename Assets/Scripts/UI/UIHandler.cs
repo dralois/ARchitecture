@@ -10,6 +10,7 @@ public class UIHandler : MonoBehaviour
 
 	private static PanelRenderer _UIRenderer = null;
 	private string[] storeyNames = TridifyQuery.GetStoreyNames();
+    private SunCalculator _sunCalculator = null;
 
 	private void X_MenuChanged(GameManager.MenuMode newMode)
 	{
@@ -52,28 +53,89 @@ public class UIHandler : MonoBehaviour
 			GameManager.Instance.SwitchMenu(GameManager.MenuMode.Interaction);
 		};
 
-		root.Q<Button>("placement-edit").clickable.clicked += () =>
-		{
-			// Von Placement Uebersicht zu Placement Edit wechseln
-			_UIRenderer.visualTree.Q("placement-panel").style.display = DisplayStyle.None;
-			_UIRenderer.visualTree.Q("placement-edit-panel").style.display = DisplayStyle.Flex;
+        root.Q<Button>("placement-edit").clickable.clicked += () =>
+        {
+            _UIRenderer.visualTree.Q("placement-panel").style.display = DisplayStyle.None;
+            _UIRenderer.visualTree.Q("placement-edit-panel").style.display = DisplayStyle.Flex;
+        };
 
-			Debug.Log("slider value: " + root.Q<SliderInt>("scale-edit-slider").value.ToString());
+        root.Q<Button>("placement-edit-accept").clickable.clicked += () =>
+        {
+            _UIRenderer.visualTree.Q("placement-edit-panel").style.display = DisplayStyle.None;
+            _UIRenderer.visualTree.Q("placement-panel").style.display = DisplayStyle.Flex;
+        };
+
+        root.Q<Button>("scale-obj").clickable.clicked += () =>
+        {
+            _UIRenderer.visualTree.Q("placement-edit-panel").style.display = DisplayStyle.None;
+            _UIRenderer.visualTree.Q("placement-edit-scale-panel").style.display = DisplayStyle.Flex;
+
 			root.Q<SliderInt>("scale-edit-slider").RegisterCallback<ChangeEvent<int>>(evt =>
 			{
 				Debug.Log("slider " + evt.newValue);
-				PlaceOnPlane.ChangeScaling(evt.newValue);
+				PlacementEdit.ChangeScaling(evt.newValue);
 			});
 		};
 
 		root.Q<Button>("scaling-accept").clickable.clicked += () =>
 		{
 			// Von Scaling Options zu Placement Uebersicht wechseln
-			_UIRenderer.visualTree.Q("placement-panel").style.display = DisplayStyle.Flex;
-			_UIRenderer.visualTree.Q("placement-edit-panel").style.display = DisplayStyle.None;
+			_UIRenderer.visualTree.Q("placement-edit-panel").style.display = DisplayStyle.Flex;
+			_UIRenderer.visualTree.Q("placement-edit-scale-panel").style.display = DisplayStyle.None;
 		};
 
-		root.Q<Button>("interaction-options").clickable.clicked += () =>
+        root.Q<Button>("rotate-obj").clickable.clicked += () =>
+        {
+            _UIRenderer.visualTree.Q("placement-edit-panel").style.display = DisplayStyle.None;
+            _UIRenderer.visualTree.Q("placement-edit-rotate-panel").style.display = DisplayStyle.Flex;
+
+            root.Q<SliderInt>("rotate-edit-slider").RegisterCallback<ChangeEvent<int>>(evt =>
+            {
+                PlacementEdit.ChangeRotation(evt.newValue);
+            });
+        };
+
+        root.Q<Button>("rotation-accept").clickable.clicked += () =>
+        {
+            // Von Scaling Options zu Placement Uebersicht wechseln
+            _UIRenderer.visualTree.Q("placement-edit-panel").style.display = DisplayStyle.Flex;
+            _UIRenderer.visualTree.Q("placement-edit-rotate-panel").style.display = DisplayStyle.None;
+        };
+
+        root.Q<Button>("move-accept").clickable.clicked += () =>
+        {
+            // Von Scaling Options zu Placement Uebersicht wechseln
+            _UIRenderer.visualTree.Q("placement-edit-panel").style.display = DisplayStyle.Flex;
+            _UIRenderer.visualTree.Q("placement-edit-position-panel").style.display = DisplayStyle.None;
+        };
+
+        root.Q<Button>("move-obj").clickable.clicked += () =>
+        {
+            _UIRenderer.visualTree.Q("placement-edit-panel").style.display = DisplayStyle.None;
+            _UIRenderer.visualTree.Q("placement-edit-position-panel").style.display = DisplayStyle.Flex;
+        };
+
+        root.Q<Button>("move-up").clickable.clicked += () =>
+        {
+            PlacementEdit.ChangePositionUp();
+        };
+
+        root.Q<Button>("move-down").clickable.clicked += () =>
+        {
+            PlacementEdit.ChangePositionDown();
+        };
+
+        root.Q<Button>("move-left").clickable.clicked += () =>
+        {
+            PlacementEdit.ChangePositionLeft();
+        };
+
+        root.Q<Button>("move-right").clickable.clicked += () =>
+        {
+            PlacementEdit.ChangePositionRight();
+        };
+        
+        root.Q<Button>("interaction-options").clickable.clicked += () =>
 		{
 			// Von Interaction Uebersicht zu Interaction Options wechseln
 			_UIRenderer.visualTree.Q("interaction-panel").style.display = DisplayStyle.None;
@@ -86,7 +148,9 @@ public class UIHandler : MonoBehaviour
 			_UIRenderer.visualTree.Q("desc-area").style.display = DisplayStyle.None;
 			_UIRenderer.visualTree.Q("hideSections-area").style.display = DisplayStyle.None;
 			_UIRenderer.visualTree.Q("options-panel").style.display = DisplayStyle.None;
-			_UIRenderer.visualTree.Q("interaction-panel").style.display = DisplayStyle.Flex;
+            _UIRenderer.visualTree.Q("create-section-panel").style.display = DisplayStyle.None;
+            _UIRenderer.visualTree.Q("switch-daytime-panel").style.display = DisplayStyle.None;
+            _UIRenderer.visualTree.Q("interaction-panel").style.display = DisplayStyle.Flex;
 		};
 
 		root.Q<Button>("options-switch-ghosted").clickable.clicked += () =>
@@ -99,7 +163,7 @@ public class UIHandler : MonoBehaviour
             _UIRenderer.visualTree.Q("hideSections-area").style.display = DisplayStyle.None;
         };
 
-		root.Q<Button>("options-sections-edit").clickable.clicked += () =>
+		root.Q<Button>("options-storeys-edit").clickable.clicked += () =>
 		{
 			_UIRenderer.visualTree.Q("hideSections-area").style.display = DisplayStyle.Flex;
             _UIRenderer.visualTree.Q("desc-area").style.display = DisplayStyle.None;
@@ -112,13 +176,11 @@ public class UIHandler : MonoBehaviour
                     storeyToggle.name = "toggle-" + storey;
                     storeyToggle.value = true;
                     root.Q("toggle-area").Add(storeyToggle);
-                }
-                    
+                }     
 			}
 
 			foreach (string storey in storeyNames)
 				root.Q("toggle-area").Q<Toggle>("toggle-" + storey).RegisterCallback<ChangeEvent<bool>>(e => TridifyQuery.changeStoreyState(e.newValue, storey));
-
 		};
 
 		root.Q<Button>("reset-btn").clickable.clicked += () =>
@@ -130,18 +192,68 @@ public class UIHandler : MonoBehaviour
 			}
 		};
 
+        root.Q<Button>("options-sections-create").clickable.clicked += () =>
+        {
+            _UIRenderer.visualTree.Q("options-panel").style.display = DisplayStyle.None;
+            _UIRenderer.visualTree.Q("create-section-panel").style.display = DisplayStyle.Flex;
 
-		// Initialisieren
-		_UIRenderer.visualTree.Q("info-panel").style.display = DisplayStyle.Flex;
+            root.Q<SliderInt>("move-section-slider").RegisterCallback<ChangeEvent<int>>(evt =>
+            {
+                float value = (float)evt.newValue / 100.0f;
+                Debug.Log("SectionCreate, value: " + evt.newValue+",Floatvalue: "+value);
+                CameraController.SetCutPlane(value);
+            });
+        };
+
+        root.Q<Button>("create-section").clickable.clicked += () =>
+        {
+            CameraController.SetCutPlane(50.0f);
+        };
+
+        root.Q<Button>("create-section-panel-exit").clickable.clicked += () =>
+        {
+            _UIRenderer.visualTree.Q("create-section-panel").style.display = DisplayStyle.None;
+            _UIRenderer.visualTree.Q("options-panel").style.display = DisplayStyle.Flex;
+        };     
+
+        root.Q<Button>("options-switch-daytime").clickable.clicked += () =>
+        {
+            _UIRenderer.visualTree.Q("options-panel").style.display = DisplayStyle.None;
+            _UIRenderer.visualTree.Q("switch-daytime-panel").style.display = DisplayStyle.Flex;
+
+            root.Q<SliderInt>("daytime-slider").RegisterCallback<ChangeEvent<int>>(evt =>
+            {
+                Debug.Log("SunLight changed, value: " + evt.newValue);
+                int hours = evt.newValue / 60;
+                int minutes = evt.newValue % 60;
+                Debug.Log("hours: " + hours+",minutes: "+minutes);
+                _sunCalculator.SetTime(hours, minutes);
+            });
+        };
+
+        root.Q<Button>("switch-daytime-exit").clickable.clicked += () =>
+        {
+            _UIRenderer.visualTree.Q("switch-daytime-panel").style.display = DisplayStyle.None;
+            _UIRenderer.visualTree.Q("options-panel").style.display = DisplayStyle.Flex;
+        };
+
+
+        // Initialisieren
+        _UIRenderer.visualTree.Q("info-panel").style.display = DisplayStyle.Flex;
 		_UIRenderer.visualTree.Q("placement-panel").style.display = DisplayStyle.None;
 		_UIRenderer.visualTree.Q("options-panel").style.display = DisplayStyle.None;
 		_UIRenderer.visualTree.Q("interaction-panel").style.display = DisplayStyle.None;
-		//_UIRenderer.visualTree.Q("decoration-panel").style.display = DisplayStyle.None;
 		_UIRenderer.visualTree.Q("desc-area").style.display = DisplayStyle.None;
 		_UIRenderer.visualTree.Q("hideSections-area").style.display = DisplayStyle.None;
 		_UIRenderer.visualTree.Q("placement-edit-panel").style.display = DisplayStyle.None;
+        _UIRenderer.visualTree.Q("placement-edit-scale-panel").style.display = DisplayStyle.None;
+        _UIRenderer.visualTree.Q("placement-edit-rotate-panel").style.display = DisplayStyle.None;
+        _UIRenderer.visualTree.Q("placement-edit-position-panel").style.display = DisplayStyle.None;
+        _UIRenderer.visualTree.Q("create-section-panel").style.display = DisplayStyle.None;
+        _UIRenderer.visualTree.Q("switch-daytime-panel").style.display = DisplayStyle.None;
 
-		return null;
+
+        return null;
 	}
 
 	private void Awake()
@@ -149,24 +261,23 @@ public class UIHandler : MonoBehaviour
 		_UIRenderer = GetComponent<PanelRenderer>();
 		_UIRenderer.postUxmlReload = BindPanel;
 		GameManager.Instance.MenuChanged += X_MenuChanged;
-	}
+        _sunCalculator = GetComponent<SunCalculator>();
 
-	private void CheckActiveStoreys()
-	{
-		Debug.Log("enter the method");
-		/*foreach (string storey in storeyNames)
-		{
-				UIRenderer.visualTree.Q<Toggle>;
-		}*/
-		// alle toggle durchgehen, active toggle in liste, dann an TridifyQuery übergeben...
-	}
+    }
 
-	public static void ShowDescription(string title, string desc)
+	public static void ShowDescription(string title, List<string> descs)
 	{
 		_UIRenderer.visualTree.Q("desc-area").style.display = DisplayStyle.Flex;
         _UIRenderer.visualTree.Q("hideSections-area").style.display = DisplayStyle.None;
-        _UIRenderer.visualTree.Q<Label>("desc-heading").text = title;
-		_UIRenderer.visualTree.Q<Label>("desc-txt").text = desc;
+        _UIRenderer.visualTree.Q<TextElement>("desc-heading").text = title;
+
+        foreach (string desc in descs)
+        {
+            TextElement descLabel = new TextElement();
+            descLabel.AddToClassList("desc-label");
+            descLabel.text = desc;
+            _UIRenderer.visualTree.Q("desc-txt").Add(descLabel);
+        }
 	}
 
 	public void HideDescription()

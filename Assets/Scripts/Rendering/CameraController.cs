@@ -10,12 +10,12 @@ public class CameraController : MonoBehaviour
 		Ghosted
 	}
 
-	[SerializeField] private float _maxCutPlane = 5.0f;
+	[SerializeField] private static float _maxCutPlane = 5.0f;
 
 	private Visualization _currVis = Visualization.Normal;
 	private UniversalAdditionalCameraData _cameraData = null;
-	private float _nearDefault = 0f;
-	private Camera _camera = null;
+	private static float _nearDefault = 0f;
+	private static Camera _camera = null;
 
 	public event System.Action<Visualization> VisualizationChanged;
 
@@ -23,7 +23,7 @@ public class CameraController : MonoBehaviour
 	/// Schnittebene setzen
 	/// </summary>
 	/// <param name="percent">0-1 (ca. 0-5m)</param>
-	public void SetCutPlane(float percent)
+	public static void SetCutPlane(float percent)
 	{
 		// Near Plane verschieben
 		_camera.nearClipPlane = Mathf.Lerp(_nearDefault, _maxCutPlane, Mathf.Clamp01(percent));
