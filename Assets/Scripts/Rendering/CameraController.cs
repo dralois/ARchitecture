@@ -19,14 +19,10 @@ public class CameraController : MonoBehaviour
 
 	public event System.Action<Visualization> VisualizationChanged;
 
-	/// <summary>
-	/// Schnittebene setzen
-	/// </summary>
-	/// <param name="percent">0-1 (ca. 0-5m)</param>
 	public void SetCutPlane(float percent)
 	{
 		// Near Plane verschieben
-		_camera.nearClipPlane = Mathf.Lerp(_nearDefault, _maxCutPlane, Mathf.Clamp01(percent));
+		_camera.nearClipPlane = Mathf.Lerp(_nearDefault, _maxCutPlane, Mathf.Clamp01(percent / 100f));
 	}
 
 	public float GetCutPlane()

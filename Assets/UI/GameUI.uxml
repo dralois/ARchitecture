@@ -32,12 +32,38 @@
                     <ui:Label text="Edit Placement" name="placement-edit-text" class="general-text" style="color: rgb(255, 255, 255);" />
                 </ui:Button>
             </ui:VisualElement>
-            <ui:VisualElement name="placement-edit-panel" class="general-panel" style="padding: 10px 5%; display: none;">
+            <ui:VisualElement name="placement-edit-panel" class="general-panel" style="padding: 10px 5%; background-color: rgb(51, 51, 51); display: none;">
+                <ui:Button name="placement-edit-accept" class="general-button" style="background-color: rgb(0, 78, 0);">
+                    <ui:VisualElement name="placement-accept-icon" class="button-has-icon" style="background-image: url('/Assets/UI/Icons/Checkmark_t.png');" />
+                    <ui:Label name="placement-accept-text" text="Done" class="general-text" style="color: rgb(255, 255, 255);" />
+                </ui:Button>
+                <ui:Button text="Scale" name="scale-obj" class="button-options" />
+                <ui:Button text="Rotate" name="rotate-obj" class="button-options" />
+                <ui:Button text="Move" name="move-obj" class="button-options" />
+            </ui:VisualElement>
+            <ui:VisualElement name="placement-edit-scale-panel" class="general-panel" style="display: none;">
                 <ui:Button name="scaling-accept" class="general-button" style="background-color: rgb(0, 78, 0);">
                     <ui:VisualElement name="placement-accept-icon" class="button-has-icon" style="background-image: url('/Assets/UI/Icons/Checkmark_t.png');" />
                     <ui:Label name="placement-accept-text" text="Accept Scaling" class="general-text" style="color: rgb(255, 255, 255);" />
                 </ui:Button>
-                <ui:Slider picking-mode="Ignore" label="Scale" value="0" high-value="10" name="scale-edit-slider" low-value="-10" page-size="1" class="general-slider" />
+                <ui:Slider picking-mode="Ignore" label="Scale:" value="0" high-value="75" name="scale-edit-slider" low-value="-10" page-size="1" class="general-slider" />
+            </ui:VisualElement>
+            <ui:VisualElement name="placement-edit-rotate-panel" class="general-panel" style="display: none;">
+                <ui:Button name="rotation-accept" class="general-button" style="background-color: rgb(0, 78, 0);">
+                    <ui:VisualElement name="placement-accept-icon" class="button-has-icon" style="background-image: url('/Assets/UI/Icons/Checkmark_t.png');" />
+                    <ui:Label name="rotation-accept-text" text="Accept Rotation" class="general-text" style="color: rgb(255, 255, 255);" />
+                </ui:Button>
+                <ui:Slider picking-mode="Ignore" label="Rotate:" value="0" high-value="360" name="rotate-edit-slider" low-value="0" page-size="1" class="general-slider" />
+            </ui:VisualElement>
+            <ui:VisualElement name="placement-edit-position-panel" class="general-panel" style="background-color: rgb(51, 51, 51); display: none;">
+                <ui:Button name="move-accept" class="general-button" style="background-color: rgb(0, 78, 0);">
+                    <ui:VisualElement name="placement-accept-icon" class="button-has-icon" style="background-image: url('/Assets/UI/Icons/Checkmark_t.png');" />
+                    <ui:Label name="move-accept-text" text="Accept Position" class="general-text" style="color: rgb(255, 255, 255);" />
+                </ui:Button>
+                <ui:Button text="Backwards" name="move-up" class="button-options" style="width: 350px;" />
+                <ui:Button text="Forwards" name="move-down" class="button-options" style="width: 350px;" />
+                <ui:Button text="Left" name="move-left" class="button-options" style="width: 350px;" />
+                <ui:Button text="Right" name="move-right" class="button-options" style="width: 350px;" />
             </ui:VisualElement>
             <ui:VisualElement name="interaction-panel" class="general-panel" style="display: none;">
                 <ui:Button name="interaction-options" class="button-is-icon" style="-unity-background-image-tint-color: rgb(51, 51, 51); background-image: url('/Assets/UI/Icons/Foldout_t.png');" />
@@ -48,9 +74,19 @@
             </ui:VisualElement>
             <ui:VisualElement name="options-panel" class="general-panel" style="background-color: rgb(51, 51, 51); display: none;">
                 <ui:Button name="options-exit" class="button-is-icon" style="background-image: url('/Assets/UI/Icons/Cross_t.png'); -unity-background-image-tint-color: rgb(255, 255, 255); width: 100px; height: 100px;" />
-                <ui:Button text="Hide Building Sections" name="options-sections-edit" class="button-options" />
+                <ui:Button text="Hide Storeys" name="options-storeys-edit" class="button-options" />
                 <ui:Button text="Switch Ghosted" name="options-switch-ghosted" class="button-options" />
+                <ui:Button text="Create Section" name="options-sections-create" class="button-options" />
                 <ui:Button text="Switch Scale" name="options-scale" class="button-options" />
+                <ui:Button text="Change Daylight" name="options-switch-daytime" class="button-options" />
+            </ui:VisualElement>
+            <ui:VisualElement name="create-section-panel" class="general-panel" style="display: none;">
+                <ui:Button name="create-section-panel-exit" class="button-is-icon" style="background-image: url('/Assets/UI/Icons/Cross_t.png'); -unity-background-image-tint-color: rgb(51, 51, 51); width: 100px; height: 100px;" />
+                <ui:Slider picking-mode="Ignore" label="Move:" value="0" high-value="100" name="move-section-slider" low-value="0" page-size="1" class="general-slider" />
+            </ui:VisualElement>
+            <ui:VisualElement name="switch-daytime-panel" class="general-panel" style="display: none;">
+                <ui:Button name="switch-daytime-exit" class="button-is-icon" style="background-image: url('/Assets/UI/Icons/Cross_t.png'); -unity-background-image-tint-color: rgb(51, 51, 51); width: 100px; height: 100px;" />
+                <ui:Slider picking-mode="Ignore" label="Change time of day:" value="0" high-value="1440" name="daytime-slider" low-value="0" page-size="1" class="general-slider" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

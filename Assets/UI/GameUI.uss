@@ -90,9 +90,9 @@
 .button-options {
     background-color: rgb(255, 255, 255);
     color: rgb(51, 51, 51);
-    width: 550px;
+    width: 350px;
     height: 120px;
-    font-size: 45px;
+    font-size: 40px;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -180,4 +180,27 @@
 
 .unity-scroll-view__content-viewport {
     justify-content: center;
+}
+
+#unity-dragger {
+    width: 75px;
+    height: 50px;
+    position: absolute;
+}
+
+#unity-tracker {
+    height: 30px;
+    position: relative;
+}
+
+.unity-slider__label {
+    -unity-font: url('/Assets/UI/Fonts/Montserrat-Light.ttf');
+    font-size: 50px;
+    color: rgb(51, 51, 51);
+    -unity-text-align: middle-left;
+}
+
+.clicked-button {
+    background-color: rgba(0, 78, 0, 255);
+    color: rgb(255, 255, 255);
 }

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class TridifyQuery
 {
 
-	private static string[] _storeyNames = { "EG", "1. OG" };
+	private static string[] _storeyNames = { "1. OG", "EG" };
 
 	private static string[] _materialFilter = { "Name" };
 	private static string[] _archiCADFilter = { "Nominale B x H x T", "Innenseite Oberfläche", "Außenseite Oberfläche" };

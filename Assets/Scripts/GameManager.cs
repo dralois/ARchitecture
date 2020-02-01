@@ -21,8 +21,8 @@ public class GameManager : MonoBehaviour
 
 	public enum SizeMode
 	{
-		Model,
-		Normal
+		Normal,
+		Scaled
 	}
 
 	#endregion
@@ -32,8 +32,9 @@ public class GameManager : MonoBehaviour
 	// Singleton
 	private static GameManager _instance = null;
 
-	private Vector3 originalScale;
 	private GameObject _placedIFC = null;
+	private Vector3 _originalScale = Vector3.one;
+	private float _originalRot = 0f;
 
 	#endregion
 
@@ -57,7 +58,8 @@ public class GameManager : MonoBehaviour
 		set
 		{
 			_placedIFC = value;
-			originalScale = _placedIFC.transform.localScale;
+			_originalScale = _placedIFC.transform.localScale;
+			_originalRot = _placedIFC.transform.localRotation.eulerAngles.y;
 		}
 	}
 
@@ -69,7 +71,7 @@ public class GameManager : MonoBehaviour
 
 	public LightTime CurrentLight { get; private set; } = LightTime.Day;
 
-	public SizeMode CurrentSize { get; private set; } = SizeMode.Model;
+	public SizeMode CurrentSize { get; private set; } = SizeMode.Normal;
 
 	#endregion
 
@@ -139,14 +141,14 @@ public class GameManager : MonoBehaviour
 			// Aktion je nach Groesse
 			switch (nextSize)
 			{
-				case SizeMode.Model:
-					{
-
-						break;
-					}
 				case SizeMode.Normal:
 					{
-
+						_placedIFC.transform.localScale /= 10;
+						break;
+					}
+				case SizeMode.Scaled:
+					{
+						_placedIFC.transform.localScale *= 10;
 						break;
 					}
 			}
@@ -156,22 +158,24 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	public void ChangeScaling(int scalingValue)
+	public void ChangeScaling(float scalingValue)
 	{
-		float scaling;
-		// Wert umrechnen
-		if (scalingValue < 0)
-		{
-			scaling = 1 / Mathf.Abs(scalingValue);
-		}
-		else
-		{
-			scaling = scalingValue;
-		}
-		// Scale anpassen
+		float scaling = (float)scalingValue / 10.0f;
 		Vector3 scaleChange = new Vector3(1.0f, 1.0f, 1.0f) * scaling;
-		scaleChange += originalScale;
+		scaleChange += _originalScale;
 		_placedIFC.transform.localScale = scaleChange;
+	}
+
+	public void ChangeRotation(float rotValue)
+	{
+		float rot = rotValue;
+		rot += _originalRot;
+		_placedIFC.transform.rotation = Quaternion.Euler(0, rot, 0);
+	}
+
+	public void ChangePosition(Vector2 direction)
+	{
+		_placedIFC.transform.position += new Vector3(direction.x, 0, direction.y);
 	}
 
 	#region Unity
