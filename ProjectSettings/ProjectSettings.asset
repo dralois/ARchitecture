@@ -77,7 +77,7 @@ PlayerSettings:
   hideHomeButton: 1
   submitAnalytics: 1
   usePlayerLog: 1
-  bakeCollisionMeshes: 0
+  bakeCollisionMeshes: 1
   forceSingleInstance: 0
   useFlipModelSwapchain: 1
   resizableWindow: 0
@@ -124,7 +124,7 @@ PlayerSettings:
   - {fileID: 4800000, guid: bcb247dca059048ee90ca702c4d92e93, type: 3}
   - {fileID: 4800000, guid: c9f956787b1d945e7b36e0516201fc76, type: 3}
   - {fileID: 11400000, guid: 8b2c893d654a5664cbac59500b4a2e75, type: 2}
-  - {fileID: 1533774941773176361, guid: 2730cc816a70bb24489b52d8ca4bce06, type: 2}
+  - {fileID: -4376487229028786947, guid: 2730cc816a70bb24489b52d8ca4bce06, type: 2}
   - {fileID: 11400000, guid: f3a5f97ac587efb4494345abd76aacfb, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -181,13 +181,13 @@ PlayerSettings:
   aotOptions: 
   stripEngineCode: 1
   iPhoneStrippingLevel: 0
-  iPhoneScriptCallOptimization: 0
+  iPhoneScriptCallOptimization: 1
   ForceInternetPermission: 0
   ForceSDCardPermission: 0
   CreateWallpaper: 0
   APKExpansionFiles: 0
   keepLoadedShadersAlive: 0
-  StripUnusedMeshComponents: 0
+  StripUnusedMeshComponents: 1
   VertexChannelCompressionMask: 0
   iPhoneSdkVersion: 988
   iOSTargetOSVersionString: 12.0
@@ -561,6 +561,8 @@ PlayerSettings:
   m_BuildTargetGroupLightmapEncodingQuality:
   - m_BuildTarget: iPhone
     m_EncodingQuality: 1
+  - m_BuildTarget: Android
+    m_EncodingQuality: 2
   m_BuildTargetGroupLightmapSettings: []
   playModeTestRunnerEnabled: 0
   runPlayModeTestAsEditModeTest: 0
@@ -814,7 +816,7 @@ PlayerSettings:
   il2cppCompilerConfiguration: {}
   managedStrippingLevel:
     Android: 3
-    iPhone: 1
+    iPhone: 3
   incrementalIl2cppBuild: {}
   allowUnsafeCode: 1
   additionalIl2CppArgs: 

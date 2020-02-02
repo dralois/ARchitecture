@@ -7,10 +7,16 @@ using System.Collections.Generic;
 public class UIHandler : MonoBehaviour
 {
 
-	private static PanelRenderer _UIRenderer = null;
+	[SerializeField] private List<Texture2D> _animationFrames = new List<Texture2D>();
+
+	private PanelRenderer _UIRenderer = null;
+	private SunCalculator _sunCalculator = null;
+
 	private string[] _storeyNames = TridifyQuery.GetStoreyNames();
 	private string[] _currentDesc = new string[0];
-	private SunCalculator _sunCalculator = null;
+
+	private bool _stopAnimation = false;
+	private int _currentFrame = 0;
 
 	private void X_MenuChanged(GameManager.MenuMode newMode)
 	{
@@ -27,8 +33,11 @@ public class UIHandler : MonoBehaviour
 			case GameManager.MenuMode.Placement:
 				{
 					// Von Info zu Placement Panel wechseln
-					root.Q("info-panel").style.display = DisplayStyle.None;
+					root.Q("placement-mode-select").style.display = DisplayStyle.None;
+					root.Q("placement-free-info").style.display = DisplayStyle.None;
+					root.Q("placement-qr-info").style.display = DisplayStyle.None;
 					root.Q("placement-panel").style.display = DisplayStyle.Flex;
+					root.Q("animation-area").style.display = DisplayStyle.None;
 					root.Q("desc-area").style.display = DisplayStyle.None;
 					root.Q("hideSections-area").style.display = DisplayStyle.None;
 					break;
@@ -39,8 +48,6 @@ public class UIHandler : MonoBehaviour
 					root.Q("placement-panel").style.display = DisplayStyle.None;
 					root.Q("options-panel").style.display = DisplayStyle.None;
 					root.Q("interaction-panel").style.display = DisplayStyle.Flex;
-					root.Q("desc-area").style.display = DisplayStyle.None;
-					root.Q("hideSections-area").style.display = DisplayStyle.None;
 					break;
 				}
 		}
@@ -52,6 +59,34 @@ public class UIHandler : MonoBehaviour
 		var root = _UIRenderer.visualTree;
 
 		#region Placement & Edit
+
+		// Animation Setup
+		var animation = root.Q("placement-animation");
+		animation?.schedule.Execute(() =>
+		{
+			if (_animationFrames.Count == 0)
+				return;
+			// Frame update
+			_currentFrame = (_currentFrame + 1) % _animationFrames.Count;
+			var frame = _animationFrames[_currentFrame];
+			animation.style.backgroundImage = frame;
+			// 100ms Schritte bis Flag gesetzt wird
+		}).Every(100).Until(() => { return _stopAnimation; });
+
+		// Placement Mode Free Button binden
+		root.Q<Button>("placement-select-free").clickable.clicked += () =>
+		{
+			root.Q("placement-mode-select").style.display = DisplayStyle.None;
+			root.Q("placement-free-info").style.display = DisplayStyle.Flex;
+			root.Q("animation-area").style.display = DisplayStyle.Flex;
+		};
+
+		// Placement Mode QR Code Button binden
+		root.Q<Button>("placement-select-qr").clickable.clicked += () =>
+		{
+			root.Q("placement-mode-select").style.display = DisplayStyle.None;
+			root.Q("placement-qr-info").style.display = DisplayStyle.Flex;
+		};
 
 		// Placement Accept Button binden
 		root.Q<Button>("placement-accept").clickable.clicked += () =>
@@ -260,7 +295,7 @@ public class UIHandler : MonoBehaviour
 			root.Q("options-panel").style.display = DisplayStyle.Flex;
 		};
 
-		//
+		// Scale Mode Button binden
 		root.Q<Button>("options-scale").clickable.clicked += () =>
 		{
 			// Size umschalten
@@ -304,10 +339,13 @@ public class UIHandler : MonoBehaviour
 
 		#region Initialisierung
 
-		root.Q("info-panel").style.display = DisplayStyle.Flex;
+		root.Q("placement-mode-select").style.display = DisplayStyle.Flex;
+		root.Q("placement-free-info").style.display = DisplayStyle.None;
+		root.Q("placement-qr-info").style.display = DisplayStyle.None;
 		root.Q("placement-panel").style.display = DisplayStyle.None;
 		root.Q("options-panel").style.display = DisplayStyle.None;
 		root.Q("interaction-panel").style.display = DisplayStyle.None;
+		root.Q("animation-area").style.display = DisplayStyle.None;
 		root.Q("desc-area").style.display = DisplayStyle.None;
 		root.Q("hideSections-area").style.display = DisplayStyle.None;
 		root.Q("placement-edit-panel").style.display = DisplayStyle.None;

@@ -2,6 +2,9 @@
     <ui:VisualElement name="screen" style="flex-grow: 1; flex-direction: column; justify-content: space-between;">
         <Style src="GameUI.uss" />
         <ui:VisualElement name="top-area" style="flex-grow: 1; flex-direction: row-reverse;">
+            <ui:VisualElement name="animation-area" style="flex-grow: 1; align-items: center; justify-content: center; display: none;">
+                <ui:VisualElement name="placement-animation" style="background-image: url('/Assets/UI/Animation/MoveDevice/movedevice_00.png'); -unity-background-scale-mode: scale-to-fit; width: 512px; height: 512px;" />
+            </ui:VisualElement>
             <ui:VisualElement name="desc-area" class="general-sidebar" style="display: none;">
                 <ui:Label text="Label" name="desc-heading" class="general-text" style="color: rgb(51, 51, 51);" />
                 <ui:ListView name="desc-box" item-height="75" style="flex-grow: 1; width: 800px;" />
@@ -9,18 +12,26 @@
             </ui:VisualElement>
             <ui:VisualElement name="hideSections-area" class="general-sidebar" style="display: none;">
                 <ui:Label text="Building Storeys" name="hideSections-heading" class="general-text" style="color: rgb(51, 51, 51);" />
-                <ui:VisualElement name="hideSections-multiline" style="align-items: flex-start; height: 100px; justify-content: center;">
-                    <ui:Label text="Use the toggles to display or hide a storey." name="hideSections-txt-1" class="general-text" style="font-size: 30px; white-space: normal; color: rgb(51, 51, 51);" />
-                    <ui:Label text="Click on reset to display all storeys." name="hideSections-txt-2" class="general-text" style="font-size: 30px; white-space: normal; color: rgb(51, 51, 51);" />
+                <ui:VisualElement name="hideSections-multiline" style="align-items: center; height: 100px; justify-content: center;">
+                    <ui:Label text="Use the toggles to display or hide a storey." name="hideSections-txt-1" class="general-text" style="color: rgb(51, 51, 51); font-size: 30px;" />
+                    <ui:Label text="Click on reset to display all storeys." name="hideSections-txt-2" class="general-text" style="color: rgb(51, 51, 51); font-size: 30px;" />
                 </ui:VisualElement>
                 <ui:VisualElement name="toggle-area" style="width: 400px;" />
                 <ui:Button text="Reset" name="reset-btn" class="button-sidebar" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="bottom-area" style="position: relative; bottom: 0;">
-            <ui:VisualElement name="info-panel" class="general-panel">
-                <ui:VisualElement name="info-icon" class="general-icon" style="background-image: url('/Assets/UI/Icons/Exclamation_t.png'); -unity-background-image-tint-color: rgb(51, 51, 51);" />
-                <ui:Label text="To place the building, tap anywhere on a detected plane" name="info-text" class="general-text" style="color: rgb(51, 51, 51);" />
+            <ui:VisualElement name="placement-mode-select" class="general-panel" style="display: flex; justify-content: space-between;">
+                <ui:Button text="Scan QR code" name="placement-select-qr" class="general-button general-text" style="background-color: rgb(51, 51, 51); color: rgb(255, 255, 255);" />
+                <ui:Button text="Place on plane" name="placement-select-free" class="general-button general-text" style="background-color: rgb(51, 51, 51); color: rgb(255, 255, 255);" />
+            </ui:VisualElement>
+            <ui:VisualElement name="placement-free-info" class="general-panel" style="display: none;">
+                <ui:VisualElement name="info-free-icon" class="general-icon" style="background-image: url('/Assets/UI/Icons/Exclamation_t.png'); -unity-background-image-tint-color: rgb(51, 51, 51);" />
+                <ui:Label text="To place the building, tap anywhere on a detected plane" name="info-free-text" class="general-text" style="color: rgb(51, 51, 51);" />
+            </ui:VisualElement>
+            <ui:VisualElement name="placement-qr-info" class="general-panel" style="display: none;">
+                <ui:VisualElement name="info-qr-icon" class="general-icon" style="background-image: url('/Assets/UI/Icons/Exclamation_t.png'); -unity-background-image-tint-color: rgb(51, 51, 51);" />
+                <ui:Label text="To place the building, bring the camera close to the QR code" name="info-qr-text" class="general-text" style="color: rgb(51, 51, 51);" />
             </ui:VisualElement>
             <ui:VisualElement name="placement-panel" class="general-panel" style="justify-content: space-between; display: none;">
                 <ui:Button name="placement-accept" class="general-button" style="background-color: rgb(0, 78, 0);">
@@ -37,16 +48,18 @@
                     <ui:VisualElement name="placement-accept-icon" class="button-has-icon" style="background-image: url('/Assets/UI/Icons/Checkmark_t.png');" />
                     <ui:Label name="placement-accept-text" text="Done" class="general-text" style="color: rgb(255, 255, 255);" />
                 </ui:Button>
-                <ui:Button text="Scale" name="scale-obj" class="button-options" />
-                <ui:Button text="Rotate" name="rotate-obj" class="button-options" />
-                <ui:Button text="Move" name="move-obj" class="button-options" />
+                <ui:VisualElement name="placement-buttons-panel" class="panel-options">
+                    <ui:Button text="Scale" name="scale-obj" class="button-options" />
+                    <ui:Button text="Rotate" name="rotate-obj" class="button-options" />
+                    <ui:Button text="Move" name="move-obj" class="button-options" />
+                </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="placement-edit-scale-panel" class="general-panel" style="display: none;">
                 <ui:Button name="scaling-accept" class="general-button" style="background-color: rgb(0, 78, 0);">
                     <ui:VisualElement name="placement-accept-icon" class="button-has-icon" style="background-image: url('/Assets/UI/Icons/Checkmark_t.png');" />
                     <ui:Label name="placement-accept-text" text="Accept Scaling" class="general-text" style="color: rgb(255, 255, 255);" />
                 </ui:Button>
-                <ui:Slider picking-mode="Ignore" label="Scale:" value="0" high-value="75" name="scale-edit-slider" low-value="-10" page-size="1" class="general-slider" />
+                <ui:Slider picking-mode="Ignore" label="Scale:" value="0" high-value="100" name="scale-edit-slider" low-value="-100" page-size="1" class="general-slider" />
             </ui:VisualElement>
             <ui:VisualElement name="placement-edit-rotate-panel" class="general-panel" style="display: none;">
                 <ui:Button name="rotation-accept" class="general-button" style="background-color: rgb(0, 78, 0);">
@@ -60,10 +73,12 @@
                     <ui:VisualElement name="placement-accept-icon" class="button-has-icon" style="background-image: url('/Assets/UI/Icons/Checkmark_t.png');" />
                     <ui:Label name="move-accept-text" text="Accept Position" class="general-text" style="color: rgb(255, 255, 255);" />
                 </ui:Button>
-                <ui:Button text="Backwards" name="move-up" class="button-options" style="width: 350px;" />
-                <ui:Button text="Forwards" name="move-down" class="button-options" style="width: 350px;" />
-                <ui:Button text="Left" name="move-left" class="button-options" style="width: 350px;" />
-                <ui:Button text="Right" name="move-right" class="button-options" style="width: 350px;" />
+                <ui:VisualElement name="move-buttons-panel" class="panel-options">
+                    <ui:Button text="Backwards" name="move-up" class="button-options" style="width: 350px;" />
+                    <ui:Button text="Forwards" name="move-down" class="button-options" style="width: 350px;" />
+                    <ui:Button text="Left" name="move-left" class="button-options" style="width: 350px;" />
+                    <ui:Button text="Right" name="move-right" class="button-options" style="width: 350px;" />
+                </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="interaction-panel" class="general-panel" style="display: none;">
                 <ui:Button name="interaction-options" class="button-is-icon" style="-unity-background-image-tint-color: rgb(51, 51, 51); background-image: url('/Assets/UI/Icons/Foldout_t.png');" />
@@ -74,11 +89,13 @@
             </ui:VisualElement>
             <ui:VisualElement name="options-panel" class="general-panel" style="background-color: rgb(51, 51, 51); display: none;">
                 <ui:Button name="options-exit" class="button-is-icon" style="background-image: url('/Assets/UI/Icons/Cross_t.png'); -unity-background-image-tint-color: rgb(255, 255, 255); width: 100px; height: 100px;" />
-                <ui:Button text="Hide Storeys" name="options-storeys-edit" class="button-options" />
-                <ui:Button text="Switch Ghosted" name="options-switch-ghosted" class="button-options" />
-                <ui:Button text="Create Section" name="options-sections-create" class="button-options" />
-                <ui:Button text="Switch Scale" name="options-scale" class="button-options" />
-                <ui:Button text="Change Daylight" name="options-switch-daytime" class="button-options" />
+                <ui:VisualElement name="options-buttons-panel" class="panel-options">
+                    <ui:Button text="Hide Storeys" name="options-storeys-edit" class="button-options" />
+                    <ui:Button text="Switch Ghosted" name="options-switch-ghosted" class="button-options" />
+                    <ui:Button text="Create Section" name="options-sections-create" class="button-options" />
+                    <ui:Button text="Switch Scale" name="options-scale" class="button-options" />
+                    <ui:Button text="Change Daylight" name="options-switch-daytime" class="button-options" />
+                </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="create-section-panel" class="general-panel" style="display: none;">
                 <ui:Button name="create-section-panel-exit" class="button-is-icon" style="background-image: url('/Assets/UI/Icons/Cross_t.png'); -unity-background-image-tint-color: rgb(51, 51, 51); width: 100px; height: 100px;" />
@@ -86,7 +103,7 @@
             </ui:VisualElement>
             <ui:VisualElement name="switch-daytime-panel" class="general-panel" style="display: none;">
                 <ui:Button name="switch-daytime-exit" class="button-is-icon" style="background-image: url('/Assets/UI/Icons/Cross_t.png'); -unity-background-image-tint-color: rgb(51, 51, 51); width: 100px; height: 100px;" />
-                <ui:Slider picking-mode="Ignore" label="Change time of day:" value="0" high-value="1440" name="daytime-slider" low-value="0" page-size="1" class="general-slider" />
+                <ui:Slider picking-mode="Ignore" label="Time of day:" value="0" high-value="1440" name="daytime-slider" low-value="0" page-size="1" class="general-slider" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

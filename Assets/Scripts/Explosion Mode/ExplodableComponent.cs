@@ -41,7 +41,7 @@ public class ExplodableComponent: MonoBehaviour
 		{
 			if (exploded)
 			{
-				transform.position = transform.position + normal * _explodePos * _outModifier;
+				transform.position = transform.position + normal * _explodePos * _outModifier * GameManager.Instance.IFCScale;
 			}
 			else
 			{

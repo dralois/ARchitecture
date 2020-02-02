@@ -3,7 +3,7 @@
 public class ExplodableRoot : MonoBehaviour
 {
 
-	[SerializeField] private float _outModifier = .1f;
+	private float _outModifier = .01f;
 
 	private void Start()
 	{

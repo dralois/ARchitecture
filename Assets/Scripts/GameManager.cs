@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
 	private Vector3 _originalScale = Vector3.one;
 	private float _originalRot = 0f;
 
+	private float _actualScale = 1f;
+
 	#endregion
 
 	#region Events
@@ -73,6 +75,8 @@ public class GameManager : MonoBehaviour
 	public LightTime CurrentLight { get; private set; } = LightTime.Day;
 
 	public SizeMode CurrentSize { get; private set; } = SizeMode.Normal;
+
+	public float IFCScale { get => _actualScale; }
 
 	#endregion
 
@@ -161,9 +165,19 @@ public class GameManager : MonoBehaviour
 
 	public void ChangeScaling(float scalingValue)
 	{
-		float scaling = (float)scalingValue / 10.0f;
-		Vector3 scaleChange = new Vector3(1.0f, 1.0f, 1.0f) * scaling;
-		scaleChange += _originalScale;
+		// Slider Wert umrechnen
+		if(scalingValue < 0)
+		{
+			// -100 - 0: 10% - 100%
+			_actualScale = (((scalingValue + 100f) * 0.9f) / 100f) + 0.1f;
+		}
+		else
+		{
+			// 0 - 100: 100% - 1000%
+			_actualScale = ((scalingValue * 9f) / 100f) + 1f;
+		}
+		// Skalierung anpassen
+		Vector3 scaleChange = _originalScale * _actualScale;
 		_placedIFC.transform.localScale = scaleChange;
 	}
 
