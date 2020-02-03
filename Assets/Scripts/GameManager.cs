@@ -204,12 +204,12 @@ public class GameManager : MonoBehaviour
 	{
 		float rot = rotValue;
 		rot += _originalRot;
-		_placedIFC.transform.rotation = Quaternion.Euler(0, rot, 0);
+		_placedIFC.transform.localRotation = Quaternion.Euler(0, rot, 0);
 	}
 
 	public void ChangePosition(Vector2 direction)
 	{
-		_placedIFC.transform.position += new Vector3(direction.x, 0, direction.y);
+		_placedIFC.transform.localPosition += new Vector3(direction.x, 0, direction.y);
 	}
 
 	#region Unity

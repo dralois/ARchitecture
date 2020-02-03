@@ -85,11 +85,13 @@ public class ARSpawnManager : MonoBehaviour
 		GameManager.Instance.PlacedIFC.SetActive(true);
 		// Platzieren
 #if UNITY_EDITOR || UNITY_STANDALONE
-		GameManager.Instance.PlacedIFC.transform.SetPositionAndRotation(spawnPose.position, spawnPose.rotation);
+		var newObj = new GameObject("Parent");
+		newObj.transform.SetPositionAndRotation(spawnPose.position, spawnPose.rotation);
+		GameManager.Instance.PlacedIFC.transform.SetParent(newObj.transform, false);
 #else
 		// Anchor erstellen und damit platzieren
 		var anchor = _anchorManager.AddAnchor(spawnPose);
-		GameManager.Instance.PlacedIFC.transform.SetParent(anchor.transform);
+		GameManager.Instance.PlacedIFC.transform.SetParent(anchor.transform, false);
 #endif
 		// Modus wechseln
 		GameManager.Instance.SwitchMenu(GameManager.MenuMode.Placement);

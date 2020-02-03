@@ -218,8 +218,8 @@ public class UIHandler : MonoBehaviour
 		};
 
 		// Move Up Callbacks
-		root.Q<Button>("move-up").RegisterCallback(_moveStart, Vector2.down);
-		root.Q<Button>("move-up").RegisterCallback(_moveStop, Vector2.down);
+		root.Q<Button>("move-up").RegisterCallback(_moveStart, Vector2.up);
+		root.Q<Button>("move-up").RegisterCallback(_moveStop, Vector2.up);
 
 		// Move Down Callbacks
 		root.Q<Button>("move-down").RegisterCallback(_moveStart, Vector2.down);
