@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7578912244606691474}
   - component: {fileID: 7578912244606691475}
+  - component: {fileID: 3805737567580271498}
   - component: {fileID: 7578912245556224959}
   - component: {fileID: 7578912244606691468}
   - component: {fileID: 7578912244606691470}
   - component: {fileID: 7578912244606691471}
-  - component: {fileID: 3805737567580271498}
   m_Layer: 0
   m_Name: AR Session Origin
   m_TagString: Untagged
@@ -50,6 +50,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Camera: {fileID: 7578912245298982224}
+--- !u!114 &3805737567580271498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7578912244606691472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 728ad7fae8e460a4ba41265c7308d757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AnchorPrefab: {fileID: 0}
 --- !u!114 &7578912245556224959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,19 +123,6 @@ MonoBehaviour:
   _hitMask:
     serializedVersion: 2
     m_Bits: 256
---- !u!114 &3805737567580271498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7578912244606691472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 728ad7fae8e460a4ba41265c7308d757, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AnchorPrefab: {fileID: 0}
 --- !u!1001 &4221348052597595169
 PrefabInstance:
   m_ObjectHideFlags: 0

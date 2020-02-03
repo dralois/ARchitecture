@@ -10,7 +10,7 @@ using UnityEngine.XR.ARKit;
 [RequireComponent(typeof(PanelRenderer))]
 public class UIHandler : MonoBehaviour
 {
-
+	[SerializeField] private float _moveSpeed = 0.1f;
 	[SerializeField] private List<Texture2D> _animationFrames = new List<Texture2D>();
 
 	private PanelRenderer _UIRenderer = null;
@@ -25,6 +25,24 @@ public class UIHandler : MonoBehaviour
 	private IVisualElementScheduledItem _animationScheduler = null;
 	private bool _stopAnimation = false;
 	private int _currentFrame = 0;
+
+	private static Vector2 _moveAmount = Vector2.zero;
+	private bool _canMove = false;
+
+	private EventCallback<PointerOutEvent, Vector2> _moveStop = (evt, dir) =>
+	{
+		_moveAmount -= dir;
+	};
+
+	private EventCallback<PointerOverEvent, Vector2> _moveStart = (evt, dir) =>
+	{
+		_moveAmount += dir;
+	};
+
+	private EventCallback<ChangeEvent<float>, System.Action<float>> _floatChange = (evt, func) =>
+	{
+		func(evt.newValue);
+	};
 
 	private void X_MenuChanged(GameManager.MenuMode newMode)
 	{
@@ -55,6 +73,8 @@ public class UIHandler : MonoBehaviour
 #endif
 					root.Q("desc-area").style.display = DisplayStyle.None;
 					root.Q("hideSections-area").style.display = DisplayStyle.None;
+					// Bewegung erlauben
+					_canMove = true;
 					break;
 				}
 			case GameManager.MenuMode.Interaction:
@@ -63,6 +83,19 @@ public class UIHandler : MonoBehaviour
 					root.Q("placement-panel").style.display = DisplayStyle.None;
 					root.Q("options-panel").style.display = DisplayStyle.None;
 					root.Q("interaction-panel").style.display = DisplayStyle.Flex;
+					// Callbacks entfernen
+					root.Q("move-up").UnregisterCallback(_moveStart);
+					root.Q("move-up").UnregisterCallback(_moveStop);
+					root.Q("move-down").UnregisterCallback(_moveStart);
+					root.Q("move-down").UnregisterCallback(_moveStop);
+					root.Q("move-right").UnregisterCallback(_moveStart);
+					root.Q("move-right").UnregisterCallback(_moveStop);
+					root.Q("move-left").UnregisterCallback(_moveStart);
+					root.Q("move-left").UnregisterCallback(_moveStop);
+					root.Q("scale-edit-slider").UnregisterCallback(_floatChange);
+					root.Q("rotate-edit-slider").UnregisterCallback(_floatChange);
+					// Bewegung stoppen
+					_canMove = false;
 					break;
 				}
 		}
@@ -144,10 +177,7 @@ public class UIHandler : MonoBehaviour
 			root.Q("placement-edit-panel").style.display = DisplayStyle.None;
 			root.Q("placement-edit-scale-panel").style.display = DisplayStyle.Flex;
 			// Scale Slider Callback speichern
-			root.Q<Slider>("scale-edit-slider").RegisterCallback<ChangeEvent<float>>(evt =>
-			{
-				GameManager.Instance.ChangeScaling(evt.newValue);
-			});
+			root.Q<Slider>("scale-edit-slider").RegisterCallback(_floatChange, GameManager.Instance.ChangeScaling);
 		};
 
 		// Scale Accept Button binden
@@ -162,11 +192,8 @@ public class UIHandler : MonoBehaviour
 		{
 			root.Q("placement-edit-panel").style.display = DisplayStyle.None;
 			root.Q("placement-edit-rotate-panel").style.display = DisplayStyle.Flex;
-			// Rotation Slider Callback speichern
-			root.Q<Slider>("rotate-edit-slider").RegisterCallback<ChangeEvent<float>>(evt =>
-			{
-				GameManager.Instance.ChangeRotation(evt.newValue);
-			});
+			// Rotation Slider Callback
+			root.Q<Slider>("rotate-edit-slider").RegisterCallback(_floatChange, GameManager.Instance.ChangeRotation);
 		};
 
 		// Rotation Accept Button binden
@@ -190,29 +217,21 @@ public class UIHandler : MonoBehaviour
 			root.Q("placement-edit-position-panel").style.display = DisplayStyle.None;
 		};
 
-		// Move Up Button binden
-		root.Q<Button>("move-up").clickable.clicked += () =>
-		{
-			GameManager.Instance.ChangePosition(Vector2.up);
-		};
+		// Move Up Callbacks
+		root.Q<Button>("move-up").RegisterCallback(_moveStart, Vector2.down);
+		root.Q<Button>("move-up").RegisterCallback(_moveStop, Vector2.down);
 
-		// Move Down Button binden
-		root.Q<Button>("move-down").clickable.clicked += () =>
-		{
-			GameManager.Instance.ChangePosition(Vector2.down);
-		};
+		// Move Down Callbacks
+		root.Q<Button>("move-down").RegisterCallback(_moveStart, Vector2.down);
+		root.Q<Button>("move-down").RegisterCallback(_moveStop, Vector2.down);
 
-		// Move Left Button binden
-		root.Q<Button>("move-left").clickable.clicked += () =>
-		{
-			GameManager.Instance.ChangePosition(Vector2.left);
-		};
+		// Move Right Callbacks
+		root.Q<Button>("move-right").RegisterCallback(_moveStart, Vector2.right);
+		root.Q<Button>("move-right").RegisterCallback(_moveStop, Vector2.right);
 
-		// Move Right Button binden
-		root.Q<Button>("move-right").clickable.clicked += () =>
-		{
-			GameManager.Instance.ChangePosition(Vector2.right);
-		};
+		// Move Left Callbacks
+		root.Q<Button>("move-left").RegisterCallback(_moveStart, Vector2.left);
+		root.Q<Button>("move-left").RegisterCallback(_moveStop, Vector2.left);
 
 		#endregion
 
@@ -310,10 +329,7 @@ public class UIHandler : MonoBehaviour
 			root.Q("options-panel").style.display = DisplayStyle.None;
 			root.Q("create-section-panel").style.display = DisplayStyle.Flex;
 			// Section Slider Callback speichern
-			root.Q<Slider>("move-section-slider").RegisterCallback<ChangeEvent<float>>(evt =>
-			{
-				GameManager.Instance.CameraController.SetCutPlane(evt.newValue);
-			});
+			root.Q<Slider>("move-section-slider").RegisterCallback(_floatChange, GameManager.Instance.CameraController.SetCutPlane);
 		};
 
 		// Sections Accept Button binden
@@ -331,7 +347,7 @@ public class UIHandler : MonoBehaviour
 			var newSize = GameManager.Instance.CurrentSize == GameManager.SizeMode.Scaled ?
 				GameManager.SizeMode.Normal : GameManager.SizeMode.Scaled;
 
-			if(newSize == GameManager.SizeMode.Scaled)
+			if (newSize == GameManager.SizeMode.Scaled)
 			{
 				root.Q<Button>("options-scale").AddToClassList("clicked-button");
 			}
@@ -436,6 +452,14 @@ public class UIHandler : MonoBehaviour
 		// iOS: AR Session cachen
 		_session = FindObjectOfType<ARSession>();
 #endif
+	}
+
+	private void Update()
+	{
+		if (_canMove)
+		{
+			GameManager.Instance.ChangePosition(_moveAmount * _moveSpeed * Time.deltaTime);
+		}
 	}
 
 	private void OnDestroy()
