@@ -32,7 +32,7 @@ public class ARSpawnManager : MonoBehaviour
 			if (Physics.Raycast(screenRay, out RaycastHit hit, Mathf.Infinity, _hitMask))
 #else
 			// AR Raycast
-			if (_RaycastManager.Raycast(finger.screenPosition, _hits, TrackableType.PlaneWithinPolygon))
+			if (_raycastManager.Raycast(finger.screenPosition, _hits, TrackableType.PlaneWithinPolygon))
 #endif
 			{
 #if UNITY_EDITOR || UNITY_STANDALONE
