@@ -56,6 +56,8 @@ public class GameManager : MonoBehaviour
 
 	public event System.Action<SizeMode> SizeChanged;
 
+	public event System.Action<PlacementMode> PlacementModeSelected;
+
 	#endregion
 
 	#region Properties
@@ -93,8 +95,9 @@ public class GameManager : MonoBehaviour
 
 	public void SetPlacementMode(PlacementMode mode)
 	{
-		// Speichern
+		// Speichern und Event ausloesen
 		SelectedPlacementMode = mode;
+		PlacementModeSelected?.Invoke(SelectedPlacementMode);
 	}
 
 	public void SwitchLightMode(float lumen)

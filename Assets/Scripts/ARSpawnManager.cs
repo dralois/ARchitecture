@@ -101,6 +101,33 @@ public class ARSpawnManager : MonoBehaviour
 		enabled = false;
 	}
 
+	private void X_ModeSelected(GameManager.PlacementMode mode)
+	{
+		// Je nach Modus
+		switch (mode)
+		{
+			case GameManager.PlacementMode.None:
+				{
+					// Das sollte niemals passieren
+					Application.Quit();
+					break;
+				}
+			case GameManager.PlacementMode.Free:
+				{
+					// Manager aktivieren
+					_planeManager.subsystem?.Start();
+					_raycastManager.subsystem?.Start();
+					break;
+				}
+			case GameManager.PlacementMode.QR:
+				{
+					// Manager aktivieren
+					_imageManager.subsystem?.Start();
+					break;
+				}
+		}
+	}
+
 	private void Awake()
 	{
 		// Cachen
@@ -109,9 +136,15 @@ public class ARSpawnManager : MonoBehaviour
 		_anchorManager = GetComponent<ARAnchorManager>();
 		_planeManager = GetComponent<ARPlaneManager>();
 		_session = GetComponent<ARSessionOrigin>();
+		// Manager zunaechst deaktivieren
+		_raycastManager.subsystem?.Stop();
+		_planeManager.subsystem?.Stop();
+		_imageManager.subsystem?.Stop();
 		// IFC instantiieren
 		GameManager.Instance.PlacedIFC = Instantiate(_placedPrefab);
 		GameManager.Instance.PlacedIFC.SetActive(false);
+		// Event abonnieren
+		GameManager.Instance.PlacementModeSelected += X_ModeSelected;
 		// ggf. Touch aktivieren
 		if (!EnhancedTouchSupport.enabled)
 		{
@@ -129,6 +162,12 @@ public class ARSpawnManager : MonoBehaviour
 	{
 		Touch.onFingerDown -= X_TouchStarted;
 		_imageManager.trackedImagesChanged -= X_ImageDetected;
+	}
+
+	private void OnDestroy()
+	{
+		// Event entfernen
+		GameManager.Instance.PlacementModeSelected -= X_ModeSelected;
 	}
 
 }

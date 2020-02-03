@@ -8694,7 +8694,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b72bdf804810b44cbb6615bba2fb0bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _outModifier: 0.1
 --- !u!1 &5302558266399851717
 GameObject:
   m_ObjectHideFlags: 0
@@ -11946,7 +11945,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b72bdf804810b44cbb6615bba2fb0bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _outModifier: 0.05
 --- !u!1 &5302558266908909565
 GameObject:
   m_ObjectHideFlags: 0
@@ -12261,7 +12259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b72bdf804810b44cbb6615bba2fb0bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _outModifier: 0.1
 --- !u!1 &5302558266948448657
 GameObject:
   m_ObjectHideFlags: 0
@@ -13094,7 +13091,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b72bdf804810b44cbb6615bba2fb0bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _outModifier: 0.1
 --- !u!1 &5302558267098593517
 GameObject:
   m_ObjectHideFlags: 0
@@ -14221,7 +14217,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b72bdf804810b44cbb6615bba2fb0bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _outModifier: 0.1
 --- !u!1 &5302558267262048729
 GameObject:
   m_ObjectHideFlags: 0
@@ -16615,7 +16610,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b72bdf804810b44cbb6615bba2fb0bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _outModifier: 0.1
 --- !u!1 &5302558267405178567
 GameObject:
   m_ObjectHideFlags: 0
@@ -17161,7 +17155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b72bdf804810b44cbb6615bba2fb0bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _outModifier: 0.1
 --- !u!1 &5302558267514500584
 GameObject:
   m_ObjectHideFlags: 0
@@ -20736,7 +20729,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b72bdf804810b44cbb6615bba2fb0bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _outModifier: 0.1
 --- !u!1 &5302558267658283754
 GameObject:
   m_ObjectHideFlags: 0
@@ -22042,7 +22034,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b72bdf804810b44cbb6615bba2fb0bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _outModifier: 0.1
 --- !u!1 &5302558267763689212
 GameObject:
   m_ObjectHideFlags: 0
@@ -22348,7 +22339,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0.9984353, b: 0.7216981, a: 1}
   m_Intensity: 0.5
-  m_Range: 1
+  m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10

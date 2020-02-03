@@ -47,7 +47,7 @@ public class UIHandler : MonoBehaviour
 #if UNITY_IOS
 					if (_session.subsystem is ARKitSessionSubsystem sessionSubsystem)
 					{
-						sessionSubsystem.SetCoachingActive(false, ARCoachingOverlayTransition.Animated);
+						sessionSubsystem.SetCoachingActive(false, ARCoachingOverlayTransition.Instant);
 					}
 #else
 					root.Q("animation-area").style.display = DisplayStyle.None;
