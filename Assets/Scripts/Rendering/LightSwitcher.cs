@@ -9,26 +9,26 @@ public class LightSwitcher : MonoBehaviour
 	[ContextMenu("Mood Switch Day")]
 	public void SwitchDay()
 	{
-		X_MoodChange(GameManager.LightTime.Day);
+		X_MoodChange(GameManager.LightMode.Day);
 	}
 
 	[ContextMenu("Mood Switch Night")]
 	public void SwitchNight()
 	{
-		X_MoodChange(GameManager.LightTime.Night);
+		X_MoodChange(GameManager.LightMode.Night);
 	}
 
-	private void X_MoodChange(GameManager.LightTime mood)
+	private void X_MoodChange(GameManager.LightMode mood)
 	{
 		switch (mood)
 		{
-			case GameManager.LightTime.Day:
+			case GameManager.LightMode.Day:
 				{
 					_nightLights.SetActive(false);
 					_dayLights.SetActive(true);
 					break;
 				}
-			case GameManager.LightTime.Night:
+			case GameManager.LightMode.Night:
 				{
 					_nightLights.SetActive(true);
 					_dayLights.SetActive(false);

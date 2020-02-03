@@ -23,8 +23,8 @@ public class LightEstimation : MonoBehaviour
 		if (args.lightEstimation.averageIntensityInLumens.HasValue)
 		{
 			Lumen = args.lightEstimation.averageIntensityInLumens.Value;
-			GameManager.Instance.SwitchTime(Lumen.Value);
-			_Light.enabled = GameManager.Instance.CurrentLight == GameManager.LightTime.Day;
+			GameManager.Instance.SwitchLightMode(Lumen.Value);
+			_Light.enabled = GameManager.Instance.CurrentLight == GameManager.LightMode.Day;
 		}
 
 		// Farbtemperatur setzen

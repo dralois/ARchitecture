@@ -2,6 +2,10 @@
 using UnityEngine.UIElements;
 using Unity.UIElements.Runtime;
 using System.Collections.Generic;
+#if UNITY_IOS
+using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.ARKit;
+#endif
 
 [RequireComponent(typeof(PanelRenderer))]
 public class UIHandler : MonoBehaviour
@@ -11,6 +15,9 @@ public class UIHandler : MonoBehaviour
 
 	private PanelRenderer _UIRenderer = null;
 	private SunCalculator _sunCalculator = null;
+#if UNITY_IOS
+	private ARSession _session = null;
+#endif
 
 	private string[] _storeyNames = TridifyQuery.GetStoreyNames();
 	private string[] _currentDesc = new string[0];
@@ -37,7 +44,14 @@ public class UIHandler : MonoBehaviour
 					root.Q("placement-free-info").style.display = DisplayStyle.None;
 					root.Q("placement-qr-info").style.display = DisplayStyle.None;
 					root.Q("placement-panel").style.display = DisplayStyle.Flex;
+#if UNITY_IOS
+					if (_session.subsystem is ARKitSessionSubsystem sessionSubsystem)
+					{
+						sessionSubsystem.SetCoachingActive(false, ARCoachingOverlayTransition.Animated);
+					}
+#else
 					root.Q("animation-area").style.display = DisplayStyle.None;
+#endif
 					root.Q("desc-area").style.display = DisplayStyle.None;
 					root.Q("hideSections-area").style.display = DisplayStyle.None;
 					break;
@@ -78,7 +92,16 @@ public class UIHandler : MonoBehaviour
 		{
 			root.Q("placement-mode-select").style.display = DisplayStyle.None;
 			root.Q("placement-free-info").style.display = DisplayStyle.Flex;
+#if UNITY_IOS
+			if (_session.subsystem is ARKitSessionSubsystem sessionSubsystem)
+			{
+				sessionSubsystem.coachingGoal = ARCoachingGoal.HorizontalPlane;
+				sessionSubsystem.SetCoachingActive(true, ARCoachingOverlayTransition.Animated);
+			}
+#else
 			root.Q("animation-area").style.display = DisplayStyle.Flex;
+#endif
+			GameManager.Instance.SetPlacementMode(GameManager.PlacementMode.Free);
 		};
 
 		// Placement Mode QR Code Button binden
@@ -86,6 +109,7 @@ public class UIHandler : MonoBehaviour
 		{
 			root.Q("placement-mode-select").style.display = DisplayStyle.None;
 			root.Q("placement-qr-info").style.display = DisplayStyle.Flex;
+			GameManager.Instance.SetPlacementMode(GameManager.PlacementMode.QR);
 		};
 
 		// Placement Accept Button binden
@@ -403,6 +427,10 @@ public class UIHandler : MonoBehaviour
 		GameManager.Instance.UIController = this;
 		// Lightcalculator cachen
 		_sunCalculator = FindObjectOfType<SunCalculator>();
+#if UNITY_IOS
+		// iOS: AR Session cachen
+		_session = FindObjectOfType<ARSession>();
+#endif
 	}
 
 	private void OnDestroy()

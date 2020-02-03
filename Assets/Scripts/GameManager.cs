@@ -5,6 +5,13 @@ public class GameManager : MonoBehaviour
 
 	#region Enums
 
+	public enum PlacementMode
+	{
+		None,
+		Free,
+		QR
+	}
+
 	public enum MenuMode
 	{
 		None = -1,
@@ -14,7 +21,7 @@ public class GameManager : MonoBehaviour
 		Options
 	}
 
-	public enum LightTime
+	public enum LightMode
 	{
 		Day,
 		Night
@@ -45,7 +52,7 @@ public class GameManager : MonoBehaviour
 
 	public event System.Action<MenuMode> MenuChanged;
 
-	public event System.Action<LightTime> LightChanged;
+	public event System.Action<LightMode> LightChanged;
 
 	public event System.Action<SizeMode> SizeChanged;
 
@@ -70,9 +77,11 @@ public class GameManager : MonoBehaviour
 
 	public UIHandler UIController { get; set; }
 
+	public PlacementMode SelectedPlacementMode { get; private set; } = PlacementMode.None;
+
 	public MenuMode CurrentMenu { get; private set; } = MenuMode.None;
 
-	public LightTime CurrentLight { get; private set; } = LightTime.Day;
+	public LightMode CurrentLight { get; private set; } = LightMode.Day;
 
 	public SizeMode CurrentSize { get; private set; } = SizeMode.Normal;
 
@@ -82,21 +91,28 @@ public class GameManager : MonoBehaviour
 
 	#region Methods
 
-	public void SwitchTime(float lumen)
+	public void SetPlacementMode(PlacementMode mode)
 	{
-		LightTime nextTime = lumen < 800 ? LightTime.Night : LightTime.Day;
+		// Speichern
+		SelectedPlacementMode = mode;
+	}
+
+	public void SwitchLightMode(float lumen)
+	{
+		// 800 Lumen ist ziemlich dunkel
+		LightMode nextTime = lumen < 800 ? LightMode.Night : LightMode.Day;
 		// Falls geaendert
 		if (nextTime != CurrentLight)
 		{
 			// Aktionen je nach Modus
 			switch (nextTime)
 			{
-				case LightTime.Day:
+				case LightMode.Day:
 					{
 
 						break;
 					}
-				case LightTime.Night:
+				case LightMode.Night:
 					{
 
 						break;
