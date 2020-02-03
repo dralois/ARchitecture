@@ -1,5 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
-    <ui:VisualElement name="screen" style="flex-grow: 1; flex-direction: column; justify-content: space-between;">
+    <ui:VisualElement name="screen" style="flex-grow: 1; flex-direction: column; justify-content: space-between; display: flex;">
         <Style src="GameUI.uss" />
         <ui:VisualElement name="top-area" style="flex-grow: 1; flex-direction: row-reverse;">
             <ui:VisualElement name="animation-area" style="flex-grow: 1; align-items: center; justify-content: center; display: none;">
@@ -12,7 +12,7 @@
             </ui:VisualElement>
             <ui:VisualElement name="hideSections-area" class="general-sidebar" style="display: none;">
                 <ui:Label text="Building Storeys" name="hideSections-heading" class="general-text" style="color: rgb(51, 51, 51);" />
-                <ui:VisualElement name="hideSections-multiline" style="align-items: center; height: 100px; justify-content: center;">
+                <ui:VisualElement name="hideSections-multiline" style="height: 100px; justify-content: center;">
                     <ui:Label text="Use the toggles to display or hide a storey." name="hideSections-txt-1" class="general-text" style="color: rgb(51, 51, 51); font-size: 30px;" />
                     <ui:Label text="Click on reset to display all storeys." name="hideSections-txt-2" class="general-text" style="color: rgb(51, 51, 51); font-size: 30px;" />
                 </ui:VisualElement>
@@ -21,7 +21,7 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="bottom-area" style="position: relative; bottom: 0;">
-            <ui:VisualElement name="placement-mode-select" class="general-panel" style="display: flex; justify-content: space-between;">
+            <ui:VisualElement name="placement-mode-select" class="general-panel" style="justify-content: space-between;">
                 <ui:Button text="Scan QR code" name="placement-select-qr" class="general-button general-text" style="background-color: rgb(51, 51, 51); color: rgb(255, 255, 255);" />
                 <ui:Button text="Place on plane" name="placement-select-free" class="general-button general-text" style="background-color: rgb(51, 51, 51); color: rgb(255, 255, 255);" />
             </ui:VisualElement>

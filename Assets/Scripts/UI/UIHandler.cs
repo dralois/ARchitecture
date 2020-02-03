@@ -22,6 +22,7 @@ public class UIHandler : MonoBehaviour
 	private string[] _storeyNames = TridifyQuery.GetStoreyNames();
 	private string[] _currentDesc = new string[0];
 
+	private IVisualElementScheduledItem _animationScheduler = null;
 	private bool _stopAnimation = false;
 	private int _currentFrame = 0;
 
@@ -76,7 +77,7 @@ public class UIHandler : MonoBehaviour
 
 		// Animation Setup
 		var animation = root.Q("placement-animation");
-		animation?.schedule.Execute(() =>
+		_animationScheduler = animation?.schedule.Execute(() =>
 		{
 			if (_animationFrames.Count == 0)
 				return;
@@ -86,6 +87,8 @@ public class UIHandler : MonoBehaviour
 			animation.style.backgroundImage = frame;
 			// 100ms Schritte bis Flag gesetzt wird
 		}).Every(100).Until(() => { return _stopAnimation; });
+		// Zunaechst pausieren
+		_animationScheduler.Pause();
 
 		// Placement Mode Free Button binden
 		root.Q<Button>("placement-select-free").clickable.clicked += () =>
@@ -99,7 +102,9 @@ public class UIHandler : MonoBehaviour
 				sessionSubsystem.SetCoachingActive(true, ARCoachingOverlayTransition.Animated);
 			}
 #else
+			// Animation ausfuehren
 			root.Q("animation-area").style.display = DisplayStyle.Flex;
+			_animationScheduler.Resume();
 #endif
 			GameManager.Instance.SetPlacementMode(GameManager.PlacementMode.Free);
 		};
