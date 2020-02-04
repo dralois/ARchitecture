@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.XR.ARFoundation;
+using UnityEngine.Rendering.Universal;
 
 [RequireComponent(typeof(Camera))]
 public class TextureScaler : MonoBehaviour
 {
 
+	[SerializeField] private UniversalRenderPipelineAsset _forScale = null;
 	[SerializeField] private Camera _masterARCam = null;
 	[SerializeField] private Material _transferMaterial = null;
 	[SerializeField] [Range(0, 32)] private int _depthBits = 0;
@@ -16,7 +18,8 @@ public class TextureScaler : MonoBehaviour
 	private void Awake()
 	{
 		// Rendertexture mit Default-Descriptor holen
-		var desc = new RenderTextureDescriptor(Screen.width, Screen.height, RenderTextureFormat.ARGB32, _depthBits, 0);
+		var desc = new RenderTextureDescriptor((int) (Screen.width * _forScale.renderScale),
+			(int) (Screen.height * _forScale.renderScale), RenderTextureFormat.ARGB32, _depthBits, 0);
 		_rt = RenderTexture.GetTemporary(desc);
 		// Der Kamera zuweisen
 		_cam = GetComponent<Camera>();

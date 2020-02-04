@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
 
 	#region Fields
 
+	[SerializeField] private float _ScaleModeChange = 15f;
+
 	// Singleton
 	private static GameManager _instance = null;
 
@@ -88,6 +90,8 @@ public class GameManager : MonoBehaviour
 	public SizeMode CurrentSize { get; private set; } = SizeMode.Normal;
 
 	public float IFCScale { get => _actualScale; }
+
+	public float SizeScale { get => CurrentSize == SizeMode.Normal ? 1f : _ScaleModeChange; }
 
 	#endregion
 
@@ -167,12 +171,12 @@ public class GameManager : MonoBehaviour
 			{
 				case SizeMode.Normal:
 					{
-						_placedIFC.transform.localScale /= 15f;
+						_placedIFC.transform.localScale /= _ScaleModeChange;
 						break;
 					}
 				case SizeMode.Scaled:
 					{
-						_placedIFC.transform.localScale *= 15f;
+						_placedIFC.transform.localScale *= _ScaleModeChange;
 						break;
 					}
 			}

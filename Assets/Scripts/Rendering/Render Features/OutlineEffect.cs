@@ -76,6 +76,7 @@ public class OutlineEffectPass : ScriptableRenderPass
 		CommandBuffer cmdBuff = CommandBufferPool.Get("Outline Effect");
 		cmdBuff.BeginSample("Outline Effect");
 		// Kernel etc. speichern
+		_effectMaterial.SetFloat("_renderScale", renderingData.cameraData.renderScale);
 		_effectMaterial.SetFloatArray("_kernel", _gaussKernel);
 		_effectMaterial.SetInt("_kernelHalfWidth", _gaussKernel.Length / 2);
 		// Kamera auf Orthografisch umstellen

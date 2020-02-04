@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14a13d9b7fcce23438b86d4b3983a4b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _forScale: {fileID: 11400000, guid: 8fef1bd2591237748a5e119b0501fa70, type: 2}
   _masterARCam: {fileID: 6032722576231018865}
   _transferMaterial: {fileID: 2100000, guid: 653f927acbeea7145a7bf6da2766deb8, type: 2}
   _depthBits: 0
@@ -241,6 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14a13d9b7fcce23438b86d4b3983a4b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _forScale: {fileID: 11400000, guid: 8fef1bd2591237748a5e119b0501fa70, type: 2}
   _masterARCam: {fileID: 6032722576231018865}
   _transferMaterial: {fileID: 2100000, guid: ebe954bde72296347940473d60674ed2, type: 2}
   _depthBits: 24

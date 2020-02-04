@@ -4,6 +4,7 @@
 	{
 		[HideInInspector] _kernel("Kernel Array", Vector) = (0,0,0,0)
 		[HideInInspector] _kernelHalfWidth("1/2 Kernel Width", Float) = 1
+		[HideInInspector] _renderScale("Render Scale", Float) = 1
 	}
 
 	HLSLINCLUDE
@@ -93,6 +94,7 @@
 
 			float _kernel[21];
 			uint _kernelHalfWidth;
+			float _renderScale;
 
 			half4 frag(v2f input) : SV_Target
 			{
@@ -106,8 +108,8 @@
 				float sampleX = 0;
 				float sampleY = 0;
 				// Groessere Sample Range
-				float texSizeX = _CameraOpaqueTexture_TexelSize.x * 7.0;
-				float texSizeY = _CameraOpaqueTexture_TexelSize.y * 7.0;
+				float texSizeX = _CameraOpaqueTexture_TexelSize.x * 7.0 * _renderScale;
+				float texSizeY = _CameraOpaqueTexture_TexelSize.y * 7.0 * _renderScale;
 
 				[unroll]
 				// Gauss Horizontal <-

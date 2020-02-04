@@ -6,6 +6,9 @@ public class DeactivatePlane : MonoBehaviour
 
 	public void Deactivate()
 	{
-		_planeObj.SetActive(false);
+		if (_planeObj)
+		{
+			_planeObj.SetActive(false);
+		}
 	}
 }

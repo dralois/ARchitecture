@@ -1,4 +1,4 @@
-#define IPAD_OLD
+//#define IPAD_OLD
 //#undef UNITY_EDITOR
 
 using System.Collections.Generic;
@@ -49,7 +49,11 @@ public class ARSpawnManager : MonoBehaviour
 				// Spawnen
 				X_SpawnIFCOld(hitPose);
 #else
+#if UNITY_EDITOR || UNITY_STANDALONE
+				X_SpawnIFCOld(hitPose);
+#else
 				_anchorManager.AttachAnchor(_planeManager.GetPlane(_hits[0].trackableId), _hits[0].pose);
+#endif
 #endif
 			}
 		}
@@ -171,6 +175,9 @@ public class ARSpawnManager : MonoBehaviour
 		_raycastManager.subsystem?.Stop();
 		_planeManager.subsystem?.Stop();
 		_imageManager.subsystem?.Stop();
+#if !IPAD_OLD
+		_anchorManager.subsystem?.Stop();
+#endif
 		// IFC instantiieren
 		GameManager.Instance.PlacedIFC = Instantiate(_placedPrefab);
 		GameManager.Instance.PlacedIFC.SetActive(false);
