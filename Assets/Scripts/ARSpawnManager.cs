@@ -69,12 +69,23 @@ public class ARSpawnManager : MonoBehaviour
 			// Falls das Tracking gut ist
 			if(qrCode.trackingState == TrackingState.Tracking)
 			{
-				// Pose erstellen (In Local Space)
-				Pose spawnPose = new Pose(qrCode.transform.localPosition, qrCode.transform.localRotation);
-				// In World Space Transformieren
-				spawnPose = _session.trackablesParent.TransformPose(spawnPose);
-				// Spawnen
-				X_SpawnIFC(spawnPose);
+				//// Pose erstellen (In Local Space)
+				//Pose spawnPose = new Pose(qrCode.transform.localPosition, qrCode.transform.localRotation);
+				//// In World Space Transformieren
+				//spawnPose = _session.trackablesParent.TransformPose(spawnPose);
+				//// Spawnen
+				//X_SpawnIFC(spawnPose);
+				// IFC aktivieren
+				GameManager.Instance.PlacedIFC.SetActive(true);
+				// Parent setzen
+				GameManager.Instance.PlacedIFC.transform.SetParent(qrCode.transform, false);
+				// Modus wechseln
+				GameManager.Instance.SwitchMenu(GameManager.MenuMode.Placement);
+				// Detection deaktivieren
+				_planeManager.subsystem?.Stop();
+				_raycastManager.subsystem?.Stop();
+				// Script deaktivieren
+				enabled = false;
 			}
 		}
 	}

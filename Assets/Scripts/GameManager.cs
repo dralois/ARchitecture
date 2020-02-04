@@ -167,12 +167,12 @@ public class GameManager : MonoBehaviour
 			{
 				case SizeMode.Normal:
 					{
-						_placedIFC.transform.localScale /= 10;
+						_placedIFC.transform.localScale /= 15f;
 						break;
 					}
 				case SizeMode.Scaled:
 					{
-						_placedIFC.transform.localScale *= 10;
+						_placedIFC.transform.localScale *= 15f;
 						break;
 					}
 			}

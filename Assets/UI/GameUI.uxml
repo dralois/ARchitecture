@@ -7,7 +7,7 @@
             </ui:VisualElement>
             <ui:VisualElement name="desc-area" class="general-sidebar" style="display: none;">
                 <ui:Label text="Label" name="desc-heading" class="general-text" style="color: rgb(51, 51, 51);" />
-                <ui:ListView name="desc-box" item-height="75" style="flex-grow: 1; width: 800px;" />
+                <ui:ListView name="desc-box" item-height="110" style="flex-grow: 1; width: 800px;" />
                 <ui:Button text="More" name="desc-btn" class="button-sidebar" />
             </ui:VisualElement>
             <ui:VisualElement name="hideSections-area" class="general-sidebar" style="display: none;">
