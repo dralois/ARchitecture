@@ -1,4 +1,4 @@
-//#define IPAD_OLD
+#define IPAD_OLD
 //#undef UNITY_EDITOR
 
 using System.Collections.Generic;

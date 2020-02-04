@@ -70,7 +70,7 @@
 
 			half4 frag(v2f input) : SV_Target
 			{
-				return 1;
+				return half4(1, 0, 0, 0);
 			}
 
 			ENDHLSL
@@ -99,7 +99,7 @@
 				// Falls auf Objekt dann voll Transparent
 				if(SAMPLE_TEXTURE2D(_CameraOpaqueTexture, sampler_CameraOpaqueTexture, input.uv).r > 0)
 				{
-					return 0;
+					return half4(0, 0, 0, 0);
 				}
 
 				// Akkumulierter Blur

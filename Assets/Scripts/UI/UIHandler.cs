@@ -255,6 +255,7 @@ public class UIHandler : MonoBehaviour
 			root.Q("create-section-panel").style.display = DisplayStyle.None;
 			root.Q("switch-daytime-panel").style.display = DisplayStyle.None;
 			root.Q("interaction-panel").style.display = DisplayStyle.Flex;
+			root.Q<Button>("options-storeys-edit").RemoveFromClassList("clicked-button");
 		};
 
 		// Ghost Mode Button binden
@@ -279,9 +280,18 @@ public class UIHandler : MonoBehaviour
 		// Storey Button binden
 		root.Q<Button>("options-storeys-edit").clickable.clicked += () =>
 		{
-			var button = root.Q("hideSections-area");
-			button.style.display = button.style.display == DisplayStyle.Flex ?
+			var area = root.Q("hideSections-area");
+			area.style.display = area.style.display == DisplayStyle.Flex ?
 				DisplayStyle.None : DisplayStyle.Flex;
+
+			if(area.style.display == DisplayStyle.Flex)
+			{
+				root.Q<Button>("options-storeys-edit").AddToClassList("clicked-button");
+			}
+			else
+			{
+				root.Q<Button>("options-storeys-edit").RemoveFromClassList("clicked-button");
+			}
 		};
 
 		// Description Box erstellen
