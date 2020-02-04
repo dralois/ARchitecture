@@ -1,3 +1,6 @@
+//#define IPAD_OLD
+//#undef UNITY_EDITOR
+
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
@@ -40,8 +43,14 @@ public class ARSpawnManager : MonoBehaviour
 #else
 				Pose hitPose = _hits[0].pose;
 #endif
+				// Das Umgebungsmodell deaktivieren
+				GameManager.Instance.PlacedIFC.GetComponent<DeactivatePlane>().Deactivate();
+#if IPAD_OLD
 				// Spawnen
-				X_SpawnIFC(hitPose);
+				X_SpawnIFCOld(hitPose);
+#else
+				_anchorManager.AttachAnchor(_planeManager.GetPlane(_hits[0].trackableId), _hits[0].pose);
+#endif
 			}
 		}
 	}
@@ -69,28 +78,37 @@ public class ARSpawnManager : MonoBehaviour
 			// Falls das Tracking gut ist
 			if(qrCode.trackingState == TrackingState.Tracking)
 			{
-				//// Pose erstellen (In Local Space)
-				//Pose spawnPose = new Pose(qrCode.transform.localPosition, qrCode.transform.localRotation);
-				//// In World Space Transformieren
-				//spawnPose = _session.trackablesParent.TransformPose(spawnPose);
-				//// Spawnen
-				//X_SpawnIFC(spawnPose);
-				// IFC aktivieren
-				GameManager.Instance.PlacedIFC.SetActive(true);
-				// Parent setzen
-				GameManager.Instance.PlacedIFC.transform.SetParent(qrCode.transform, false);
-				// Modus wechseln
-				GameManager.Instance.SwitchMenu(GameManager.MenuMode.Placement);
+#if IPAD_OLD
+				// Pose erstellen (In Local Space)
+				Pose spawnPose = new Pose(qrCode.transform.localPosition, qrCode.transform.localRotation);
+				// In World Space Transformieren
+				spawnPose = _session.trackablesParent.TransformPose(spawnPose);
+				// Spawnen
+				X_SpawnIFCOld(spawnPose);
+#else
+				// Spawnen
+				X_SpawnIFCNew(qrCode.transform);
 				// Detection deaktivieren
 				_planeManager.subsystem?.Stop();
 				_raycastManager.subsystem?.Stop();
-				// Script deaktivieren
-				enabled = false;
+#endif
 			}
 		}
 	}
 
-	private void X_SpawnIFC(Pose spawnPose)
+	private void X_SpawnIFCNew(Transform attach)
+	{
+		// IFC aktivieren
+		GameManager.Instance.PlacedIFC.SetActive(true);
+		// Parent setzen
+		GameManager.Instance.PlacedIFC.transform.SetParent(attach, false);
+		// Modus wechseln
+		GameManager.Instance.SwitchMenu(GameManager.MenuMode.Placement);
+		// Script deaktivieren
+		enabled = false;
+	}
+
+	private void X_SpawnIFCOld(Pose spawnPose)
 	{
 		// IFC aktivieren
 		GameManager.Instance.PlacedIFC.SetActive(true);

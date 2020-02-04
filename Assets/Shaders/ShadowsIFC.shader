@@ -2,7 +2,6 @@
 {
 	Properties
 	{
-		_ShadowTransparency("Transparency", Range(0, 1)) = 1
 	}
 	SubShader
 	{
@@ -26,8 +25,6 @@
 
 			ZWrite Off
 
-			Blend SrcAlpha OneMinusSrcAlpha
-
 			HLSLPROGRAM
 
 			#pragma prefer_hlslcc gles
@@ -46,10 +43,6 @@
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 
-			CBUFFER_START(UnityPerMaterial)
-			float _ShadowTransparency;
-			CBUFFER_END
-
 			struct Attributes
 			{
 				float4 positionOS   : POSITION;
@@ -58,7 +51,6 @@
 			struct v2f
 			{
 				float4 positionCS   : SV_POSITION;
-				float3 positionWS   : TEXCOORD0;
 				float4 shadowCoord  : TEXCOORD1;
 			};
 
@@ -70,7 +62,6 @@
 				// Speichern
 				output.shadowCoord = GetShadowCoord(vertexInput);
 				output.positionCS = vertexInput.positionCS;
-				output.positionWS = vertexInput.positionWS;
 				// An Fragment weitergeben
 				return output;
 			}
@@ -79,8 +70,8 @@
 			{
 				// Main Light Attenuation bestimmen
 				half shadowAtten = MainLightRealtimeShadow(input.shadowCoord);
-				// Transparent / Schwarz je nach dem ob Schatten oder nicht
-				return half4(0, 0, 0, shadowAtten <= 0 ? _ShadowTransparency : 0);
+				// Attenuation speichern
+				return half4(shadowAtten.xxx, 1);
 			}
 
 			ENDHLSL

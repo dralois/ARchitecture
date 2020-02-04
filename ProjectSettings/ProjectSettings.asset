@@ -173,7 +173,7 @@ PlayerSettings:
     iPhone: com.interactivevisualization.test
   buildNumber:
     Standalone: 0.9
-    iPhone: 6
+    iPhone: 7
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 24
   AndroidTargetSdkVersion: 0

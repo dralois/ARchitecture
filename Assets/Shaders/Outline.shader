@@ -2,8 +2,8 @@
 {
 	Properties
 	{
-		_kernel("Kernel Array", Vector) = (0,0,0,0)
-		_kernelHalfWidth("1/2 Kernel Width", Float) = 1
+		[HideInInspector] _kernel("Kernel Array", Vector) = (0,0,0,0)
+		[HideInInspector] _kernelHalfWidth("1/2 Kernel Width", Float) = 1
 	}
 
 	HLSLINCLUDE
@@ -29,10 +29,6 @@
 	float4 _CameraOpaqueTexture_ST;
 	float2 _CameraOpaqueTexture_TexelSize;
 
-	//CBUFFER_START(UnityPerFrame)
-	//float4x4 _UnityDisplayTransform;
-	//CBUFFER_END
-
 	v2f OutlineVert(Attributes input)
 	{
 		v2f output = (v2f)0;
@@ -41,7 +37,6 @@
 		// Speichern
 		output.positionCS = vertexInput.positionCS;
 		output.uv = TRANSFORM_TEX(input.uv, _CameraOpaqueTexture);
-		//output.uv = TRANSFORM_TEX(mul(float3(input.uv, 1.0f), _UnityDisplayTransform).xy, _CameraOpaqueTexture);
 		// An Fragment weitergeben
 		return output;
 	}

@@ -11,6 +11,7 @@ public class CameraController : MonoBehaviour
 	}
 
 	[SerializeField] private float _maxCutPlane = 5.0f;
+	[SerializeField] private Camera[] _subCams = null;
 
 	private Visualization _currVis = Visualization.Normal;
 	private UniversalAdditionalCameraData _cameraData = null;
@@ -21,8 +22,13 @@ public class CameraController : MonoBehaviour
 
 	public void SetCutPlane(float percent)
 	{
+		float nearPlane = Mathf.Lerp(_nearDefault, _maxCutPlane, Mathf.Clamp01(percent / 100f));
 		// Near Plane verschieben
-		_camera.nearClipPlane = Mathf.Lerp(_nearDefault, _maxCutPlane, Mathf.Clamp01(percent / 100f));
+		_camera.nearClipPlane = nearPlane;
+		foreach(var sub in _subCams)
+		{
+			sub.nearClipPlane = nearPlane;
+		}
 	}
 
 	public float GetCutPlane()

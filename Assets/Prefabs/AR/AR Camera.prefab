@@ -340,6 +340,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxCutPlane: 5
+  _subCams:
+  - {fileID: 3545812624564160537}
+  - {fileID: 248015124}
 --- !u!114 &4221348052071928460
 MonoBehaviour:
   m_ObjectHideFlags: 0
