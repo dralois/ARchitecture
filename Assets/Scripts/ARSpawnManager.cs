@@ -1,6 +1,3 @@
-//#define IPAD_OLD
-//#undef UNITY_EDITOR
-
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
@@ -43,18 +40,8 @@ public class ARSpawnManager : MonoBehaviour
 #else
 				Pose hitPose = _hits[0].pose;
 #endif
-				// Das Umgebungsmodell deaktivieren
-				GameManager.Instance.PlacedIFC.GetComponent<DeactivatePlane>().Deactivate();
-#if IPAD_OLD
 				// Spawnen
-				X_SpawnIFCOld(hitPose);
-#else
-#if UNITY_EDITOR || UNITY_STANDALONE
-				X_SpawnIFCOld(hitPose);
-#else
-				_anchorManager.AttachAnchor(_planeManager.GetPlane(_hits[0].trackableId), _hits[0].pose);
-#endif
-#endif
+				X_SpawnIFC(hitPose);
 			}
 		}
 	}
@@ -62,16 +49,16 @@ public class ARSpawnManager : MonoBehaviour
 	private void X_ImageDetected(ARTrackedImagesChangedEventArgs images)
 	{
 		// Sanity Check
-		if(GameManager.Instance.CurrentMenu == GameManager.MenuMode.Spawn &&
+		if (GameManager.Instance.CurrentMenu == GameManager.MenuMode.Spawn &&
 			GameManager.Instance.SelectedPlacementMode == GameManager.PlacementMode.QR)
 		{
 			ARTrackedImage qrCode = null;
 			// Entweder erstes hinzugefuegtes oder geupdatetes Bild nehmen
-			if(images.added.Count > 0)
+			if (images.added.Count > 0)
 			{
 				qrCode = images.added[0];
 			}
-			else if(images.updated.Count > 0)
+			else if (images.updated.Count > 0)
 			{
 				qrCode = images.updated[0];
 			}
@@ -80,39 +67,30 @@ public class ARSpawnManager : MonoBehaviour
 				return;
 			}
 			// Falls das Tracking gut ist
-			if(qrCode.trackingState == TrackingState.Tracking)
+			if (qrCode.trackingState == TrackingState.Tracking)
 			{
-#if IPAD_OLD
-				// Pose erstellen (In Local Space)
-				Pose spawnPose = new Pose(qrCode.transform.localPosition, qrCode.transform.localRotation);
-				// In World Space Transformieren
-				spawnPose = _session.trackablesParent.TransformPose(spawnPose);
-				// Spawnen
-				X_SpawnIFCOld(spawnPose);
-#else
-				// Spawnen
-				X_SpawnIFCNew(qrCode.transform);
+				//// Pose erstellen (In Local Space)
+				//Pose spawnPose = new Pose(qrCode.transform.localPosition, qrCode.transform.localRotation);
+				//// In World Space Transformieren
+				//spawnPose = _session.trackablesParent.TransformPose(spawnPose);
+				//// Spawnen
+				//X_SpawnIFC(spawnPose);
+				// IFC aktivieren
+				GameManager.Instance.PlacedIFC.SetActive(true);
+				// Parent setzen
+				GameManager.Instance.PlacedIFC.transform.SetParent(qrCode.transform, false);
+				// Modus wechseln
+				GameManager.Instance.SwitchMenu(GameManager.MenuMode.Placement);
 				// Detection deaktivieren
 				_planeManager.subsystem?.Stop();
 				_raycastManager.subsystem?.Stop();
-#endif
+				// Script deaktivieren
+				enabled = false;
 			}
 		}
 	}
 
-	private void X_SpawnIFCNew(Transform attach)
-	{
-		// IFC aktivieren
-		GameManager.Instance.PlacedIFC.SetActive(true);
-		// Parent setzen
-		GameManager.Instance.PlacedIFC.transform.SetParent(attach, false);
-		// Modus wechseln
-		GameManager.Instance.SwitchMenu(GameManager.MenuMode.Placement);
-		// Script deaktivieren
-		enabled = false;
-	}
-
-	private void X_SpawnIFCOld(Pose spawnPose)
+	private void X_SpawnIFC(Pose spawnPose)
 	{
 		// IFC aktivieren
 		GameManager.Instance.PlacedIFC.SetActive(true);
@@ -175,9 +153,6 @@ public class ARSpawnManager : MonoBehaviour
 		_raycastManager.subsystem?.Stop();
 		_planeManager.subsystem?.Stop();
 		_imageManager.subsystem?.Stop();
-#if !IPAD_OLD
-		_anchorManager.subsystem?.Stop();
-#endif
 		// IFC instantiieren
 		GameManager.Instance.PlacedIFC = Instantiate(_placedPrefab);
 		GameManager.Instance.PlacedIFC.SetActive(false);
