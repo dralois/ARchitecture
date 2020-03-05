@@ -33,6 +33,13 @@ public class GameManager : MonoBehaviour
 		Scaled
 	}
 
+	public enum RenderMode
+	{
+		Performance,
+		Normal,
+		Highend
+	}
+
 	#endregion
 
 	#region Fields
@@ -45,7 +52,6 @@ public class GameManager : MonoBehaviour
 	private GameObject _placedIFC = null;
 	private Vector3 _originalScale = Vector3.one;
 	private float _originalRot = 0f;
-
 	private float _actualScale = 1f;
 
 	#endregion
@@ -59,6 +65,8 @@ public class GameManager : MonoBehaviour
 	public event System.Action<SizeMode> SizeChanged;
 
 	public event System.Action<PlacementMode> PlacementModeSelected;
+
+	public event System.Action<RenderMode> RenderModeChanged;
 
 	#endregion
 
@@ -88,6 +96,8 @@ public class GameManager : MonoBehaviour
 	public LightMode CurrentLight { get; private set; } = LightMode.Day;
 
 	public SizeMode CurrentSize { get; private set; } = SizeMode.Normal;
+
+	public RenderMode CurrentRendering { get; private set; } = RenderMode.Normal;
 
 	public float IFCScale { get => _actualScale; }
 
@@ -183,6 +193,36 @@ public class GameManager : MonoBehaviour
 			// Groesse speichern & Event ausloesen
 			CurrentSize = nextSize;
 			SizeChanged?.Invoke(CurrentSize);
+		}
+	}
+
+	public void SwitchRenderMode(RenderMode nextMode)
+	{
+		// Falls geaendert
+		if (nextMode != CurrentRendering)
+		{
+			// Aktion je nach Modus
+			switch (nextMode)
+			{
+				case RenderMode.Performance:
+					{
+
+						break;
+					}
+				case RenderMode.Normal:
+					{
+
+						break;
+					}
+				case RenderMode.Highend:
+					{
+
+						break;
+					}
+			}
+			// Speichern & Event ausloesen
+			CurrentRendering = nextMode;
+			RenderModeChanged?.Invoke(nextMode);
 		}
 	}
 
